@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr" class="h-full bg-slate-50 text-slate-900">
+<html lang="fr" class="h-full bg-zinc-950 text-zinc-100">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stages M2 Cybersécurité & Cryptologie • France</title>
-  <!-- Tailwind CSS CDN -->
+  <title>Stages M2 Cybersécurité & Cryptologie // France</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -13,92 +12,89 @@
         extend: {
           colors: {
             brand: {
-              50: '#eef2ff',
-              100: '#e0e7ff',
+              400: '#818cf8',
+              500: '#6366f1',
               600: '#4f46e5',
-              700: '#4338ca',
-              800: '#3730a3',
-              900: '#312e81',
             }
           }
         }
       }
     }
   </script>
-  <link rel="stylesheet" href="style.css?v=2.1">
+  <link rel="stylesheet" href="style.css?v=3.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-<body class="min-h-full flex flex-col font-['Inter',sans-serif] antialiased transition-colors duration-200">
+<body class="min-h-full flex flex-col font-['Inter',sans-serif] bg-zinc-950 text-zinc-100 antialiased selection:bg-zinc-800 selection:text-white">
 
-  <!-- Header -->
-  <header class="border-b border-slate-200 bg-white/80 backdrop-blur sticky top-0 z-30">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+  <!-- Minimal Header -->
+  <header class="border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur sticky top-0 z-30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-4">
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-white text-xl shadow-sm">
-          🛡️
+        <div class="w-8 h-8 rounded border border-zinc-800 bg-zinc-900 flex items-center justify-center font-mono text-xs font-semibold text-zinc-300">
+          //
         </div>
         <div>
-          <h1 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 flex items-center gap-2">
+          <h1 class="text-sm sm:text-base font-semibold tracking-tight text-zinc-100 flex items-center gap-2">
             Stages M2 Cybersécurité & Cryptologie
-            <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">France</span>
+            <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-zinc-900 text-zinc-400 border border-zinc-800">France</span>
           </h1>
-          <p class="text-xs sm:text-sm text-slate-500">
-            Liens 100% directs sur les sites officiels des entreprises • Sans agrégateurs
+          <p class="text-[11px] text-zinc-400">
+            Liens directs recruteurs • PFE (6 mois) • Zero GRC / Zero CDI
           </p>
         </div>
       </div>
 
       <!-- Quick Actions -->
       <div class="flex items-center gap-2.5">
-        <div class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 text-slate-600 border border-slate-200/80">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono text-zinc-400 border border-zinc-800 rounded bg-zinc-900/60">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
           Auto-sync 12h
         </div>
 
-        <button id="exportCsvBtn" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shadow-sm transition">
-          <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button id="exportCsvBtn" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded border border-zinc-800 bg-zinc-900 hover:bg-zinc-800 text-zinc-200 transition">
+          <svg class="w-3.5 h-3.5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
           </svg>
-          Exporter CSV
+          Export CSV
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Main Content Container -->
-  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
+  <!-- Main Content -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 space-y-5">
 
     <!-- KPI Summary Bar -->
-    <section class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-      <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm">
-        <div class="text-xs font-medium text-slate-500">Total Offres M2 Actives</div>
-        <div id="statTotal" class="text-2xl font-bold text-slate-900 mt-1">--</div>
-        <div class="text-[11px] text-emerald-600 font-medium mt-1">✓ Liens officiels vérifiés</div>
+    <section class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+      <div class="bg-zinc-900/40 p-3.5 rounded-lg border border-zinc-800/80">
+        <div class="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">Offres Actives</div>
+        <div id="statTotal" class="text-xl font-bold text-zinc-100 mt-1 font-mono">--</div>
+        <div class="text-[10px] text-zinc-400 mt-0.5">Vérifiées HTTP 200</div>
       </div>
-      <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm">
-        <div class="text-xs font-medium text-slate-500">Cryptologie & CESTI</div>
-        <div id="statCrypto" class="text-2xl font-bold text-indigo-600 mt-1">--</div>
-        <div class="text-[11px] text-slate-500 mt-1">PQC, SCA, FHE, Matériel</div>
+      <div class="bg-zinc-900/40 p-3.5 rounded-lg border border-zinc-800/80">
+        <div class="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">Cryptologie & PKI</div>
+        <div id="statCrypto" class="text-xl font-bold text-indigo-400 mt-1 font-mono">--</div>
+        <div class="text-[10px] text-zinc-400 mt-0.5">PQC, SCA, Matériel</div>
       </div>
-      <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm">
-        <div class="text-xs font-medium text-slate-500">Cyberdéfense & Offensive</div>
-        <div id="statCyber" class="text-2xl font-bold text-slate-900 mt-1">--</div>
-        <div class="text-[11px] text-slate-500 mt-1">SOC, Pentest, EDR, Reverse</div>
+      <div class="bg-zinc-900/40 p-3.5 rounded-lg border border-zinc-800/80">
+        <div class="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">Cyberdéfense</div>
+        <div id="statCyber" class="text-xl font-bold text-zinc-100 mt-1 font-mono">--</div>
+        <div class="text-[10px] text-zinc-400 mt-0.5">Pentest, Red/Blue, SOC</div>
       </div>
-      <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm">
-        <div class="text-xs font-medium text-slate-500">Format Requis</div>
-        <div class="text-2xl font-bold text-slate-900 mt-1">PFE (6 mois)</div>
-        <div class="text-[11px] text-emerald-600 font-medium mt-1">Master 2 / Fin d'études</div>
+      <div class="bg-zinc-900/40 p-3.5 rounded-lg border border-zinc-800/80">
+        <div class="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">Format Requis</div>
+        <div class="text-xl font-bold text-zinc-100 mt-1 font-mono">PFE (6 mois)</div>
+        <div class="text-[10px] text-emerald-400 mt-0.5">Bac+5 / Fin d'études</div>
       </div>
     </section>
 
     <!-- Search & Filter Controls -->
-    <section class="bg-white rounded-xl border border-slate-200/80 p-4 sm:p-5 shadow-sm space-y-4">
+    <section class="bg-zinc-900/40 rounded-lg border border-zinc-800/80 p-3.5 sm:p-4 space-y-3.5">
       <!-- Search Input -->
       <div class="relative">
-        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-500">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
           </svg>
@@ -106,80 +102,77 @@
         <input 
           type="text" 
           id="searchInput" 
-          placeholder="Rechercher par mot-clé, entreprise ou compétence (ex: Thales, SERMA, PQC, Rust, Canaux auxiliaires, Reverse, Rennes...)"
-          class="w-full pl-10 pr-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition"
+          placeholder="Rechercher par mot-clé, entreprise, techno ou lieu (ex: Synacktiv, Wavestone, Rust, Reverse, Pentest, Rennes...)"
+          class="w-full pl-9 pr-4 py-2 text-xs bg-zinc-950 border border-zinc-800 rounded text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-zinc-600 transition font-mono"
         >
       </div>
 
       <!-- Filter Chips & Dropdown -->
-      <div class="flex flex-wrap items-center justify-between gap-3 pt-1 border-t border-slate-100">
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-1 border-t border-zinc-800/60">
         <!-- Categories -->
         <div class="flex flex-wrap items-center gap-1.5" id="categoryChips">
           <button data-category="all" class="category-chip active">Toutes (<span id="countAll">0</span>)</button>
-          <button data-category="crypto" class="category-chip">🔐 Cryptologie & PKI</button>
-          <button data-category="offensive" class="category-chip">🎯 Offensive, Pentest & Reverse</button>
-          <button data-category="defensive" class="category-chip">🛡️ SOC, DFIR & Détection</button>
-          <button data-category="cloud_devsecops" class="category-chip">☁️ Cloud, DevSecOps & OT</button>
-          <button data-category="ai_cyber" class="category-chip">🤖 IA & Sécurité Émergente</button>
+          <button data-category="crypto" class="category-chip">Cryptologie & PKI</button>
+          <button data-category="offensive" class="category-chip">Offensive & Pentest</button>
+          <button data-category="defensive" class="category-chip">SOC & Détection</button>
+          <button data-category="cloud_devsecops" class="category-chip">Cloud, DevSecOps & OT</button>
+          <button data-category="ai_cyber" class="category-chip">IA & Cyber</button>
         </div>
 
         <!-- Location selector -->
         <div class="flex items-center gap-2">
-          <select id="locationFilter" class="text-xs font-medium bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-            <option value="all">📍 Toute la France</option>
-            <option value="paris">Île-de-France (Paris/Nanterre/Courbevoie)</option>
-            <option value="rennes">Bretagne (Rennes/Cesson)</option>
+          <select id="locationFilter" class="text-xs font-mono bg-zinc-950 border border-zinc-800 rounded px-2.5 py-1.5 text-zinc-300 focus:outline-none focus:border-zinc-700">
+            <option value="all">Toute la France</option>
+            <option value="paris">Île-de-France (Paris / Nanterre / Courbevoie)</option>
+            <option value="rennes">Bretagne (Rennes / Cesson)</option>
             <option value="nantes">Pays de la Loire (Nantes)</option>
-            <option value="toulouse">Occitanie (Toulouse/Colomiers)</option>
+            <option value="toulouse">Occitanie (Toulouse)</option>
             <option value="lyon_grenoble">Auvergne-Rhône-Alpes (Lyon)</option>
-            <option value="remote">Télétravail partiel possible</option>
+            <option value="remote">Télétravail partiel</option>
           </select>
         </div>
       </div>
     </section>
 
     <!-- Results Count Bar -->
-    <div class="flex items-center justify-between text-xs text-slate-500 px-1">
+    <div class="flex items-center justify-between text-[11px] font-mono text-zinc-400 px-1">
       <div id="resultsCount">Chargement des offres...</div>
       <div class="flex items-center gap-3">
-        <label class="inline-flex items-center gap-1.5 cursor-pointer">
-          <input type="checkbox" id="hideAppliedToggle" class="rounded text-indigo-600 focus:ring-indigo-500 w-3.5 h-3.5 border-slate-300">
-          <span>Masquer les offres où j'ai déjà postulé</span>
+        <label class="inline-flex items-center gap-1.5 cursor-pointer select-none">
+          <input type="checkbox" id="hideAppliedToggle" class="rounded bg-zinc-900 border-zinc-700 text-indigo-500 focus:ring-0 w-3.5 h-3.5">
+          <span>Masquer les offres postulées</span>
         </label>
       </div>
     </div>
 
     <!-- Job Cards List -->
-    <section id="jobsContainer" class="space-y-3.5">
+    <section id="jobsContainer" class="space-y-2.5">
       <!-- Injected via JavaScript -->
     </section>
 
     <!-- Empty State -->
-    <div id="emptyState" class="hidden text-center py-16 bg-white rounded-xl border border-slate-200 p-8">
-      <div class="text-3xl mb-2">🔍</div>
-      <h3 class="text-base font-semibold text-slate-900">Aucune offre ne correspond à vos critères</h3>
-      <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
-        Essayez d'élargir vos termes de recherche ou de réinitialiser vos filtres.
-      </p>
-      <button id="resetFiltersBtn" class="mt-4 px-4 py-1.5 text-xs font-medium rounded-lg bg-slate-900 text-white hover:bg-slate-800 transition">
-        Réinitialiser les filtres
+    <div id="emptyState" class="hidden text-center py-14 bg-zinc-900/30 rounded-lg border border-zinc-800 p-6">
+      <h3 class="text-xs font-mono font-semibold text-zinc-300">Aucune offre correspondante</h3>
+      <p class="text-[11px] text-zinc-400 mt-1">Modifiez vos critères ou réinitialisez les filtres.</p>
+      <button id="resetFiltersBtn" class="mt-3 px-3 py-1.5 text-xs font-mono rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 transition">
+        [ Réinitialiser les filtres ]
       </button>
     </div>
 
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-200 bg-white py-6 mt-12 text-center text-xs text-slate-500">
-    <div class="max-w-6xl mx-auto px-4 space-y-2">
+  <!-- Minimal Footer -->
+  <footer class="border-t border-zinc-800/80 bg-zinc-950 py-5 mt-10 text-center text-[11px] font-mono text-zinc-400">
+    <div class="max-w-6xl mx-auto px-4 space-y-1">
       <p>
-        <strong>France Cyber & Cryptology M2 Internship Tracker</strong> • Hébergé sur GitHub Pages
+        France Cyber & Cryptology M2 Internship Tracker // 33 verified positions
       </p>
-      <p class="text-slate-400">
-        Les candidatures s'effectuent exclusivement via les plateformes officielles des recruteurs indiquées sur chaque fiche.
+      <p class="text-zinc-400">
+        Candidatures sur les sites officiels recruteurs. Scraping automatique 12h via GitHub Actions.
       </p>
     </div>
   </footer>
 
-  <script src="app.js?v=4.0"></script>
+  <script src="app.js?v=5.0"></script>
 </body>
 </html>

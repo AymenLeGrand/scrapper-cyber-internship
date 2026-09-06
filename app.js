@@ -24,9 +24,9 @@ async function loadJobs() {
   } catch (err) {
     console.error(err);
     container.innerHTML = `
-      <div class="p-6 bg-rose-50 border border-rose-200 rounded-xl text-rose-800 text-sm">
-        <p class="font-semibold">Erreur de chargement des données</p>
-        <p class="text-xs mt-1 text-rose-600">Impossible de lire data/jobs.json. Vérifiez que le scraper a bien tourné.</p>
+      <div class="p-4 bg-rose-950/30 border border-rose-900/60 rounded text-rose-300 text-xs font-mono">
+        <p class="font-semibold">Erreur de chargement</p>
+        <p class="text-[11px] mt-1 text-rose-400">Impossible de lire data/jobs.json.</p>
       </div>
     `;
   }
@@ -178,53 +178,53 @@ function createJobCardHtml(job) {
   const isApplied = appliedJobs.has(job.id);
   const isCrypto = job.is_crypto;
   
-  // Badge styling
-  let badgeBg = 'bg-slate-100 text-slate-700 border-slate-200';
+  // Minimal Badge styling
+  let badgeBg = 'bg-zinc-800/80 text-zinc-300 border-zinc-700/60';
   if (isCrypto) {
-    badgeBg = 'bg-indigo-50 text-indigo-700 border-indigo-200';
+    badgeBg = 'bg-indigo-950/60 text-indigo-300 border-indigo-800/80';
   } else if ((job.domain || '').includes('Offensive')) {
-    badgeBg = 'bg-rose-50 text-rose-700 border-rose-200';
+    badgeBg = 'bg-rose-950/60 text-rose-300 border-rose-800/80';
   } else if ((job.domain || '').includes('Defensive') || (job.domain || '').includes('SOC')) {
-    badgeBg = 'bg-sky-50 text-sky-700 border-sky-200';
-  } else if ((job.domain || '').includes('Cloud') || (job.domain || '').includes('GRC')) {
-    badgeBg = 'bg-purple-50 text-purple-700 border-purple-200';
+    badgeBg = 'bg-sky-950/60 text-sky-300 border-sky-800/80';
+  } else if ((job.domain || '').includes('Cloud')) {
+    badgeBg = 'bg-purple-950/60 text-purple-300 border-purple-800/80';
   }
 
   return `
-    <article class="job-card bg-white rounded-xl border border-slate-200/80 p-5 shadow-sm hover:shadow-md transition ${isApplied ? 'opacity-70 bg-slate-50/70' : ''}">
+    <article class="job-card bg-zinc-900/40 rounded-lg border border-zinc-800/80 p-4 sm:p-5 hover:border-zinc-700 transition ${isApplied ? 'opacity-60 bg-zinc-950/40' : ''}">
       <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
         
-        <div class="space-y-1.5 flex-1">
+        <div class="space-y-2 flex-1">
           <!-- Badges Bar -->
           <div class="flex flex-wrap items-center gap-2">
-            <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
-              🎓 Stage M2 / PFE (6 mois)
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800/90 text-zinc-300 border border-zinc-700/60">
+              PFE (6 mois)
             </span>
-            <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${badgeBg}">
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded border ${badgeBg}">
               ${escapeHtml(job.domain || 'Cybersécurité')}
             </span>
-            <span class="text-[11px] text-emerald-600 font-medium flex items-center gap-1">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
-              Vérifié actif
+            <span class="text-[10px] font-mono text-emerald-400 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span>
+              Vérifié live
             </span>
           </div>
 
           <!-- Job Title & Company -->
-          <h2 class="text-base sm:text-lg font-bold text-slate-900 hover:text-indigo-600 transition">
+          <h2 class="text-sm sm:text-base font-semibold text-zinc-100 hover:text-indigo-400 transition tracking-tight">
             <a href="${job.direct_url}" target="_blank" rel="noopener noreferrer" class="focus:outline-none">
               ${escapeHtml(job.title)}
             </a>
           </h2>
 
-          <div class="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs text-slate-600">
-            <span class="font-semibold text-slate-900">🏢 ${escapeHtml(job.company_name)}</span>
-            <span>📍 ${escapeHtml(job.location || 'France')}</span>
-            <span class="text-slate-500">Source: ${escapeHtml(job.source || 'Site Officiel')}</span>
+          <div class="flex flex-wrap items-center gap-y-1 gap-x-4 text-xs font-mono text-zinc-400">
+            <span class="font-medium text-zinc-200">${escapeHtml(job.company_name)}</span>
+            <span>${escapeHtml(job.location || 'France')}</span>
+            <span class="text-zinc-500">Source: ${escapeHtml(job.source || 'Officiel')}</span>
           </div>
 
           <!-- Description Excerpt -->
           ${job.description ? `
-            <p class="text-xs text-slate-600 pt-1.5 line-clamp-2 leading-relaxed">
+            <p class="text-xs text-zinc-400 pt-1 line-clamp-2 leading-relaxed font-sans">
               ${escapeHtml(job.description)}
             </p>
           ` : ''}
@@ -236,21 +236,21 @@ function createJobCardHtml(job) {
             href="${job.direct_url}" 
             target="_blank" 
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg bg-slate-900 text-white hover:bg-indigo-600 shadow-sm transition"
+            class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded bg-zinc-100 text-zinc-950 hover:bg-white transition shadow-sm"
           >
-            <span>Postuler sur le site officiel</span>
+            <span>Postuler</span>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
             </svg>
           </a>
 
           <div class="flex items-center gap-3 text-xs pt-1">
-            <button class="copy-link-btn text-slate-500 hover:text-slate-800 transition" data-url="${job.direct_url}">
-              📋 Copier lien
+            <button class="copy-link-btn text-[11px] font-mono text-zinc-500 hover:text-zinc-300 transition" data-url="${job.direct_url}">
+              Copier lien
             </button>
-            <label class="inline-flex items-center gap-1 text-slate-600 cursor-pointer select-none">
-              <input type="checkbox" class="toggle-applied rounded text-indigo-600 focus:ring-indigo-500 w-3.5 h-3.5 border-slate-300" data-id="${job.id}" ${isApplied ? 'checked' : ''}>
-              <span>${isApplied ? 'Postulé ✓' : 'Postulé ?'}</span>
+            <label class="inline-flex items-center gap-1.5 text-[11px] font-mono text-zinc-400 cursor-pointer select-none">
+              <input type="checkbox" class="toggle-applied rounded bg-zinc-900 border-zinc-700 text-indigo-500 focus:ring-0 w-3.5 h-3.5" data-id="${job.id}" ${isApplied ? 'checked' : ''}>
+              <span>${isApplied ? 'Postulé' : 'À postuler'}</span>
             </label>
           </div>
         </div>
@@ -267,12 +267,12 @@ function attachCardEvents() {
       const url = btn.getAttribute('data-url');
       navigator.clipboard.writeText(url).then(() => {
         const originalText = btn.textContent;
-        btn.textContent = 'Lien copié ! ✓';
-        btn.classList.add('text-emerald-600');
+        btn.textContent = 'Copié';
+        btn.classList.add('text-emerald-400');
         setTimeout(() => {
           btn.textContent = originalText;
-          btn.classList.remove('text-emerald-600');
-        }, 1800);
+          btn.classList.remove('text-emerald-400');
+        }, 1500);
       });
     });
   });

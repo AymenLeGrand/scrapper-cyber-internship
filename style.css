@@ -1,75 +1,62 @@
-/* Custom Styles for France Cyber & Crypto M2 Internship Tracker */
-
+/* Minimal Dark Theme for France Cyber & Crypto M2 Internship Tracker */
 body {
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  background-color: #09090b;
+  color: #f4f4f5;
 }
 
-/* Custom scrollbars */
+/* Minimal dark scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #09090b;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
+  background: #27272a;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #3f3f46;
 }
 
 /* Category Filter Chips */
 .category-chip {
-  padding: 5px 12px;
-  border-radius: 9999px;
-  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.72rem;
   font-weight: 500;
-  border: 1px solid #e2e8f0;
-  background-color: #f8fafc;
-  color: #475569;
+  border: 1px solid #27272a;
+  background-color: #121215;
+  color: #a1a1aa;
   cursor: pointer;
-  transition: all 0.15s ease-in-out;
+  transition: all 0.12s ease-in-out;
   white-space: nowrap;
 }
 
 .category-chip:hover {
-  background-color: #e2e8f0;
-  color: #0f172a;
+  background-color: #18181b;
+  border-color: #3f3f46;
+  color: #f4f4f5;
 }
 
 .category-chip.active {
-  background-color: #0f172a;
-  border-color: #0f172a;
-  color: #ffffff;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  background-color: #f4f4f5;
+  border-color: #f4f4f5;
+  color: #09090b;
+  font-weight: 600;
 }
 
-/* Card hover animation */
+/* Minimal Card Transitions */
 .job-card {
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
 .job-card:hover {
-  border-color: #cbd5e1;
-}
-
-/* Scraping spin animation */
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin, .spinning {
-  animation: spin 0.8s linear infinite !important;
-  display: inline-block !important;
-  transform-origin: center center !important;
+  border-color: #3f3f46;
+  background-color: #141418;
 }
