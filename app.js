@@ -269,6 +269,7 @@ async function loadJobs() {
     allJobs = await res.json();
     
     updateStats();
+    populateLocationFilter();
     renderJobs();
   } catch (err) {
     console.error(err);
@@ -278,6 +279,71 @@ async function loadJobs() {
         <p class="text-xs mt-1 text-rose-400">Impossible de lire data/jobs.json.</p>
       </div>
     `;
+  }
+}
+
+const FRENCH_HUBS = [
+  { label: 'Paris / IDF', keywords: ['paris', 'idf', 'courbevoie', 'nanterre', 'puteaux', 'levallois', 'défense', 'defense', 'saint-ouen', 'vélizy', 'massy', 'saclay'] },
+  { label: 'Nantes', keywords: ['nantes', 'herblain'] },
+  { label: 'Toulouse', keywords: ['toulouse', 'colomiers', 'blagnac'] },
+  { label: 'Rennes', keywords: ['rennes', 'cesson'] },
+  { label: 'Lyon', keywords: ['lyon', 'villeurbanne', 'grenoble'] },
+  { label: 'Lille', keywords: ['lille', 'villeneuve'] },
+  { label: 'Bordeaux', keywords: ['bordeaux', 'mérignac', 'pessac'] },
+  { label: 'Aix-Marseille', keywords: ['aix', 'marseille'] },
+  { label: 'Sophia Antipolis / Nice', keywords: ['sophia', 'nice', 'antibes'] },
+  { label: 'Brest', keywords: ['brest'] },
+  { label: 'Strasbourg', keywords: ['strasbourg'] }
+];
+
+function populateLocationFilter() {
+  const select = document.getElementById('locationFilter');
+  if (!select) return;
+
+  const activeJobs = allJobs.filter(j => j.status === 'active');
+  const counts = {};
+  const matchedJobIds = new Set();
+
+  FRENCH_HUBS.forEach(hub => {
+    let count = 0;
+    activeJobs.forEach(job => {
+      const loc = (job.location || '').toLowerCase();
+      if (hub.keywords.some(k => loc.includes(k))) {
+        count++;
+        matchedJobIds.add(job.id);
+      }
+    });
+    if (count > 0) {
+      counts[hub.label] = { count, keywords: hub.keywords };
+    }
+  });
+
+  // Catch any unexpected new locations from newly scraped announcements
+  activeJobs.forEach(job => {
+    if (!matchedJobIds.has(job.id) && job.location) {
+      let clean = job.location.split(',')[0].trim().replace(/\(.*?\)/, '').trim();
+      if (clean && clean.length > 2) {
+        if (!counts[clean]) {
+          counts[clean] = { count: 0, keywords: [clean.toLowerCase()] };
+        }
+        counts[clean].count++;
+      }
+    }
+  });
+
+  const prevSelected = select.value;
+  let html = `<option value="all">Toutes les villes (${activeJobs.length})</option>`;
+  
+  const sortedHubs = Object.entries(counts).sort((a, b) => b[1].count - a[1].count);
+  sortedHubs.forEach(([label, data]) => {
+    html += `<option value="${label}">${label} (${data.count})</option>`;
+  });
+
+  select.innerHTML = html;
+  if (prevSelected && counts[prevSelected]) {
+    select.value = prevSelected;
+  } else {
+    select.value = 'all';
   }
 }
 
@@ -370,13 +436,16 @@ function getFilteredJobs() {
       if (!isAi && !(job.domain || '').includes('IA')) return false;
     }
 
-    const loc = (job.location || '').toLowerCase();
-    if (selectedLocation === 'paris' && !loc.includes('paris') && !loc.includes('idf') && !loc.includes('île-de-france') && !loc.includes('defense') && !loc.includes('courbevoie')) return false;
-    if (selectedLocation === 'rennes' && !loc.includes('rennes') && !loc.includes('cesson')) return false;
-    if (selectedLocation === 'nantes' && !loc.includes('nantes') && !loc.includes('herblain')) return false;
-    if (selectedLocation === 'toulouse' && !loc.includes('toulouse') && !loc.includes('colomiers')) return false;
-    if (selectedLocation === 'lyon_grenoble' && !loc.includes('lyon') && !loc.includes('villeurbanne')) return false;
-    if (selectedLocation === 'remote' && !loc.includes('télétravail') && !loc.includes('remote') && !loc.includes('partiel')) return false;
+    // Dynamic Location filter
+    if (selectedLocation !== 'all') {
+      const hub = FRENCH_HUBS.find(h => h.label === selectedLocation);
+      const loc = (job.location || '').toLowerCase();
+      if (hub) {
+        if (!hub.keywords.some(k => loc.includes(k))) return false;
+      } else {
+        if (!loc.includes(selectedLocation.toLowerCase())) return false;
+      }
+    }
 
     if (query) {
       const searchTarget = [
