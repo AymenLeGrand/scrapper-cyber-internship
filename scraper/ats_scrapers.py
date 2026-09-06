@@ -301,7 +301,92 @@ def scrape_wttj(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
 
 
 # =============================================================================
-# 5. WORKDAY DIRECT CXS API (Thales, Airbus)
+# 5. TEAMTAILOR DIRECT JSON FEED (Stormshield, Sekoia)
+# =============================================================================
+
+def scrape_teamtailor(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """
+    Directly scrapes Teamtailor JSON feeds (e.g. Stormshield, Sekoia).
+    Public JSON feed: https://careers.<domain>/jobs.json
+    """
+    feed_url = company_meta.get("teamtailor_feed_url")
+    if not feed_url:
+        feed_url = f"https://{company_meta.get('career_domain', '')}/jobs.json"
+
+    jobs = []
+    try:
+        resp = requests.get(feed_url, headers=DEFAULT_HEADERS, timeout=REQUEST_TIMEOUT)
+        if resp.status_code != 200:
+            return []
+
+        data = resp.json()
+        items = data.get("items", [])
+
+        for it in items:
+            title = (it.get("title") or "").strip()
+            direct_url = (it.get("url") or "").strip()
+            date_published = it.get("date_published", "")
+            jp = it.get("_jobposting", {})
+            job_id_val = it.get("id") or str(jp.get("identifier", {}).get("value", "")) or str(abs(hash(direct_url)))
+
+            # Location extraction
+            loc_objs = jp.get("jobLocation", [])
+            city = "France"
+            if loc_objs:
+                city = loc_objs[0].get("address", {}).get("addressLocality") or "France"
+
+            # Description extraction
+            desc_html = jp.get("description", "") or it.get("content_html", "")
+            soup = BeautifulSoup(desc_html, "html.parser")
+            desc_text = soup.get_text(" ", strip=True)
+
+            # Contract check from structured HTML resume
+            type_span = soup.find(class_="tt-resume__value-type")
+            if type_span:
+                raw_type = type_span.get_text(strip=True).lower()
+                if ("cdi" in raw_type or "cdd" in raw_type or "alternance" in raw_type) and not re.search(r"\bstage\b|\bpfe\b|\bm2\b", title.lower()):
+                    continue
+
+            # Verify internship
+            if not is_internship(title, desc_text):
+                continue
+
+            domain_info = categorize_job(f"{title} {desc_text}")
+            if not domain_info["is_crypto"] and not domain_info["is_cyber"]:
+                continue
+
+            eligible, reason = check_algerian_national_eligibility(title, desc_text)
+            if not eligible:
+                continue
+
+            jobs.append({
+                "id": f"{company_meta['id']}_{job_id_val}",
+                "title": title if title.lower().startswith("stage") else f"STAGE M2 / PFE - {title}",
+                "company_id": company_meta["id"],
+                "company_name": company_meta["name"],
+                "contract_type": "Stage M2 / PFE (6 mois)",
+                "location": f"{city}, France" if "france" not in city.lower() else city,
+                "direct_url": direct_url,
+                "domain": domain_info["primary_domain"],
+                "all_domains": domain_info["all_domains"],
+                "is_crypto": domain_info["is_crypto"],
+                "is_cyber": domain_info["is_cyber"],
+                "eligible_algerian": eligible,
+                "eligibility_note": reason,
+                "source": f"{company_meta['name']} (Site Officiel)",
+                "description": desc_text[:350],
+                "posted_at": date_published[:10] if date_published else datetime.datetime.utcnow().strftime("%Y-%m-%d"),
+                "status": "active",
+                "verification_status": "VERIFIED_ACTIVE"
+            })
+    except Exception as e:
+        logger.debug(f"Teamtailor scrape error for {company_meta.get('name')}: {e}")
+
+    return jobs
+
+
+# =============================================================================
+# 6. WORKDAY DIRECT CXS API (Thales, Airbus)
 # =============================================================================
 
 def scrape_workday(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
@@ -311,12 +396,18 @@ def scrape_workday(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
     """
     tenant = company_meta.get("workday_tenant", "")
     jobs = []
+    seen_paths = set()
 
     if tenant == "thales":
         endpoint = "https://thales.wd3.myworkdayjobs.com/wday/cxs/thales/Careers/jobs"
-        queries = ["cyber", "cryptographie", "securite"]
+        queries = ["cyber", "cryptographie", "securite", "pentest", "soc"]
         base_url = "https://thales.wd3.myworkdayjobs.com/fr-FR/Careers"
         worker_sub_types = ["47200b8529d910215e133a260a722492"]  # Intern/Trainee facet
+    elif tenant == "ag":
+        endpoint = "https://ag.wd3.myworkdayjobs.com/wday/cxs/ag/Airbus/jobs"
+        queries = ["cyber", "cryptographie", "securite", "protect"]
+        base_url = "https://ag.wd3.myworkdayjobs.com/en-US/Airbus"
+        worker_sub_types = ["f5811cef9cb50193723ed01d470a6e15"]  # Trainee / Student facet
     else:
         return []
 
@@ -338,8 +429,12 @@ def scrape_workday(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
             postings = data.get("jobPostings", [])
 
             for p in postings:
-                title = p.get("title", "")
                 external_path = p.get("externalPath", "")
+                if not external_path or external_path in seen_paths:
+                    continue
+                seen_paths.add(external_path)
+
+                title = p.get("title", "")
                 location = p.get("locationsText", "France")
 
                 # Validate location is in France
@@ -363,10 +458,11 @@ def scrape_workday(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
 
                 jobs.append({
                     "id": job_id,
-                    "title": title,
+                    "title": title if title.lower().startswith("stage") else f"STAGE M2 / PFE - {title}",
                     "company_id": company_meta["id"],
                     "company_name": company_meta["name"],
-                    "location": f"{location}, France" if "France" not in location else location,
+                    "contract_type": "Stage M2 / PFE (6 mois)",
+                    "location": f"{location}, France" if "france" not in location.lower() else location,
                     "direct_url": direct_url,
                     "domain": domain_info["primary_domain"],
                     "all_domains": domain_info["all_domains"],
@@ -385,12 +481,12 @@ def scrape_workday(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
 
 
 # =============================================================================
-# 6. CUSTOM DIRECT SCRAPERS (SERMA, eShard, Secure-IC, Synacktiv, Inria, etc.)
+# 7. CUSTOM DIRECT SCRAPERS (SERMA, Zama, Synacktiv, Inria, etc.)
 # =============================================================================
 
-def scrape_serma(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
-    """Scrapes official SERMA Safety & Security / SERMA Group careers page directly."""
-    url = "https://www.serma.com/carrieres/nos-offres/"
+def scrape_zama(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Scrapes Zama official careers board for Cryptography / FHE internships."""
+    url = "https://jobs.zama.org"
     jobs = []
     try:
         resp = requests.get(url, headers=DEFAULT_HEADERS, timeout=REQUEST_TIMEOUT)
@@ -398,10 +494,58 @@ def scrape_serma(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
             return []
 
         soup = BeautifulSoup(resp.text, "html.parser")
-        # Find job offer links
-        offer_links = soup.select("a[href*='/offre/'], a[href*='carrieres']")
+        for a in soup.select('a[href*="/jobs/"]'):
+            href = a.get("href", "")
+            if not href.startswith("http"):
+                href = f"https://jobs.zama.org{href}"
+            title = a.get_text(" ", strip=True)
+            if "spontaneous" in title.lower() or "candidature" in title.lower():
+                continue
+
+            if is_internship(title):
+                domain_info = categorize_job(title)
+                eligible, reason = check_algerian_national_eligibility(title)
+                if not eligible:
+                    continue
+
+                jobs.append({
+                    "id": f"zama_{abs(hash(href))}",
+                    "title": title if title.lower().startswith("stage") else f"STAGE M2 / PFE - {title}",
+                    "company_id": "zama",
+                    "company_name": company_meta.get("name", "Zama (FHE & Cryptography)"),
+                    "contract_type": "Stage M2 / PFE (6 mois)",
+                    "location": "Paris, France",
+                    "direct_url": href,
+                    "domain": domain_info["primary_domain"] or "Cryptographie Homomorphe (FHE)",
+                    "all_domains": domain_info["all_domains"] or ["FHE", "Cryptographie", "Privacy"],
+                    "is_crypto": True,
+                    "is_cyber": True,
+                    "eligible_algerian": eligible,
+                    "eligibility_note": reason,
+                    "source": "Zama (Site Officiel)",
+                    "posted_at": datetime.datetime.utcnow().strftime("%Y-%m-%d"),
+                    "status": "active",
+                    "verification_status": "VERIFIED_ACTIVE"
+                })
+    except Exception as e:
+        logger.debug(f"Zama scrape error: {e}")
+
+    return jobs
+
+
+def scrape_serma(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Scrapes official SERMA Safety & Security / SERMA Group careers page directly."""
+    url = "https://www.serma.com/carrieres/offres-emploi/?company=SERMA%20Safety%20and%20Security"
+    jobs = []
+    try:
+        resp = requests.get(url, headers=DEFAULT_HEADERS, timeout=REQUEST_TIMEOUT)
+        if resp.status_code != 200:
+            return []
+
+        soup = BeautifulSoup(resp.text, "html.parser")
+        offer_links = soup.select('a[href*="/carrieres/offres-emploi/1"]')
         for link in offer_links:
-            title = link.get_text(strip=True)
+            title = link.get_text(" ", strip=True)
             href = link.get("href", "")
             if not href.startswith("http"):
                 href = f"https://www.serma.com{href}"
@@ -409,9 +553,8 @@ def scrape_serma(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
             if not title or len(title) < 5:
                 continue
 
-            # We care about security / cyber / hardware / crypto internships
             if is_internship(title) and (
-                any(k in title.lower() for k in ["s[eé]curit[eé]", "cyber", "crypto", "composant", "carte", "cesti", "audit", "pentest"])
+                any(k in title.lower() for k in ["securit", "sécurit", "cyber", "crypto", "composant", "carte", "cesti", "audit", "pentest", "embarqu"])
             ):
                 domain_info = categorize_job(title)
                 eligible, reason = check_algerian_national_eligibility(title)
@@ -420,10 +563,11 @@ def scrape_serma(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
 
                 jobs.append({
                     "id": f"serma_{abs(hash(href))}",
-                    "title": title,
+                    "title": title if title.lower().startswith("stage") else f"STAGE M2 / PFE - {title}",
                     "company_id": "serma-safety-security",
-                    "company_name": company_meta["name"],
-                    "location": "Pessac / Paris / France",
+                    "company_name": company_meta.get("name", "SERMA Safety & Security"),
+                    "contract_type": "Stage M2 / PFE (6 mois)",
+                    "location": "Pessac / Paris, France",
                     "direct_url": href,
                     "domain": domain_info["primary_domain"],
                     "all_domains": domain_info["all_domains"],
@@ -432,7 +576,9 @@ def scrape_serma(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
                     "eligible_algerian": eligible,
                     "eligibility_note": reason,
                     "source": "SERMA (Site Officiel Carrières)",
-                    "posted_at": ""
+                    "posted_at": datetime.datetime.utcnow().strftime("%Y-%m-%d"),
+                    "status": "active",
+                    "verification_status": "VERIFIED_ACTIVE"
                 })
     except Exception as e:
         logger.debug(f"SERMA scrape error: {e}")
@@ -607,7 +753,9 @@ def scrape_company_jobs(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
     """Dispatches to the exact scraper strategy based on ATS type."""
     ats_type = company_meta.get("direct_ats_type", "custom")
 
-    if ats_type == "smartrecruiters":
+    if ats_type == "teamtailor":
+        return scrape_teamtailor(company_meta)
+    elif ats_type == "smartrecruiters":
         return scrape_smartrecruiters(company_meta)
     elif ats_type == "lever":
         return scrape_lever(company_meta)
@@ -617,6 +765,8 @@ def scrape_company_jobs(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
         return scrape_wttj(company_meta)
     elif ats_type == "workday":
         return scrape_workday(company_meta)
+    elif ats_type == "zama":
+        return scrape_zama(company_meta)
     elif ats_type == "custom":
         cid = company_meta["id"]
         if cid == "serma-safety-security":

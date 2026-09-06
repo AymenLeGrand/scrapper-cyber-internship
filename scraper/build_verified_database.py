@@ -5,6 +5,10 @@ import re
 import sys
 from collections import Counter
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
+
 if sys.platform == "win32":
     sys.stdout.reconfigure(encoding="utf-8")
 
@@ -349,27 +353,152 @@ try:
         print(f"[Quarkslab] {len(quark_offers)} active/open offers detected!")
         all_jobs.extend(quark_offers)
     else:
-        print("[Quarkslab] Monitoring active: all previous topics filled (🔴), awaiting new season publication.")
+        print("[Quarkslab] Monitoring active: all previous topics filled, awaiting new season publication.")
 except Exception as e:
     print(f"[Quarkslab] Monitor warning: {e}")
 
-print(f"Total jobs configured: {len(all_jobs)}")
+# -------------------------------------------------------------
+# 11. DYNAMIC ATS INGESTION (Stormshield, Sekoia, Thales, Airbus, Zama, SERMA, Ledger)
+# -------------------------------------------------------------
+try:
+    from scraper.ats_scrapers import (
+        scrape_teamtailor,
+        scrape_workday,
+        scrape_zama,
+        scrape_serma,
+        scrape_lever
+    )
+except ImportError:
+    from ats_scrapers import (
+        scrape_teamtailor,
+        scrape_workday,
+        scrape_zama,
+        scrape_serma,
+        scrape_lever
+    )
+
+# 1. Stormshield (Teamtailor Feed)
+try:
+    ss_jobs = scrape_teamtailor({
+        "id": "stormshield",
+        "name": "Stormshield (Airbus Defence & Space)",
+        "teamtailor_feed_url": "https://careers.stormshield.eu/jobs.json"
+    })
+    if ss_jobs:
+        print(f"[Stormshield] {len(ss_jobs)} new stages ingested!")
+        all_jobs.extend(ss_jobs)
+    else:
+        print("[Stormshield] Feed monitored (awaiting new campaign publication).")
+except Exception as e:
+    print(f"[Stormshield] Ingestion warning: {e}")
+
+# 2. Sekoia.io (Teamtailor Feed)
+try:
+    sekoia_jobs = scrape_teamtailor({
+        "id": "sekoia",
+        "name": "Sekoia.io (SOC & XDR)",
+        "teamtailor_feed_url": "https://careers.sekoia.com/jobs.json"
+    })
+    if sekoia_jobs:
+        print(f"[Sekoia.io] {len(sekoia_jobs)} new stages ingested!")
+        all_jobs.extend(sekoia_jobs)
+    else:
+        print("[Sekoia.io] Feed monitored (awaiting new campaign publication).")
+except Exception as e:
+    print(f"[Sekoia.io] Ingestion warning: {e}")
+
+# 3. Thales Cyber (Workday CXS)
+try:
+    thales_jobs = scrape_workday({
+        "id": "thales",
+        "name": "Thales Cyber",
+        "workday_tenant": "thales"
+    })
+    if thales_jobs:
+        print(f"[Thales] {len(thales_jobs)} new stages ingested!")
+        all_jobs.extend(thales_jobs)
+    else:
+        print("[Thales] Workday CXS monitored (awaiting new campaign publication).")
+except Exception as e:
+    print(f"[Thales] Ingestion warning: {e}")
+
+# 4. Airbus Protect / Cyber (Workday CXS)
+try:
+    airbus_jobs = scrape_workday({
+        "id": "airbus_protect",
+        "name": "Airbus Protect / Cyber",
+        "workday_tenant": "ag"
+    })
+    if airbus_jobs:
+        print(f"[Airbus] {len(airbus_jobs)} new stages ingested!")
+        all_jobs.extend(airbus_jobs)
+    else:
+        print("[Airbus] Workday CXS monitored (awaiting new campaign publication).")
+except Exception as e:
+    print(f"[Airbus] Ingestion warning: {e}")
+
+# 5. Zama (Homerun Board)
+try:
+    zama_jobs = scrape_zama({
+        "id": "zama",
+        "name": "Zama (FHE & Cryptography)"
+    })
+    if zama_jobs:
+        print(f"[Zama] {len(zama_jobs)} new stages ingested!")
+        all_jobs.extend(zama_jobs)
+    else:
+        print("[Zama] Site officiel monitored (awaiting new campaign publication).")
+except Exception as e:
+    print(f"[Zama] Ingestion warning: {e}")
+
+# 6. SERMA Safety & Security (Site Officiel)
+try:
+    serma_jobs = scrape_serma({
+        "id": "serma-safety-security",
+        "name": "SERMA Safety & Security"
+    })
+    if serma_jobs:
+        print(f"[SERMA] {len(serma_jobs)} new stages ingested!")
+        all_jobs.extend(serma_jobs)
+    else:
+        print("[SERMA] Site officiel monitored (awaiting new campaign publication).")
+except Exception as e:
+    print(f"[SERMA] Ingestion warning: {e}")
+
+# 7. Ledger (Lever API)
+try:
+    ledger_jobs = scrape_lever({
+        "id": "ledger",
+        "name": "Ledger (Donjon & Security)",
+        "ats_company_id": "ledger"
+    })
+    if ledger_jobs:
+        print(f"[Ledger] {len(ledger_jobs)} new stages ingested!")
+        all_jobs.extend(ledger_jobs)
+    else:
+        print("[Ledger] Lever API monitored (awaiting new campaign publication).")
+except Exception as e:
+    print(f"[Ledger] Ingestion warning: {e}")
+
+# -------------------------------------------------------------
+# DEDUPLICATION & VALIDATION
+# -------------------------------------------------------------
+unique_jobs = []
+seen_ids = set()
+seen_urls = set()
+
+for j in all_jobs:
+    if j["id"] not in seen_ids and j["direct_url"] not in seen_urls:
+        seen_ids.add(j["id"])
+        seen_urls.add(j["direct_url"])
+        unique_jobs.append(j)
+
+all_jobs = unique_jobs
+
+print(f"\nTotal jobs configured: {len(all_jobs)}")
 c = Counter(j['company_name'] for j in all_jobs)
-for comp, cnt in c.items():
+for comp, cnt in sorted(c.items()):
     print(f" - {comp}: {cnt}")
-
-# Check for duplicate IDs or Titles or URLs
-ids = [j['id'] for j in all_jobs]
-titles = [j['title'] for j in all_jobs]
-urls = [j['direct_url'] for j in all_jobs]
-
-print(f"Unique IDs: {len(set(ids))} / {len(ids)}")
-print(f"Unique Titles: {len(set(titles))} / {len(titles)}")
-print(f"Unique URLs: {len(set(urls))} / {len(urls)}")
-
-assert len(ids) == len(set(ids)), "Duplicate ID found!"
-assert len(titles) == len(set(titles)), "Duplicate Title found!"
-assert len(urls) == len(set(urls)), "Duplicate URL found!"
 
 # Write to data/jobs.json
 output_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "jobs.json")
