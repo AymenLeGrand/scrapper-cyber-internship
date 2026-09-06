@@ -41,12 +41,12 @@ def build_email_content(new_jobs: List[Dict[str, Any]]) -> Tuple[str, str, str]:
     crypto_count = sum(1 for j in new_jobs if j.get("is_crypto"))
     cyber_count = count - crypto_count
 
-    subject = f"🎯 [M2 Cyber & Crypto France] {count} nouvelle(s) offre(s) de stage détectée(s)"
+    subject = f"[M2 Cyber & Crypto France] {count} nouvelle(s) offre(s) de stage"
 
     # Plain text version
     text_lines = [
-        f"Alerte Stages M2 Cybersécurité & Cryptologie en France",
-        f"{count} nouvelle(s) offre(s) vérifiée(s) aujourd'hui ({crypto_count} Crypto, {cyber_count} Cyber).\n",
+        f"Stages M2 Cyber & Cryptologie - France",
+        f"{count} nouvelle(s) offre(s) ({crypto_count} Crypto, {cyber_count} Cyber).\n",
         "=" * 60,
         ""
     ]
@@ -56,7 +56,7 @@ def build_email_content(new_jobs: List[Dict[str, Any]]) -> Tuple[str, str, str]:
         text_lines.append(f"  Entreprise: {job['company_name']}")
         text_lines.append(f"  Lieu: {job.get('location', 'France')}")
         text_lines.append(f"  Domaine: {job.get('domain', 'Cyber')}")
-        text_lines.append(f"  Lien officiel: {job['direct_url']}")
+        text_lines.append(f"  Lien: {job['direct_url']}")
         text_lines.append("-" * 40)
 
     plain_text = "\n".join(text_lines)
@@ -68,24 +68,24 @@ def build_email_content(new_jobs: List[Dict[str, Any]]) -> Tuple[str, str, str]:
         domain_badge = job.get("domain", "Cybersécurité")
 
         job_cards_html += f"""
-        <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+        <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; margin-bottom: 16px;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
                 <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background-color: {badge_color}; color: #ffffff; padding: 3px 8px; border-radius: 4px;">
                     {domain_badge}
                 </span>
                 <span style="font-size: 12px; color: #10b981; font-weight: 600; background: #ecfdf5; padding: 2px 8px; border-radius: 4px;">
-                    Stage M2 (6 mois)
+                    Stage M2
                 </span>
             </div>
             <h3 style="margin: 6px 0; font-size: 16px; color: #0f172a; font-weight: 600;">
                 {job['title']}
             </h3>
             <p style="margin: 4px 0 12px 0; color: #64748b; font-size: 13px;">
-                🏢 <strong>{job['company_name']}</strong> &nbsp;|&nbsp; 📍 {job.get('location', 'France')}
+                <strong>{job['company_name']}</strong> &nbsp;|&nbsp; {job.get('location', 'France')}
             </p>
             <div>
                 <a href="{job['direct_url']}" target="_blank" style="display: inline-block; background-color: #0f172a; color: #ffffff; font-weight: 600; font-size: 13px; padding: 8px 16px; border-radius: 6px; text-decoration: none;">
-                    Postuler sur le site officiel &rarr;
+                    Postuler &rarr;
                 </a>
             </div>
         </div>
@@ -100,19 +100,19 @@ def build_email_content(new_jobs: List[Dict[str, Any]]) -> Tuple[str, str, str]:
     </head>
     <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f8fafc; color: #1e293b; margin: 0; padding: 24px;">
         <div style="max-width: 640px; margin: 0 auto;">
-            <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; padding: 24px; border-radius: 10px; margin-bottom: 24px;">
+            <div style="background: #0f172a; color: white; padding: 24px; border-radius: 8px; margin-bottom: 24px;">
                 <h1 style="margin: 0 0 8px 0; font-size: 20px; font-weight: 700;">
-                    🛡️ Nouveaux Stages M2 Détectés
+                    Nouveaux Stages M2
                 </h1>
                 <p style="margin: 0; font-size: 14px; opacity: 0.9;">
-                    <strong>{count}</strong> nouvelle(s) offre(s) vérifiée(s) en direct sur les sites des entreprises.
+                    <strong>{count}</strong> nouvelle(s) offre(s).
                 </p>
             </div>
             
             {job_cards_html}
 
             <div style="text-align: center; margin-top: 32px; font-size: 12px; color: #94a3b8;">
-                <p>Projet open source France Cyber & Crypto Tracker • Liens 100% officiels certifiés sans agrégateurs</p>
+                <p>France Cyber & Crypto Tracker</p>
             </div>
         </div>
     </body>
@@ -183,7 +183,7 @@ def send_email_notifications(new_jobs: List[Dict[str, Any]], seen_file_path: str
 
 def send_telegram_notification(new_jobs: List[Dict[str, Any]]) -> bool:
     """
-    Sends instant mobile push notifications to your phone via Telegram Bot.
+    Sends one direct notification per new job via Telegram Bot.
     Requires TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID.
     """
     token = os.getenv("TELEGRAM_BOT_TOKEN")
@@ -192,44 +192,34 @@ def send_telegram_notification(new_jobs: List[Dict[str, Any]]) -> bool:
         return False
 
     import urllib.request
-    import urllib.parse
+    import time
 
-    count = len(new_jobs)
-    lines = [
-        f"🎯 *[M2 Cyber & Crypto France]*",
-        f"*{count} nouvelle(s) offre(s) de stage détectée(s) !*",
-        ""
-    ]
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
+    success_count = 0
 
     for j in new_jobs:
-        icon = "🔐" if j.get("is_crypto") else "🛡️"
-        lines.append(f"{icon} *{j['title']}*")
-        lines.append(f"🏢 *{j['company_name']}* | 📍 {j.get('location', 'France')}")
-        lines.append(f"👉 [Postuler en direct sur le site officiel]({j['direct_url']})")
-        lines.append("")
+        text = f"*{j['company_name']}* - {j['title']}\n{j.get('domain', 'Cyber')} • {j.get('location', 'France')}\n{j['direct_url']}"
+        payload = json.dumps({
+            "chat_id": chat_id,
+            "text": text,
+            "parse_mode": "Markdown",
+            "disable_web_page_preview": False
+        }).encode("utf-8")
 
-    text = "\n".join(lines)
-    url = f"https://api.telegram.org/bot{token}/sendMessage"
-    payload = json.dumps({
-        "chat_id": chat_id,
-        "text": text,
-        "parse_mode": "Markdown",
-        "disable_web_page_preview": False
-    }).encode("utf-8")
+        try:
+            req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})
+            with urllib.request.urlopen(req, timeout=10) as r:
+                success_count += 1
+            time.sleep(0.2)
+        except Exception as e:
+            logger.error(f"Failed to send Telegram notification for {j['id']}: {e}")
 
-    try:
-        req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})
-        with urllib.request.urlopen(req, timeout=10) as r:
-            logger.info(f"Telegram notification sent successfully to chat {chat_id}.")
-            return True
-    except Exception as e:
-        logger.error(f"Failed to send Telegram notification: {e}")
-        return False
+    return success_count > 0
 
 
 def send_discord_notification(new_jobs: List[Dict[str, Any]]) -> bool:
     """
-    Sends rich embeds to a Discord channel (which pushes to your phone Discord app).
+    Sends direct embeds to Discord channel.
     Requires DISCORD_WEBHOOK_URL.
     """
     webhook_url = os.getenv("DISCORD_WEBHOOK_URL")
@@ -237,45 +227,39 @@ def send_discord_notification(new_jobs: List[Dict[str, Any]]) -> bool:
         return False
 
     import urllib.request
+    import time
 
-    count = len(new_jobs)
-    embeds = []
-    for j in new_jobs[:10]: # Discord limits to 10 embeds per message
-        color = 5174501 if j.get("is_crypto") else 960997 # Hex indigo or cyan
-        embeds.append({
-            "title": j["title"],
+    success_count = 0
+    for j in new_jobs:
+        embed = {
+            "title": f"{j['company_name']} - {j['title']}",
             "url": j["direct_url"],
-            "description": f"🏢 **{j['company_name']}** • 📍 {j.get('location', 'France')}\n{j.get('description', '')[:140]}...",
-            "color": color,
-            "footer": {"text": "Stage Bac+5 / M2 (6 mois) • Lien 100% officiel"}
-        })
+            "description": f"{j.get('domain', 'Cyber')} • {j.get('location', 'France')}",
+            "color": 3447003
+        }
+        payload = json.dumps({"embeds": [embed]}).encode("utf-8")
+        try:
+            req = urllib.request.Request(webhook_url, data=payload, headers={"Content-Type": "application/json", "User-Agent": "Tracker/1.0"})
+            with urllib.request.urlopen(req, timeout=10) as r:
+                success_count += 1
+            time.sleep(0.2)
+        except Exception as e:
+            logger.error(f"Failed to send Discord alert: {e}")
 
-    payload = json.dumps({
-        "content": f"🎯 **[M2 Cyber & Crypto France]** {count} nouvelle(s) offre(s) de stage détectée(s) !",
-        "embeds": embeds
-    }).encode("utf-8")
-
-    try:
-        req = urllib.request.Request(webhook_url, data=payload, headers={"Content-Type": "application/json", "User-Agent": "CyberInternshipTracker/1.0"})
-        with urllib.request.urlopen(req, timeout=10) as r:
-            logger.info("Discord notification sent successfully.")
-            return True
-    except Exception as e:
-        logger.error(f"Failed to send Discord notification: {e}")
-        return False
+    return success_count > 0
 
 
 def send_ntfy_notification(new_jobs: List[Dict[str, Any]]) -> bool:
     """
-    Sends mobile push alerts via ntfy.sh (free open-source app, zero account needed).
-    Requires NTFY_TOPIC (e.g. 'stages-cyber-tonprenom').
+    Sends one direct mobile push alert per new job via ntfy.sh.
+    Requires NTFY_TOPIC.
+    Each notification is directly linked to the job's official URL.
     """
     raw_topic = os.getenv("NTFY_TOPIC", "")
     if not raw_topic:
         print("[ntfy] NTFY_TOPIC environment variable is not set.")
         return False
 
-    # Clean up topic in case full URL, slashes, or whitespace were provided
     topic = raw_topic.replace("https://ntfy.sh/", "").replace("http://ntfy.sh/", "").strip("/").strip()
     if not topic:
         print("[ntfy] Topic is empty after cleanup.")
@@ -283,39 +267,36 @@ def send_ntfy_notification(new_jobs: List[Dict[str, Any]]) -> bool:
 
     import urllib.request
     import json
+    import time
 
-    count = len(new_jobs)
-    lines = []
-    for j in new_jobs[:5]:
-        lines.append(f"• {j['title']} — {j['company_name']} ({j.get('location', 'France')})")
-    if count > 5:
-        lines.append(f"... et {count - 5} autre(s) offre(s)")
+    success_count = 0
 
-    body_message = "\n".join(lines)
+    for j in new_jobs:
+        payload = {
+            "topic": topic,
+            "title": f"{j['company_name']} - {j['title']}",
+            "message": f"{j.get('domain', 'Cyber')} • {j.get('location', 'France')}",
+            "priority": 4,
+            "click": j["direct_url"]
+        }
 
-    payload = {
-        "topic": topic,
-        "title": f"🎯 {count} nouveau(x) stage(s) Cyber M2 !",
-        "message": body_message,
-        "priority": 4,
-        "tags": ["shield", "lock"],
-        "click": "https://aymenlegrand.github.io/scrapper-cyber-internship/"
-    }
+        try:
+            req = urllib.request.Request(
+                "https://ntfy.sh",
+                data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+                headers={"Content-Type": "application/json; charset=utf-8"}
+            )
+            with urllib.request.urlopen(req, timeout=10) as r:
+                success_count += 1
+            time.sleep(0.3)
+        except Exception as e:
+            print(f"[ntfy] Failed to send alert for {j['id']}: {e}")
+            logger.error(f"Failed to send ntfy alert for {j['id']}: {e}")
 
-    try:
-        req = urllib.request.Request(
-            "https://ntfy.sh",
-            data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
-            headers={"Content-Type": "application/json; charset=utf-8"}
-        )
-        with urllib.request.urlopen(req, timeout=10) as r:
-            print(f"[ntfy] Push notification successfully sent to topic '{topic}'! (HTTP {r.status})")
-            logger.info(f"ntfy.sh alert sent to topic {topic}.")
-            return True
-    except Exception as e:
-        print(f"[ntfy] Failed to send push notification to topic '{topic}': {e}")
-        logger.error(f"Failed to send ntfy alert: {e}")
-        return False
+    if success_count > 0:
+        print(f"[ntfy] {success_count} push notification(s) sent to '{topic}'.")
+        return True
+    return False
 
 
 def send_all_notifications(new_jobs: List[Dict[str, Any]], seen_file_path: str = "data/seen_jobs.json") -> bool:
@@ -348,4 +329,3 @@ def send_all_notifications(new_jobs: List[Dict[str, Any]], seen_file_path: str =
         save_seen_job_ids(seen_file_path, seen_ids)
 
     return sent_any
-
