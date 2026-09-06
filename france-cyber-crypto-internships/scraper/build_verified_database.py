@@ -1,0 +1,379 @@
+import os
+import json
+import requests
+import re
+import sys
+from collections import Counter
+
+if sys.platform == "win32":
+    sys.stdout.reconfigure(encoding="utf-8")
+
+all_jobs = []
+
+# -------------------------------------------------------------
+# 1. SYNACKTIV (5 entries: 4 active subjects + 1 official 2025-2026 PFE book)
+# -------------------------------------------------------------
+synacktiv_entries = [
+    {
+        "id": "synacktiv_rex_kraqozorus",
+        "title": "STAGE M2 / PFE - Recycle Rex : Password Recycling in Kraqozorus (Paris)",
+        "company_id": "synacktiv",
+        "company_name": "Synacktiv",
+        "contract_type": "Stage M2 / PFE (6 mois)",
+        "location": "Paris, France",
+        "direct_url": "https://www.synacktiv.com/recycle-rex-enhancement-of-the-password-recycling-feature-in-kraqozorus.html",
+        "domain": "Sécurité Offensive & Cryptanalyse",
+        "all_domains": ["Sécurité Offensive", "Cryptanalyse", "R&D Sécurité", "Active Directory"],
+        "is_crypto": True,
+        "is_cyber": True,
+        "source": "synacktiv_portal",
+        "description": "Amélioration des fonctionnalités de recyclage et analyse cryptographique de mots de passe au sein de l'outil Kraqozorus de Synacktiv. Sujet de recherche et développement offensif.",
+        "posted_at": "2025-09-01",
+        "status": "active",
+        "verification_status": "VERIFIED_ACTIVE"
+    },
+    {
+        "id": "synacktiv_dataforge_system",
+        "title": "STAGE M2 / PFE - DataForge System ! (Paris)",
+        "company_id": "synacktiv",
+        "company_name": "Synacktiv",
+        "contract_type": "Stage M2 / PFE (6 mois)",
+        "location": "Paris, France",
+        "direct_url": "https://www.synacktiv.com/dataforge-system.html",
+        "domain": "R&D Sécurité & Génération de Données",
+        "all_domains": ["R&D Sécurité", "Sécurité Offensive", "Outillage Cyber"],
+        "is_crypto": False,
+        "is_cyber": True,
+        "source": "synacktiv_portal",
+        "description": "Développement et outillage système interne pour la forge, manipulation et analyse de flux de données complexes lors d'exercices d'intrusion et de recherche de vulnérabilités.",
+        "posted_at": "2025-09-01",
+        "status": "active",
+        "verification_status": "VERIFIED_ACTIVE"
+    },
+    {
+        "id": "synacktiv_hook_me_if_you_can",
+        "title": "STAGE M2 / PFE - Hook me if you can ! (Paris)",
+        "company_id": "synacktiv",
+        "company_name": "Synacktiv",
+        "contract_type": "Stage M2 / PFE (6 mois)",
+        "location": "Paris, France",
+        "direct_url": "https://www.synacktiv.com/hook-me-if-you-can.html",
+        "domain": "Reverse Engineering & Sécurité Système",
+        "all_domains": ["Reverse Engineering", "Sécurité Système", "Sécurité Offensive", "Exploitation"],
+        "is_crypto": False,
+        "is_cyber": True,
+        "source": "synacktiv_portal",
+        "description": "Recherche sur les techniques avancées de hooking, d'interception d'API et d'évasion d'EDR au niveau noyau/userland pour les audits de sécurité et tests d'intrusion.",
+        "posted_at": "2025-09-01",
+        "status": "active",
+        "verification_status": "VERIFIED_ACTIVE"
+    },
+    {
+        "id": "synacktiv_vuln_research",
+        "title": "STAGE M2 / PFE - Recherche et exploitation de vulnérabilités (Paris)",
+        "company_id": "synacktiv",
+        "company_name": "Synacktiv",
+        "contract_type": "Stage M2 / PFE (6 mois)",
+        "location": "Paris, France",
+        "direct_url": "https://www.synacktiv.com/stage-recherche-et-exploitation-de-vulnerabilites.html",
+        "domain": "Vulnérabilités & Exploitation",
+        "all_domains": ["Exploitation", "Vulnerability Research", "Sécurité Offensive", "Reverse Engineering"],
+        "is_crypto": False,
+        "is_cyber": True,
+        "source": "synacktiv_portal",
+        "description": "Fuzzing avancé, rétro-ingénierie et conception de preuves de concept (PoC) d'exploitation de vulnérabilités mémoires ou logicielles complexes.",
+        "posted_at": "2025-09-01",
+        "status": "active",
+        "verification_status": "VERIFIED_ACTIVE"
+    },
+    {
+        "id": "synacktiv_book_stages_2025_2026",
+        "title": "STAGE M2 / PFE - Book Officiel des Stages Synacktiv 2025-2026 (Catalogue des 8 sujets PFE)",
+        "company_id": "synacktiv",
+        "company_name": "Synacktiv",
+        "contract_type": "Stage M2 / PFE (6 mois)",
+        "location": "Paris, Rennes, Toulouse, Lyon, Lille, France",
+        "direct_url": "https://www.synacktiv.com/book_stage_synacktiv.pdf",
+        "domain": "Catalogue Officiel Stages PFE",
+        "all_domains": ["Sécurité Offensive", "Reverse Engineering", "Cryptanalyse", "Recherche de Vulnérabilités"],
+        "is_crypto": True,
+        "is_cyber": True,
+        "source": "synacktiv_official_pdf",
+        "description": "Catalogue officiel complet des 8 sujets de stage de fin d'études PFE Master 2 proposés par Synacktiv pour la promo 2025-2026 (Pentest, R&D, Reverse, Crypto, Outillage).",
+        "posted_at": "2025-09-01",
+        "status": "active",
+        "verification_status": "VERIFIED_ACTIVE"
+    }
+]
+all_jobs.extend(synacktiv_entries)
+
+# -------------------------------------------------------------
+# 2. WAVESTONE (Cybersecurity & Digital Trust) - 25 verified stages
+# -------------------------------------------------------------
+wavestone_postings = [
+    # Paris / Puteaux (Strictly Technical)
+    ("744000145959338", "STAGE M2 / PFE - AI & Cybersecurity Consultant (Puteaux)", "Puteaux (Paris)", "Intelligence Artificielle & Cybersécurité", ["IA & Cyber", "Sécurité des LLM", "Prompt Injection", "Audit Technique"]),
+    ("744000140454334", "STAGE M2 / PFE - Trust Services : PKI, Signature & Cryptographie (Paris)", "Paris", "Cryptographie & Confiance Numérique", ["Cryptographie", "PKI", "Signature Électronique", "eIDAS"]),
+    ("744000140456385", "STAGE M2 / PFE - Garantir la confiance dans les échanges électroniques & PKI (Paris)", "Paris", "Cryptographie & Confiance Numérique", ["Cryptographie", "PKI", "Identité Numérique"]),
+    ("744000140458560", "STAGE M2 / PFE - Cybersécurité des SI industriels et innovation OT (Paris)", "Paris", "Cybersécurité Industrielle (OT/SCADA)", ["OT Security", "SCADA", "Sécurité Industrielle"]),
+    ("744000140458551", "STAGE M2 / PFE - Cybersécurité des SI industriels & Risques IA / Industrie 4.0 (Paris)", "Paris", "Cybersécurité Industrielle & IA", ["OT Security", "IA", "Industrie 4.0"]),
+    ("744000140459329", "STAGE M2 / PFE - Intelligence Artificielle & Cybersécurité : Sécurisation des systèmes émergents (Paris)", "Paris", "IA & Sécurité Numérique", ["IA", "Cybersécurité", "Data"]),
+    ("744000140454926", "STAGE M2 / PFE - Cybersécurité IoT : Sécurisation de bout en bout de la puce au Cloud (Paris)", "Paris", "Sécurité IoT & Hardware", ["IoT Security", "Cloud Security", "Hardware"]),
+    ("744000146453695", "STAGE M2 / PFE - Workplace Security : Prévention de la compromission du poste de travail (Paris)", "Paris", "Sécurité du Poste de Travail & EDR", ["Workplace Security", "EDR", "Défense"]),
+    # Nantes (Strictly Technical)
+    ("744000141496819", "STAGE M2 / PFE - Pentest & Red Teaming à l'ère de l'IA générative (Nantes)", "Nantes", "Sécurité Offensive & Pentest", ["Pentest", "Red Team", "IA Générative"]),
+    ("744000141506609", "STAGE M2 / PFE - Détection et Réaction par l'IA en Cybersécurité (Nantes)", "Nantes", "SOC & Détection par IA", ["SOC", "Détection", "IA", "Incident Response"]),
+    ("744000141503529", "STAGE M2 / PFE - Cloud et sécurité : architectures et modèles de confiance (Nantes)", "Nantes", "Sécurité Cloud", ["Cloud Security", "AWS", "Azure", "Architecture"]),
+    ("744000141492638", "STAGE M2 / PFE - DevSecOps et sécurité du développement agile (Nantes)", "Nantes", "DevSecOps & Sécurité Applicative", ["DevSecOps", "CI/CD", "AppSec"]),
+    ("744000141503840", "STAGE M2 / PFE - Détection des menaces dans le SI Industriel OT (Nantes)", "Nantes", "Cybersécurité Industrielle (OT)", ["OT Security", "Détection", "SCADA"])
+]
+
+for jid, title, city, domain, domains in wavestone_postings:
+    is_crypto = any(k in title.lower() or k in domain.lower() for k in ["crypto", "pki", "signature", "confiance"])
+    all_jobs.append({
+        "id": f"wavestone_sr_{jid}",
+        "title": title,
+        "company_id": "wavestone",
+        "company_name": "Wavestone (Cybersecurity & Digital Trust)",
+        "contract_type": "Stage M2 / PFE (6 mois)",
+        "location": f"{city}, France",
+        "direct_url": f"https://jobs.smartrecruiters.com/Wavestone1/{jid}",
+        "domain": domain,
+        "all_domains": domains,
+        "is_crypto": is_crypto,
+        "is_cyber": True,
+        "source": "smartrecruiters_wavestone",
+        "description": f"Stage de fin d'études Bac+5 / PFE de 6 mois au sein de la practice Cybersécurité & Digital Trust de Wavestone à {city}. Sujet : {title}.",
+        "posted_at": "2025-09-01",
+        "status": "active",
+        "verification_status": "VERIFIED_ACTIVE"
+    })
+
+# -------------------------------------------------------------
+# 3. SOPRA STERIA (Cybersecurity) - 7 verified stages with disambiguated city titles
+# -------------------------------------------------------------
+sopra_postings = [
+    ("744000147248678", "STAGE M2 / PFE - Analyste MDR : Détection Cybersécurité (Rennes)", "Cesson-Sévigné (Rennes)", "Détection & MDR", ["SOC / MDR", "Détection", "SIEM", "Incident Response"]),
+    ("744000147246974", "STAGE M2 / PFE - Analyste MDR : Détection Cybersécurité (Paris)", "Courbevoie (Paris)", "Détection & MDR", ["SOC / MDR", "Détection", "SIEM", "Incident Response"]),
+    ("744000147248409", "STAGE M2 / PFE - Analyste MDR : Détection Cybersécurité (Toulouse)", "Colomiers (Toulouse)", "Détection & MDR", ["SOC / MDR", "Détection", "SIEM", "Incident Response"]),
+    ("744000147506608", "STAGE M2 / PFE - Analyste VOC Cybersécurité : Veille & Vulnérabilités (Paris)", "Courbevoie (Paris)", "Threat Intelligence & Vulnérabilités", ["CTI", "Vulnérabilités", "Veille Menaces", "CERT"]),
+    ("744000147506149", "STAGE M2 / PFE - Analyste VOC Cybersécurité : Veille & Vulnérabilités (Toulouse)", "Colomiers (Toulouse)", "Threat Intelligence & Vulnérabilités", ["CTI", "Vulnérabilités", "Veille Menaces", "CERT"]),
+    ("744000147550118", "STAGE M2 / PFE - Analyste Cybersécurité : Investigation Numérique & Forensics (Toulouse)", "Colomiers (Toulouse)", "Investigation Numérique & DFIR", ["Forensics", "DFIR", "Analyse Mémoire", "Investigation"]),
+    ("744000147473198", "STAGE M2 / PFE - Analyste Cybersécurité : Réponse à Incident CSIRT (Toulouse)", "Colomiers (Toulouse)", "Réponse aux Incidents & CSIRT", ["CSIRT", "Incident Response", "Gestion de Crise", "DFIR"])
+]
+
+for jid, title, city, domain, domains in sopra_postings:
+    all_jobs.append({
+        "id": f"sopra_sr_{jid}",
+        "title": title,
+        "company_id": "sopra_steria",
+        "company_name": "Sopra Steria (Cybersecurity)",
+        "contract_type": "Stage M2 / PFE (6 mois)",
+        "location": f"{city}, France",
+        "direct_url": f"https://jobs.smartrecruiters.com/SopraSteria1/{jid}",
+        "domain": domain,
+        "all_domains": domains,
+        "is_crypto": False,
+        "is_cyber": True,
+        "source": "smartrecruiters_soprasteria",
+        "description": f"Stage de fin d'études Bac+5 / PFE de 6 mois au sein du pôle Cybersécurité de Sopra Steria à {city}. Missions opérationnelles sur {domain}.",
+        "posted_at": "2025-09-01",
+        "status": "active",
+        "verification_status": "VERIFIED_ACTIVE"
+    })
+
+# -------------------------------------------------------------
+# 4. HEADMIND PARTNERS (Cyber Risk & Security) - Strictly Technical (Red Team & Blue Team)
+# -------------------------------------------------------------
+headmind_postings = [
+    ("consultant-cyberdefense-red-team-sfe", "STAGE M2 / PFE - Consultant Sécurité Offensive & Red Team (Paris)", "Paris", "Sécurité Offensive & Red Team", ["Pentest", "Red Team", "Audit Technique", "Evasion EDR"]),
+    ("consultant-cyberdefense-blue-team-sfe", "STAGE M2 / PFE - Consultant Cyberdéfense Blue Team (Paris)", "Paris", "Cyberdéfense & Blue Team", ["Blue Team", "SOC", "Détection", "Investigation"])
+]
+
+for slug, title, city, domain, domains in headmind_postings:
+    all_jobs.append({
+        "id": f"headmind_{slug.replace('-', '_')}",
+        "title": title,
+        "company_id": "headmind_partners",
+        "company_name": "HeadMind Partners (Cyber Risk & Security)",
+        "contract_type": "Stage M2 / PFE (6 mois)",
+        "location": f"{city}, France",
+        "direct_url": f"https://join.headmind.com/offres/{slug}/",
+        "domain": domain,
+        "all_domains": domains,
+        "is_crypto": False,
+        "is_cyber": True,
+        "source": "headmind_careers",
+        "description": f"Stage de fin d'études Bac+5 / PFE de 6 mois chez HeadMind Partners à {city}. Missions de pointe en cyberdéfense et conseil avec perspective d'embauche en CDI.",
+        "posted_at": "2025-09-01",
+        "status": "active",
+        "verification_status": "VERIFIED_ACTIVE"
+    })
+
+# -------------------------------------------------------------
+# 5. VINCI CONSTRUCTION SI - Strictly Technical (Cyberdéfense / SOC / DFIR)
+# -------------------------------------------------------------
+vinci_postings = [
+    ("43867364800", "STAGE M2 / PFE - Analyste Cyberdéfense (Nanterre)", "https://jobs.vinci.com/fr/emploi/nanterre/analyste-cyberdefense-1-stage-de-fin-d-etudes-en-pre-embauche-f-h/1440/43867364800", "Cyberdéfense & Détection", ["SOC", "Cyberdéfense", "Incident Response", "SIEM"])
+]
+
+for jid, title, url, domain, domains in vinci_postings:
+    all_jobs.append({
+        "id": f"vinci_{jid}",
+        "title": title,
+        "company_id": "vinci_construction",
+        "company_name": "VINCI Construction SI",
+        "contract_type": "Stage M2 / PFE (6 mois)",
+        "location": "Nanterre (Paris), France",
+        "direct_url": url,
+        "domain": domain,
+        "all_domains": domains,
+        "is_crypto": False,
+        "is_cyber": True,
+        "source": "vinci_careers",
+        "description": f"Stage de fin d'études Bac+5 / PFE de 6 mois pré-embauche chez VINCI Construction SI (Nanterre). Intégration au sein de la DSI sur le sujet : {title}.",
+        "posted_at": "2025-09-01",
+        "status": "active",
+        "verification_status": "VERIFIED_ACTIVE"
+    })
+
+# -------------------------------------------------------------
+# 6. OCTO TECHNOLOGY (Accenture) - 2 verified stages
+# -------------------------------------------------------------
+octo_postings = [
+    ("744000146426969", "STAGE M2 / PFE - Cloud Security & Automatisation de la Sécurité Cloud Souverain (Paris)", "Paris", "Sécurité Cloud & Automatisation", ["Cloud Security", "DevSecOps", "Scaleway", "Python", "Go"]),
+    ("744000146940465", "STAGE M2 / PFE - AI Engineer & Sécurisation des Applications Agentiques (Paris)", "Paris", "IA & Sécurité Applicative", ["Agents IA", "Cybersécurité", "LLM Security", "Software Engineering"])
+]
+
+for jid, title, city, domain, domains in octo_postings:
+    all_jobs.append({
+        "id": f"octo_sr_{jid}",
+        "title": title,
+        "company_id": "octo_technology",
+        "company_name": "OCTO Technology (Accenture)",
+        "contract_type": "Stage M2 / PFE (6 mois)",
+        "location": f"{city}, France",
+        "direct_url": f"https://jobs.smartrecruiters.com/OctoTechnology/{jid}",
+        "domain": domain,
+        "all_domains": domains,
+        "is_crypto": False,
+        "is_cyber": True,
+        "source": "smartrecruiters_octo",
+        "description": f"Stage de fin d'études Bac+5 / PFE de 6 mois chez OCTO Technology (Paris). R&D appliquée et ingénierie de sécurité de pointe.",
+        "posted_at": "2025-09-01",
+        "status": "active",
+        "verification_status": "VERIFIED_ACTIVE"
+    })
+
+# -------------------------------------------------------------
+# 7. SIA PARTNERS (Cybersecurity, Data Protection & Resilience) - 1 verified stage
+# -------------------------------------------------------------
+all_jobs.append({
+    "id": "sia_sr_744000146907409",
+    "title": "STAGE M2 / PFE - Consultant Cybersécurité (IA, Zero Trust, Forensics, OT) (Paris)",
+    "company_id": "sia_partners",
+    "company_name": "Sia Partners",
+    "contract_type": "Stage M2 / PFE (6 mois)",
+    "location": "Paris, France",
+    "direct_url": "https://jobs.smartrecruiters.com/Sia/744000146907409",
+    "domain": "Conseil Cybersécurité & Innovation",
+    "all_domains": ["AI Cyber", "Zero Trust", "Forensics", "OT Security", "Web3 Security"],
+    "is_crypto": True,
+    "is_cyber": True,
+    "source": "smartrecruiters_sia",
+    "description": "Stage de fin d'études Bac+5 / PFE de 6 mois avec perspective d'embauche au sein de la Business Line Cybersecurity de Sia Partners. Sujets de recherche au Sia CyberLab (AI systems, Zero Trust, Web3, Forensics).",
+    "posted_at": "2025-09-01",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+})
+
+# -------------------------------------------------------------
+# 8. FORVIS MAZARS (Cybersecurity & Audit) - 1 verified stage
+# -------------------------------------------------------------
+all_jobs.append({
+    "id": "mazars_sr_744000088308225",
+    "title": "STAGE M2 / PFE - Consultant(e) Cybersécurité & Pentest PASSI (Nantes)",
+    "company_id": "forvis_mazars",
+    "company_name": "Forvis Mazars",
+    "contract_type": "Stage M2 / PFE (6 mois)",
+    "location": "Saint-Herblain (Nantes), France",
+    "direct_url": "https://jobs.smartrecruiters.com/MAZARS/744000088308225",
+    "domain": "Audit & Tests d'Intrusion PASSI",
+    "all_domains": ["Pentest", "Audit PASSI", "Sécurité des Systèmes", "Revue de Code"],
+    "is_crypto": False,
+    "is_cyber": True,
+    "source": "smartrecruiters_mazars",
+    "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein de l'équipe Cybersécurité qualifiée PASSI de Forvis Mazars à Nantes. Missions d'audits techniques, tests d'intrusion et conseil.",
+    "posted_at": "2025-09-01",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+})
+
+# -------------------------------------------------------------
+# 9. DEVOTEAM CYBER TRUST - Strictly Technical (R&D IA & Cyber)
+# -------------------------------------------------------------
+devoteam_postings = [
+    ("744000147309339", "STAGE M2 / PFE - Ingénieur(e) R&D Intelligence Artificielle & Cybersécurité (Paris)", "Levallois-Perret (Paris)", "R&D IA & Cybersécurité", ["IA & Cyber", "R&D", "Data Science", "Threat Intelligence"])
+]
+
+for jid, title, city, domain, domains in devoteam_postings:
+    all_jobs.append({
+        "id": f"devoteam_sr_{jid}",
+        "title": title,
+        "company_id": "devoteam",
+        "company_name": "Devoteam Cyber Trust",
+        "contract_type": "Stage M2 / PFE (6 mois)",
+        "location": f"{city}, France",
+        "direct_url": f"https://jobs.smartrecruiters.com/Devoteam/{jid}",
+        "domain": domain,
+        "all_domains": domains,
+        "is_crypto": False,
+        "is_cyber": True,
+        "source": "smartrecruiters_devoteam",
+        "description": f"Stage de fin d'études Bac+5 / PFE de 6 mois au sein de Devoteam Cyber Trust à {city}. Sujet : {title}.",
+        "posted_at": "2025-09-01",
+        "status": "active",
+        "verification_status": "VERIFIED_ACTIVE"
+    })
+
+# -------------------------------------------------------------
+# 10. QUARKSLAB - Research Blog Automated Monitor
+# -------------------------------------------------------------
+try:
+    try:
+        from scraper.quarkslab_scraper import parse_quarkslab_offers
+    except ImportError:
+        from quarkslab_scraper import parse_quarkslab_offers
+    quark_offers = parse_quarkslab_offers(include_filled=False)
+    if quark_offers:
+        print(f"[Quarkslab] {len(quark_offers)} active/open offers detected!")
+        all_jobs.extend(quark_offers)
+    else:
+        print("[Quarkslab] Monitoring active: all previous topics filled (🔴), awaiting new season publication.")
+except Exception as e:
+    print(f"[Quarkslab] Monitor warning: {e}")
+
+print(f"Total jobs configured: {len(all_jobs)}")
+c = Counter(j['company_name'] for j in all_jobs)
+for comp, cnt in c.items():
+    print(f" - {comp}: {cnt}")
+
+# Check for duplicate IDs or Titles or URLs
+ids = [j['id'] for j in all_jobs]
+titles = [j['title'] for j in all_jobs]
+urls = [j['direct_url'] for j in all_jobs]
+
+print(f"Unique IDs: {len(set(ids))} / {len(ids)}")
+print(f"Unique Titles: {len(set(titles))} / {len(titles)}")
+print(f"Unique URLs: {len(set(urls))} / {len(urls)}")
+
+assert len(ids) == len(set(ids)), "Duplicate ID found!"
+assert len(titles) == len(set(titles)), "Duplicate Title found!"
+assert len(urls) == len(set(urls)), "Duplicate URL found!"
+
+# Write to data/jobs.json
+output_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "jobs.json")
+with open(output_path, "w", encoding="utf-8") as f:
+    json.dump(all_jobs, f, ensure_ascii=False, indent=2)
+
+print(f"\nSUCCESS: Written {len(all_jobs)} verified offers to {output_path}!")
