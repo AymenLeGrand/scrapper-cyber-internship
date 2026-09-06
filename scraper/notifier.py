@@ -329,3 +329,4 @@ def send_all_notifications(new_jobs: List[Dict[str, Any]], seen_file_path: str =
         save_seen_job_ids(seen_file_path, seen_ids)
 
     return sent_any
+

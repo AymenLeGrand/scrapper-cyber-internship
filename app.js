@@ -1,16 +1,264 @@
 /**
- * France Cyber & Cryptology M2 Internship Tracker
- * Client-side Controller for GitHub Pages
+ * France Cyber & Cryptology Internship Tracker
+ * Client-side Controller
  */
 
 let allJobs = [];
 let appliedJobs = new Set(JSON.parse(localStorage.getItem('applied_jobs') || '[]'));
 let activeCategory = 'all';
+let activeSpontaneousCategory = 'all';
+
+const SPONTANEOUS_COMPANIES = [
+  // =========================================================================
+  // 1. SÉCURITÉ EMBARQUÉE, MATÉRIELLE & CESTI
+  // =========================================================================
+  {
+    name: "SERMA Safety & Security",
+    group: "hardware",
+    sector: "CESTI ANSSI, Canaux Auxiliaires & Puces",
+    url: "https://www.serma-safety-security.com/nous-rejoindre/"
+  },
+  {
+    name: "eShard",
+    group: "hardware",
+    sector: "Attaques physiques SCA & FIA, Crypto Puces & Mobile",
+    url: "https://eshard.com/careers",
+    email: "jobs@eshard.com"
+  },
+  {
+    name: "Secure-IC",
+    group: "hardware",
+    sector: "Sécurité Matérielle, IP Crypto & Post-Quantique",
+    url: "https://www.secure-ic.com/company/careers/",
+    email: "contact@secure-ic.com"
+  },
+  {
+    name: "NinjaLab",
+    group: "hardware",
+    sector: "Cryptanalyse & Attaques Physiques sur Cartes à Puce / HSM",
+    url: "https://ninjalab.io",
+    email: "contact@ninjalab.io"
+  },
+  {
+    name: "Oppida (Groupe Apave)",
+    group: "hardware",
+    sector: "CESTI ANSSI, Évaluation Sécuritaire & Crypto",
+    url: "https://www.oppida.fr/rejoignez-nous/"
+  },
+  {
+    name: "Idemia",
+    group: "hardware",
+    sector: "Composants Sécurisés, Crypto Embarquée & Cartes à Puce",
+    url: "https://jobs.smartrecruiters.com/Idemia"
+  },
+
+  // =========================================================================
+  // 2. CRYPTOLOGIE DE POINTE & R&D
+  // =========================================================================
+  {
+    name: "CryptoExperts",
+    group: "crypto",
+    sector: "Cryptologie Théorique & Appliquée, White-box",
+    url: "https://www.cryptoexperts.com/contact/",
+    email: "contact@cryptoexperts.com"
+  },
+  {
+    name: "Zama",
+    group: "crypto",
+    sector: "Cryptographie Homomorphe (FHE) & Confidentialité",
+    url: "https://jobs.zama.org"
+  },
+  {
+    name: "Quarkslab",
+    group: "crypto",
+    sector: "R&D, Recherche de Vulnérabilités & Reverse",
+    url: "https://quarkslab.com/join-quarkslab-recruitment-cybersecurity-company/",
+    email: "jobs@quarkslab.com"
+  },
+  {
+    name: "CEA (Leti / List)",
+    group: "crypto",
+    sector: "Recherche Crypto Matérielle & Architectures Sécurisées",
+    url: "https://www.emploi.cea.fr/accueil.aspx?LCID=1036"
+  },
+  {
+    name: "Inria",
+    group: "crypto",
+    sector: "Recherche Fondamentale & Appliquée en Cryptologie",
+    url: "https://www.inria.fr/fr/nous-rejoindre"
+  },
+
+  // =========================================================================
+  // 3. OFFENSIVE, PENTEST & ÉDITEURS
+  // =========================================================================
+  {
+    name: "Synacktiv",
+    group: "offensive",
+    sector: "Pentest, Audit & R&D Offensive",
+    url: "https://www.synacktiv.com/nous-rejoindre",
+    email: "apply@synacktiv.com"
+  },
+  {
+    name: "Sekoia.io",
+    group: "offensive",
+    sector: "Éditeur SOC, CTI & XDR",
+    url: "https://www.sekoia.io/en/careers/"
+  },
+  {
+    name: "Gatewatcher",
+    group: "offensive",
+    sector: "Éditeur NDR & Détection Réseau",
+    url: "https://www.gatewatcher.com/carrieres/"
+  },
+  {
+    name: "OCTO Technology",
+    group: "offensive",
+    sector: "Architecture & DevSecOps",
+    url: "https://jobs.smartrecruiters.com/OctoTechnology"
+  },
+
+  // =========================================================================
+  // 4. CONSEIL, DÉFENSE & ÉTAT
+  // =========================================================================
+  {
+    name: "ANSSI",
+    group: "consulting_defense",
+    sector: "Agence Nationale de Sécurité de l'État",
+    url: "https://cyber.gouv.fr/nous-rejoindre"
+  },
+  {
+    name: "Wavestone",
+    group: "consulting_defense",
+    sector: "Conseil Cyber & Digital Trust",
+    url: "https://jobs.smartrecruiters.com/Wavestone1"
+  },
+  {
+    name: "Devoteam Cyber Trust",
+    group: "consulting_defense",
+    sector: "Conseil & Intégration Sécurité",
+    url: "https://jobs.smartrecruiters.com/Devoteam"
+  },
+  {
+    name: "Sopra Steria",
+    group: "consulting_defense",
+    sector: "Cyberdéfense & Conseil",
+    url: "https://jobs.smartrecruiters.com/SopraSteria1"
+  },
+  {
+    name: "HeadMind Partners",
+    group: "consulting_defense",
+    sector: "Cyber Risk & Sécurité",
+    url: "https://join.headmind.com"
+  },
+  {
+    name: "Sia Partners",
+    group: "consulting_defense",
+    sector: "Conseil Cybersécurité & IA",
+    url: "https://jobs.smartrecruiters.com/Sia"
+  },
+  {
+    name: "Forvis Mazars",
+    group: "consulting_defense",
+    sector: "Audit IT & Cybersécurité",
+    url: "https://jobs.smartrecruiters.com/MAZARS"
+  },
+  {
+    name: "Orange Cyberdefense",
+    group: "consulting_defense",
+    sector: "Leader MSSP, SOC & Détection",
+    url: "https://orange.jobs/jobs/v3/search?keyword=Orange%20Cyberdefense"
+  },
+  {
+    name: "Thales",
+    group: "consulting_defense",
+    sector: "Défense, Cyber & Spatial",
+    url: "https://thales.wd3.myworkdayjobs.com/Careers"
+  },
+  {
+    name: "Airbus Protect",
+    group: "consulting_defense",
+    sector: "Cybersécurité Industrielle & Défense",
+    url: "https://airbusprotect.com/careers/"
+  },
+  {
+    name: "VINCI / Axians",
+    group: "consulting_defense",
+    sector: "Infrastructures Cyber & Réseaux",
+    url: "https://jobs.vinci.com/fr/"
+  }
+];
 
 document.addEventListener('DOMContentLoaded', async () => {
+  renderSpontaneousGrid();
+  setupSpontaneousToggle();
   await loadJobs();
   setupEventListeners();
 });
+
+function renderSpontaneousGrid() {
+  const grid = document.getElementById('spontaneousGrid');
+  if (!grid) return;
+
+  const filtered = SPONTANEOUS_COMPANIES.filter(c => {
+    if (activeSpontaneousCategory === 'all') return true;
+    return c.group === activeSpontaneousCategory;
+  });
+
+  grid.innerHTML = filtered.map(c => `
+    <div class="p-3 bg-zinc-950/80 rounded-md border border-zinc-800/80 flex flex-col justify-between gap-2.5 hover:border-zinc-700 transition">
+      <div>
+        <div class="font-medium text-xs text-zinc-100">${escapeHtml(c.name)}</div>
+        <div class="text-[11px] text-zinc-400 mt-0.5">${escapeHtml(c.sector)}</div>
+      </div>
+      <div class="flex items-center gap-3 pt-1 text-xs">
+        <a href="${c.url}" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:text-indigo-300 transition">
+          Portail &rarr;
+        </a>
+        ${c.email ? `<a href="mailto:${c.email}" class="text-zinc-400 hover:text-zinc-200 transition">Email direct</a>` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+function setupSpontaneousToggle() {
+  const toggleBtn = document.getElementById('toggleSpontaneousBtn');
+  const headerBtn = document.getElementById('headerSpontaneousBtn');
+  const content = document.getElementById('spontaneousContent');
+  const toggleText = document.getElementById('spontaneousToggleText');
+  const section = document.getElementById('spontaneousSection');
+  const spontChips = document.querySelectorAll('#spontaneousCategoryChips .category-chip');
+
+  function toggle() {
+    const isHidden = content.classList.contains('hidden');
+    if (isHidden) {
+      content.classList.remove('hidden');
+      toggleText.textContent = 'Masquer';
+    } else {
+      content.classList.add('hidden');
+      toggleText.textContent = 'Afficher';
+    }
+  }
+
+  if (toggleBtn) toggleBtn.addEventListener('click', toggle);
+  if (headerBtn) {
+    headerBtn.addEventListener('click', () => {
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        toggleText.textContent = 'Masquer';
+      }
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  spontChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      spontChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      activeSpontaneousCategory = chip.getAttribute('data-spont-cat');
+      renderSpontaneousGrid();
+    });
+  });
+}
 
 async function loadJobs() {
   const container = document.getElementById('jobsContainer');
@@ -24,9 +272,9 @@ async function loadJobs() {
   } catch (err) {
     console.error(err);
     container.innerHTML = `
-      <div class="p-4 bg-rose-950/30 border border-rose-900/60 rounded text-rose-300 text-xs font-mono">
+      <div class="p-4 bg-rose-950/30 border border-rose-900/60 rounded text-rose-300 text-xs">
         <p class="font-semibold">Erreur de chargement</p>
-        <p class="text-[11px] mt-1 text-rose-400">Impossible de lire data/jobs.json.</p>
+        <p class="text-xs mt-1 text-rose-400">Impossible de lire data/jobs.json.</p>
       </div>
     `;
   }
@@ -49,7 +297,7 @@ function setupEventListeners() {
   const hideAppliedToggle = document.getElementById('hideAppliedToggle');
   const exportCsvBtn = document.getElementById('exportCsvBtn');
   const resetFiltersBtn = document.getElementById('resetFiltersBtn');
-  const chips = document.querySelectorAll('.category-chip');
+  const chips = document.querySelectorAll('#categoryChips .category-chip');
 
   searchInput.addEventListener('input', () => renderJobs());
   locationFilter.addEventListener('change', () => renderJobs());
@@ -89,50 +337,46 @@ function getFilteredJobs() {
   return allJobs.filter(job => {
     if (job.status !== 'active') return false;
 
-    // Filter by applied status
     if (hideApplied && appliedJobs.has(job.id)) return false;
 
-    // Category filter
     if (activeCategory === 'crypto' && !job.is_crypto) return false;
     if (activeCategory === 'offensive') {
       const isOff = (job.all_domains || []).some(d => {
         const dl = d.toLowerCase();
         return dl.includes('offensive') || dl.includes('pentest') || dl.includes('reverse') || dl.includes('red team') || dl.includes('exploit') || dl.includes('vulnérabilit') || dl.includes('hardening');
       });
-      if (!isOff) return false;
+      if (!isOff && !(job.domain || '').includes('Offensive')) return false;
     }
     if (activeCategory === 'defensive') {
       const isDef = (job.all_domains || []).some(d => {
         const dl = d.toLowerCase();
-        return dl.includes('defensive') || dl.includes('cyberdéfense') || dl.includes('soc') || dl.includes('mdr') || dl.includes('dfir') || dl.includes('csirt') || dl.includes('forensic') || dl.includes('détection') || dl.includes('cti') || dl.includes('veille');
+        return dl.includes('défensive') || dl.includes('soc') || dl.includes('incident') || dl.includes('detection') || dl.includes('forensic') || dl.includes('cert') || dl.includes('csirt') || dl.includes('threat');
       });
-      if (!isDef) return false;
+      if (!isDef && !(job.domain || '').includes('SOC') && !(job.domain || '').includes('Defensive')) return false;
     }
     if (activeCategory === 'cloud_devsecops') {
-      const isCld = (job.all_domains || []).some(d => {
+      const isCloud = (job.all_domains || []).some(d => {
         const dl = d.toLowerCase();
-        return dl.includes('cloud') || dl.includes('devsecops') || dl.includes('ot') || dl.includes('scada') || dl.includes('iot') || dl.includes('workplace') || dl.includes('hardware');
+        return dl.includes('cloud') || dl.includes('devsecops') || dl.includes('ci/cd') || dl.includes('container') || dl.includes('kubernetes') || dl.includes('infrastructure');
       });
-      if (!isCld) return false;
+      if (!isCloud && !(job.domain || '').includes('Cloud')) return false;
     }
     if (activeCategory === 'ai_cyber') {
-      const isAI = (job.all_domains || []).some(d => {
+      const isAi = (job.all_domains || []).some(d => {
         const dl = d.toLowerCase();
-        return dl.includes('ia') || dl.includes('ai') || dl.includes('llm') || dl.includes('data');
+        return dl.includes('ia') || dl.includes('intelligence artificielle') || dl.includes('machine learning') || dl.includes('llm');
       });
-      if (!isAI) return false;
+      if (!isAi && !(job.domain || '').includes('IA')) return false;
     }
 
-    // Location filter
     const loc = (job.location || '').toLowerCase();
-    if (selectedLocation === 'paris' && !loc.includes('paris') && !loc.includes('nanterre') && !loc.includes('courbevoie') && !loc.includes('puteaux') && !loc.includes('levallois')) return false;
-    if (selectedLocation === 'rennes' && !loc.includes('rennes') && !loc.includes('cesson') && !loc.includes('bretagne')) return false;
+    if (selectedLocation === 'paris' && !loc.includes('paris') && !loc.includes('idf') && !loc.includes('île-de-france') && !loc.includes('defense') && !loc.includes('courbevoie')) return false;
+    if (selectedLocation === 'rennes' && !loc.includes('rennes') && !loc.includes('cesson')) return false;
     if (selectedLocation === 'nantes' && !loc.includes('nantes') && !loc.includes('herblain')) return false;
     if (selectedLocation === 'toulouse' && !loc.includes('toulouse') && !loc.includes('colomiers')) return false;
     if (selectedLocation === 'lyon_grenoble' && !loc.includes('lyon') && !loc.includes('villeurbanne')) return false;
     if (selectedLocation === 'remote' && !loc.includes('télétravail') && !loc.includes('remote') && !loc.includes('partiel')) return false;
 
-    // Text Search query
     if (query) {
       const searchTarget = [
         job.title,
@@ -143,7 +387,6 @@ function getFilteredJobs() {
         (job.all_domains || []).join(' ')
       ].join(' ').toLowerCase();
 
-      // Support multi-word queries
       const terms = query.split(/\s+/);
       const matchesAll = terms.every(term => searchTarget.includes(term));
       if (!matchesAll) return false;
@@ -159,7 +402,7 @@ function renderJobs() {
   const resultsCount = document.getElementById('resultsCount');
 
   const filtered = getFilteredJobs();
-  resultsCount.innerHTML = `Affichage de <strong>${filtered.length}</strong> offre(s) de stage vérifiée(s)`;
+  resultsCount.textContent = `${filtered.length} offres`;
 
   if (filtered.length === 0) {
     container.innerHTML = '';
@@ -170,7 +413,6 @@ function renderJobs() {
   emptyState.classList.add('hidden');
   container.innerHTML = filtered.map(job => createJobCardHtml(job)).join('');
 
-  // Attach event handlers to buttons inside cards
   attachCardEvents();
 }
 
@@ -178,65 +420,53 @@ function createJobCardHtml(job) {
   const isApplied = appliedJobs.has(job.id);
   const isCrypto = job.is_crypto;
   
-  // Minimal Badge styling
-  let badgeBg = 'bg-zinc-800/80 text-zinc-300 border-zinc-700/60';
+  let badgeStyle = 'bg-zinc-800 text-zinc-300';
   if (isCrypto) {
-    badgeBg = 'bg-indigo-950/60 text-indigo-300 border-indigo-800/80';
+    badgeStyle = 'bg-indigo-950 text-indigo-300 border border-indigo-800/60';
   } else if ((job.domain || '').includes('Offensive')) {
-    badgeBg = 'bg-rose-950/60 text-rose-300 border-rose-800/80';
-  } else if ((job.domain || '').includes('Defensive') || (job.domain || '').includes('SOC')) {
-    badgeBg = 'bg-sky-950/60 text-sky-300 border-sky-800/80';
+    badgeStyle = 'bg-rose-950/70 text-rose-300 border border-rose-900/60';
+  } else if ((job.domain || '').includes('SOC') || (job.domain || '').includes('Defensive')) {
+    badgeStyle = 'bg-sky-950/70 text-sky-300 border border-sky-900/60';
   } else if ((job.domain || '').includes('Cloud')) {
-    badgeBg = 'bg-purple-950/60 text-purple-300 border-purple-800/80';
+    badgeStyle = 'bg-purple-950/70 text-purple-300 border border-purple-900/60';
   }
 
   return `
-    <article class="job-card bg-zinc-900/40 rounded-lg border border-zinc-800/80 p-4 sm:p-5 hover:border-zinc-700 transition ${isApplied ? 'opacity-60 bg-zinc-950/40' : ''}">
+    <article class="job-card bg-zinc-900/40 rounded-lg border border-zinc-800/70 p-4 hover:border-zinc-700 transition ${isApplied ? 'opacity-50' : ''}">
       <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
         
         <div class="space-y-2 flex-1">
-          <!-- Badges Bar -->
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800/90 text-zinc-300 border border-zinc-700/60">
-              PFE (6 mois)
-            </span>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded border ${badgeBg}">
+          <div>
+            <span class="text-[11px] font-medium px-2 py-0.5 rounded ${badgeStyle}">
               ${escapeHtml(job.domain || 'Cybersécurité')}
-            </span>
-            <span class="text-[10px] font-mono text-emerald-400 flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span>
-              Vérifié live
             </span>
           </div>
 
-          <!-- Job Title & Company -->
-          <h2 class="text-sm sm:text-base font-semibold text-zinc-100 hover:text-indigo-400 transition tracking-tight">
-            <a href="${job.direct_url}" target="_blank" rel="noopener noreferrer" class="focus:outline-none">
+          <h2 class="text-sm font-semibold text-zinc-100 hover:text-indigo-400 transition tracking-tight">
+            <a href="${job.direct_url}" target="_blank" rel="noopener noreferrer">
               ${escapeHtml(job.title)}
             </a>
           </h2>
 
-          <div class="flex flex-wrap items-center gap-y-1 gap-x-4 text-xs font-mono text-zinc-400">
+          <div class="flex flex-wrap items-center gap-x-2 text-xs text-zinc-400">
             <span class="font-medium text-zinc-200">${escapeHtml(job.company_name)}</span>
+            <span class="text-zinc-600">•</span>
             <span>${escapeHtml(job.location || 'France')}</span>
-            <span class="text-zinc-500">Source: ${escapeHtml(job.source || 'Officiel')}</span>
           </div>
 
-          <!-- Description Excerpt -->
           ${job.description ? `
-            <p class="text-xs text-zinc-400 pt-1 line-clamp-2 leading-relaxed font-sans">
+            <p class="text-xs text-zinc-400 pt-0.5 line-clamp-2 leading-relaxed">
               ${escapeHtml(job.description)}
             </p>
           ` : ''}
         </div>
 
-        <!-- Action Column -->
-        <div class="flex flex-col sm:items-end gap-2 shrink-0 pt-2 sm:pt-0">
+        <div class="flex flex-col sm:items-end gap-2.5 shrink-0 pt-2 sm:pt-0">
           <a 
             href="${job.direct_url}" 
             target="_blank" 
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded bg-zinc-100 text-zinc-950 hover:bg-white transition shadow-sm"
+            class="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-medium rounded-md bg-zinc-100 text-zinc-950 hover:bg-white transition"
           >
             <span>Postuler</span>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -244,13 +474,13 @@ function createJobCardHtml(job) {
             </svg>
           </a>
 
-          <div class="flex items-center gap-3 text-xs pt-1">
-            <button class="copy-link-btn text-[11px] font-mono text-zinc-500 hover:text-zinc-300 transition" data-url="${job.direct_url}">
-              Copier lien
+          <div class="flex items-center gap-3 text-xs">
+            <button class="copy-link-btn text-xs text-zinc-500 hover:text-zinc-300 transition" data-url="${job.direct_url}">
+              Copier le lien
             </button>
-            <label class="inline-flex items-center gap-1.5 text-[11px] font-mono text-zinc-400 cursor-pointer select-none">
+            <label class="inline-flex items-center gap-1.5 text-xs text-zinc-400 cursor-pointer select-none">
               <input type="checkbox" class="toggle-applied rounded bg-zinc-900 border-zinc-700 text-indigo-500 focus:ring-0 w-3.5 h-3.5" data-id="${job.id}" ${isApplied ? 'checked' : ''}>
-              <span>${isApplied ? 'Postulé' : 'À postuler'}</span>
+              <span>Postulé</span>
             </label>
           </div>
         </div>
@@ -261,33 +491,39 @@ function createJobCardHtml(job) {
 }
 
 function attachCardEvents() {
-  // Copy Link button
   document.querySelectorAll('.copy-link-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', () => {
       const url = btn.getAttribute('data-url');
       navigator.clipboard.writeText(url).then(() => {
-        const originalText = btn.textContent;
-        btn.textContent = 'Copié';
+        const original = btn.textContent;
+        btn.textContent = 'Copié !';
         btn.classList.add('text-emerald-400');
         setTimeout(() => {
-          btn.textContent = originalText;
+          btn.textContent = original;
           btn.classList.remove('text-emerald-400');
         }, 1500);
       });
     });
   });
 
-  // Toggle Applied status
   document.querySelectorAll('.toggle-applied').forEach(chk => {
     chk.addEventListener('change', (e) => {
-      const id = chk.getAttribute('data-id');
-      if (chk.checked) {
+      const id = e.target.getAttribute('data-id');
+      if (e.target.checked) {
         appliedJobs.add(id);
       } else {
         appliedJobs.delete(id);
       }
       localStorage.setItem('applied_jobs', JSON.stringify(Array.from(appliedJobs)));
-      renderJobs();
+      
+      const card = e.target.closest('.job-card');
+      if (card) {
+        card.classList.toggle('opacity-50', e.target.checked);
+      }
+
+      if (document.getElementById('hideAppliedToggle').checked) {
+        renderJobs();
+      }
     });
   });
 }
@@ -299,30 +535,33 @@ function exportToCsv() {
     return;
   }
 
-  const headers = ['Entreprise', 'Intitulé du Poste', 'Domaine', 'Localisation', 'Lien Direct Officiel', 'Statut'];
+  const headers = ['Titre', 'Entreprise', 'Lieu', 'Domaine', 'Lien Direct'];
   const rows = filtered.map(j => [
-    `"${(j.company_name || '').replace(/"/g, '""')}"`,
     `"${(j.title || '').replace(/"/g, '""')}"`,
-    `"${(j.domain || '').replace(/"/g, '""')}"`,
+    `"${(j.company_name || '').replace(/"/g, '""')}"`,
     `"${(j.location || '').replace(/"/g, '""')}"`,
-    `"${(j.direct_url || '').replace(/"/g, '""')}"`,
-    `"${appliedJobs.has(j.id) ? 'Postulé' : 'À postuler'}"`
+    `"${(j.domain || '').replace(/"/g, '""')}"`,
+    `"${(j.direct_url || '').replace(/"/g, '""')}"`
   ]);
 
-  const csvContent = '\uFEFF' + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
-  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const csvContent = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+  const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `stages_cyber_crypto_m2_france_${new Date().toISOString().split('T')[0]}.csv`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  
+  const link = document.createElement('a');
+  link.setAttribute('href', url);
+  link.setAttribute('download', `stages_cyber_${new Date().toISOString().slice(0, 10)}.csv`);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
-function escapeHtml(text) {
-  if (!text) return '';
-  const div = document.createElement('div');
-  div.textContent = text;
-  return div.innerHTML;
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }

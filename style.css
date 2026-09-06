@@ -1,11 +1,10 @@
-/* Minimal Dark Theme for France Cyber & Crypto M2 Internship Tracker */
+/* Clean Minimal Dark Theme */
 body {
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   background-color: #09090b;
   color: #f4f4f5;
 }
 
-/* Minimal dark scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -26,9 +25,9 @@ body {
 
 /* Category Filter Chips */
 .category-chip {
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 6px;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 500;
   border: 1px solid #27272a;
   background-color: #121215;
@@ -51,12 +50,12 @@ body {
   font-weight: 600;
 }
 
-/* Minimal Card Transitions */
+/* Card Transitions */
 .job-card {
   transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
 .job-card:hover {
   border-color: #3f3f46;
-  background-color: #141418;
+  background-color: #121216;
 }
