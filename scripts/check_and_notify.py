@@ -29,6 +29,16 @@ def main():
     validator_script = os.path.join(BASE_DIR, 'scraper', 'verify_all_links.py')
     subprocess.run([sys.executable, validator_script], check=True, cwd=BASE_DIR)
     
+    # Check notification channels status
+    ntfy_topic = os.getenv("NTFY_TOPIC")
+    tg_token = os.getenv("TELEGRAM_BOT_TOKEN")
+    discord_url = os.getenv("DISCORD_WEBHOOK_URL")
+    
+    print("[Channels Status]")
+    print(f"  • NTFY: {'Configured (Topic: ' + ntfy_topic + ')' if ntfy_topic else 'Not set (Add NTFY_TOPIC in GitHub Secrets)'}")
+    print(f"  • Telegram: {'Configured' if tg_token else 'Not set (Add TELEGRAM_BOT_TOKEN in GitHub Secrets)'}")
+    print(f"  • Discord: {'Configured' if discord_url else 'Not set (Add DISCORD_WEBHOOK_URL in GitHub Secrets)'}")
+
     # 3. Detect brand new postings
     jobs_file = os.path.join(BASE_DIR, 'data', 'jobs.json')
     seen_file = os.path.join(BASE_DIR, 'data', 'seen_jobs.json')
@@ -38,12 +48,18 @@ def main():
         
     seen_ids = load_seen_job_ids(seen_file)
     new_unseen_jobs = [j for j in current_jobs if j['id'] not in seen_ids]
+    test_mode = os.getenv("TEST_NOTIFICATION", "").lower() in ("true", "1", "yes") or (len(sys.argv) > 1 and sys.argv[1] == "--test")
     
     if new_unseen_jobs:
         print(f"[{datetime.now().strftime('%H:%M:%S')}] Detected {len(new_unseen_jobs)} brand new M2 internship(s)!")
         send_all_notifications(new_unseen_jobs, seen_file_path=seen_file)
+    elif test_mode:
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] Test notification requested! Sending alert with {min(3, len(current_jobs))} sample internships to verify your phone...")
+        # Send sample jobs without overwriting seen tracking
+        send_all_notifications(current_jobs[:3], seen_file_path=None)
     else:
         print(f"[{datetime.now().strftime('%H:%M:%S')}] No new unnotified internships. All {len(current_jobs)} active positions are up to date.")
+        print("  (To test sending a notification to your phone right now, trigger workflow with test_notification=true or set TEST_NOTIFICATION=true)")
 
 if __name__ == '__main__':
     main()

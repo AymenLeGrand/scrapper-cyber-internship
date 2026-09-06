@@ -270,30 +270,50 @@ def send_ntfy_notification(new_jobs: List[Dict[str, Any]]) -> bool:
     Sends mobile push alerts via ntfy.sh (free open-source app, zero account needed).
     Requires NTFY_TOPIC (e.g. 'stages-cyber-tonprenom').
     """
-    topic = os.getenv("NTFY_TOPIC")
+    raw_topic = os.getenv("NTFY_TOPIC", "")
+    if not raw_topic:
+        print("[ntfy] NTFY_TOPIC environment variable is not set.")
+        return False
+
+    # Clean up topic in case full URL, slashes, or whitespace were provided
+    topic = raw_topic.replace("https://ntfy.sh/", "").replace("http://ntfy.sh/", "").strip("/").strip()
     if not topic:
+        print("[ntfy] Topic is empty after cleanup.")
         return False
 
     import urllib.request
+    import json
 
     count = len(new_jobs)
-    body = "\n".join([f"• {j['title']} ({j['company_name']})" for j in new_jobs[:5]])
-    url = f"https://ntfy.sh/{topic}"
+    lines = []
+    for j in new_jobs[:5]:
+        lines.append(f"• {j['title']} — {j['company_name']} ({j.get('location', 'France')})")
+    if count > 5:
+        lines.append(f"... et {count - 5} autre(s) offre(s)")
+
+    body_message = "\n".join(lines)
+
+    payload = {
+        "topic": topic,
+        "title": f"🎯 {count} nouveau(x) stage(s) Cyber M2 !",
+        "message": body_message,
+        "priority": 4,
+        "tags": ["shield", "lock"],
+        "click": "https://aymenlegrand.github.io/scrapper-cyber-internship/"
+    }
 
     try:
         req = urllib.request.Request(
-            url,
-            data=body.encode("utf-8"),
-            headers={
-                "Title": f"🎯 {count} nouveau(x) stage(s) Cyber M2 !",
-                "Priority": "high",
-                "Tags": "shield,lock"
-            }
+            "https://ntfy.sh",
+            data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+            headers={"Content-Type": "application/json; charset=utf-8"}
         )
         with urllib.request.urlopen(req, timeout=10) as r:
+            print(f"[ntfy] Push notification successfully sent to topic '{topic}'! (HTTP {r.status})")
             logger.info(f"ntfy.sh alert sent to topic {topic}.")
             return True
     except Exception as e:
+        print(f"[ntfy] Failed to send push notification to topic '{topic}': {e}")
         logger.error(f"Failed to send ntfy alert: {e}")
         return False
 
@@ -321,10 +341,11 @@ def send_all_notifications(new_jobs: List[Dict[str, Any]], seen_file_path: str =
         sent_any = True
 
     # Mark as seen
-    seen_ids = load_seen_job_ids(seen_file_path)
-    for j in new_jobs:
-        seen_ids.add(j["id"])
-    save_seen_job_ids(seen_file_path, seen_ids)
+    if seen_file_path:
+        seen_ids = load_seen_job_ids(seen_file_path)
+        for j in new_jobs:
+            seen_ids.add(j["id"])
+        save_seen_job_ids(seen_file_path, seen_ids)
 
     return sent_any
 
