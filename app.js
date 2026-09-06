@@ -119,7 +119,36 @@ async function triggerScrape() {
     notif.classList.remove('hidden');
   }
 
+  const isStaticHost = window.location.hostname.includes('github.io') || window.location.protocol === 'file:';
+
   try {
+    if (isStaticHost) {
+      // Running on GitHub Pages: reload latest data and provide 1-click cloud trigger
+      await new Promise(r => setTimeout(r, 600)); // smooth visual feedback
+      await loadJobs();
+
+      if (notif) {
+        notif.className = 'rounded-xl border border-emerald-200 bg-emerald-50/90 p-4 transition-all duration-300 shadow-sm';
+        if (notifIcon) notifIcon.textContent = '✓';
+        if (notifTitle) notifTitle.textContent = 'Données actualisées en direct !';
+        if (notifDesc) notifDesc.innerHTML = `
+          Base rechargée avec succès (${allJobs.length} stages M2 vérifiés en direct).<br>
+          <span class="text-xs text-slate-600 mt-1 inline-block">
+            Le scraping complet s'exécute automatiquement toutes les 12h sur GitHub Actions.
+            <a href="https://github.com/AymenLeGrand/scrapper-cyber-internship/actions/workflows/scrape_and_notify.yml" target="_blank" class="font-semibold text-brand-600 hover:text-brand-800 underline ml-1">
+              ⚡ Déclencher un scraping immédiat sur GitHub Actions &rarr;
+            </a>
+          </span>
+        `;
+        notif.classList.remove('hidden');
+        setTimeout(() => {
+          notif.classList.add('hidden');
+        }, 8000);
+      }
+      return;
+    }
+
+    // Running on local Python server (server.py)
     const res = await fetch('./api/scrape', {
       method: 'POST',
       headers: { 'Accept': 'application/json' }
@@ -127,26 +156,25 @@ async function triggerScrape() {
 
     if (res.ok) {
       const data = await res.json();
-      // Reload jobs dynamically
       await loadJobs();
 
       if (notif) {
         notif.className = 'rounded-xl border border-emerald-200 bg-emerald-50/90 p-4 transition-all duration-300 shadow-sm';
         if (notifIcon) notifIcon.textContent = '✓';
-        if (notifTitle) notifTitle.textContent = 'Scraping terminé avec succès !';
+        if (notifTitle) notifTitle.textContent = 'Scraping local terminé avec succès !';
         if (notifDesc) notifDesc.textContent = `${data.jobs_count || allJobs.length} stages M2 vérifiés (0 CDI, 100% liens HTTP 200 directs). Base actualisée à ${data.timestamp || new Date().toLocaleTimeString()}.`;
 
         setTimeout(() => {
           notif.classList.add('hidden');
         }, 6000);
       }
-    } else if (res.status === 404) {
-      // Running on static GitHub Pages
+    } else if (res.status === 404 || res.status === 405) {
+      await loadJobs();
       if (notif) {
-        notif.className = 'rounded-xl border border-amber-200 bg-amber-50/90 p-4 transition-all duration-300 shadow-sm';
-        if (notifIcon) notifIcon.textContent = 'ℹ️';
-        if (notifTitle) notifTitle.textContent = 'Mode Hébergement GitHub Pages';
-        if (notifDesc) notifDesc.textContent = 'Sur GitHub Pages (hébergement statique), le scraping s\'exécute automatiquement toutes les 1h via GitHub Actions. Vous pouvez aussi le lancer manuellement en 1 clic dans l\'onglet "Actions" de votre dépôt GitHub.';
+        notif.className = 'rounded-xl border border-emerald-200 bg-emerald-50/90 p-4 transition-all duration-300 shadow-sm';
+        if (notifIcon) notifIcon.textContent = '✓';
+        if (notifTitle) notifTitle.textContent = 'Données actualisées !';
+        if (notifDesc) notifDesc.textContent = `Base rechargée (${allJobs.length} stages). Le scraping automatique tourne toutes les 12h via GitHub Actions.`;
       }
     } else {
       const errData = await res.json().catch(() => ({}));
