@@ -49,7 +49,7 @@ const SPONTANEOUS_COMPANIES = [
     name: "Idemia",
     group: "hardware",
     sector: "Composants Sécurisés, Crypto Embarquée & Cartes à Puce",
-    url: "https://jobs.smartrecruiters.com/Idemia"
+    url: "https://careers.idemia.com/search/?q=&locationsearch=France"
   },
 
   // =========================================================================
@@ -72,7 +72,8 @@ const SPONTANEOUS_COMPANIES = [
     name: "Quarkslab",
     group: "crypto",
     sector: "R&D, Recherche de Vulnérabilités & Reverse",
-    url: "https://quarkslab.com/join-quarkslab-recruitment-cybersecurity-company/",
+    url: "https://blog.quarkslab.com/tag/internship.html",
+    label: "Blog Stages &rarr;",
     email: "jobs@quarkslab.com"
   },
   {
@@ -102,7 +103,7 @@ const SPONTANEOUS_COMPANIES = [
     name: "Sekoia.io",
     group: "offensive",
     sector: "Éditeur SOC, CTI & XDR",
-    url: "https://www.sekoia.io/en/careers/"
+    url: "https://careers.sekoia.com/"
   },
   {
     name: "Gatewatcher",
@@ -212,7 +213,7 @@ function renderSpontaneousGrid() {
       </div>
       <div class="flex items-center gap-3 pt-1 text-xs">
         <a href="${c.url}" target="_blank" rel="noopener noreferrer" class="font-medium text-indigo-400 hover:text-indigo-300 transition">
-          Portail &rarr;
+          ${c.label || 'Portail &rarr;'}
         </a>
         ${c.email ? `<a href="mailto:${c.email}" class="text-zinc-400 hover:text-zinc-200 transition">Email direct</a>` : ''}
       </div>
