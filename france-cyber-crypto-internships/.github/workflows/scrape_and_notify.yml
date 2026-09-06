@@ -1,0 +1,45 @@
+name: Scrape, Verify & Alert M2 Internships
+
+on:
+  schedule:
+    - cron: '0 8,20 * * *' # Toutes les 12h (à 8h et 20h UTC)
+  workflow_dispatch: # Déclencheur manuel 1 clic
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-and-notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run 12-Hour Verification Pipeline & Mobile Alerts
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: |
+          python scripts/check_and_notify.py
+
+      - name: Commit and Push Updated Data
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/jobs.json data/seen_jobs.json
+          git diff --staged --quiet || git commit -m "Auto-refresh: Scraped & verified active M2 internships [skip ci]"
+          git push
