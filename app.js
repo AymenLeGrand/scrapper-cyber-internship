@@ -192,6 +192,112 @@ const SPONTANEOUS_COMPANIES = [
     group: "consulting_defense",
     sector: "Infrastructures Cyber & Réseaux",
     url: "https://jobs.vinci.com/fr/"
+  },
+
+  // =========================================================================
+  // 5. NOUVELLES ADDITIONS (2026)
+  // =========================================================================
+  {
+    name: "Synetis",
+    group: "offensive",
+    sector: "Pentest, Audit PASSI & Consulting Cyber",
+    url: "https://www.welcometothejungle.com/fr/companies/synetis/jobs"
+  },
+  {
+    name: "Almond",
+    group: "offensive",
+    sector: "Audit PASSI, Pentest & SOC",
+    url: "https://www.welcometothejungle.com/fr/companies/almond/jobs"
+  },
+  {
+    name: "Akerva",
+    group: "offensive",
+    sector: "Pentest & Audit PASSI (Rennes)",
+    url: "https://www.akerva.com/recrutement/"
+  },
+  {
+    name: "Vaadata",
+    group: "offensive",
+    sector: "Pentest Web, Mobile & API",
+    url: "https://www.vaadata.com/recrutement/"
+  },
+  {
+    name: "AlgoSecure",
+    group: "offensive",
+    sector: "Pentest & Audit (Lyon)",
+    url: "https://www.algosecure.fr/recrutement"
+  },
+  {
+    name: "Digitemis",
+    group: "offensive",
+    sector: "Pentest, Audit & DPO (Nantes)",
+    url: "https://www.digitemis.com/recrutement/"
+  },
+  {
+    name: "CybelAngel",
+    group: "offensive",
+    sector: "Digital Risk Protection & OSINT",
+    url: "https://www.welcometothejungle.com/fr/companies/cybelangel/jobs"
+  },
+  {
+    name: "Glimps",
+    group: "offensive",
+    sector: "Analyse Malware & IA (Rennes)",
+    url: "https://www.welcometothejungle.com/fr/companies/glimps/jobs"
+  },
+  {
+    name: "CrowdSec",
+    group: "offensive",
+    sector: "IDS/IPS Open Source & Threat Intel",
+    url: "https://crowdsec.recruitee.com"
+  },
+  {
+    name: "Hackuity",
+    group: "offensive",
+    sector: "Vulnerability Management Platform",
+    url: "https://www.welcometothejungle.com/fr/companies/hackuity/jobs"
+  },
+  {
+    name: "Pradeo",
+    group: "offensive",
+    sector: "Sécurité Mobile (Montpellier)",
+    url: "https://www.pradeo.com/fr/carrieres"
+  },
+  {
+    name: "TheGreenBow",
+    group: "crypto",
+    sector: "VPN IPsec, Crypto Réseau & Post-Quantique",
+    url: "https://thegreenbow.com/fr/a-propos/recrutement/"
+  },
+  {
+    name: "XMCO",
+    group: "offensive",
+    sector: "Pentest, CTI & Audit",
+    url: "https://xmco.recruitee.com"
+  },
+  {
+    name: "Formind",
+    group: "consulting_defense",
+    sector: "Consulting Cyber & SOC Managé",
+    url: "https://www.welcometothejungle.com/fr/companies/formind/jobs"
+  },
+  {
+    name: "Holiseum",
+    group: "consulting_defense",
+    sector: "Cybersécurité OT & Industrielle",
+    url: "https://www.welcometothejungle.com/fr/companies/holiseum/jobs"
+  },
+  {
+    name: "Citalid",
+    group: "consulting_defense",
+    sector: "Quantification du Risque Cyber",
+    url: "https://www.welcometothejungle.com/fr/companies/citalid/jobs"
+  },
+  {
+    name: "MBDA",
+    group: "consulting_defense",
+    sector: "Défense, Systèmes d'Armes & Crypto",
+    url: "https://www.mbda-careers.com"
   }
 ];
 
@@ -663,7 +769,6 @@ async function startScanTimer() {
   if (!nextScan || isNaN(nextScan)) {
     const now = new Date();
     const utcH = now.getUTCHours();
-    const hoursUntilNext = utcH < 12 ? (12 - utcH) : (24 - utcH);
     nextScan = Date.UTC(
       now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),
       utcH < 12 ? 12 : 0

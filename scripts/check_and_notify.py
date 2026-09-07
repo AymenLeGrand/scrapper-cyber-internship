@@ -16,7 +16,7 @@ from datetime import datetime
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BASE_DIR)
 
-from scraper.notifier import send_all_notifications, load_seen_job_ids, save_seen_job_ids
+from scraper.notifier import send_all_notifications, load_seen_job_ids, save_seen_job_ids, send_ntfy_health_alert
 
 def main():
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting 12-hour automated verification pipeline...")
@@ -28,7 +28,17 @@ def main():
     # 2. Run liveness verification
     validator_script = os.path.join(BASE_DIR, 'scraper', 'verify_all_links.py')
     subprocess.run([sys.executable, validator_script], check=True, cwd=BASE_DIR)
-    
+
+    # 2b. Health check: alert if any scraper crashed
+    meta_file = os.path.join(BASE_DIR, 'data', 'meta.json')
+    if os.path.exists(meta_file):
+        with open(meta_file, 'r', encoding='utf-8') as f:
+            meta = json.load(f)
+        scraper_errors = meta.get('scraper_errors', [])
+        if scraper_errors:
+            print(f"[HEALTH] {len(scraper_errors)} scraper error(s) detected — sending alert.")
+            send_ntfy_health_alert(scraper_errors)
+
     # Check notification channels status
     ntfy_topic = os.getenv("NTFY_TOPIC")
     tg_token = os.getenv("TELEGRAM_BOT_TOKEN")

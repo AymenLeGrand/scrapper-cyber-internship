@@ -378,6 +378,8 @@ except ImportError:
         scrape_lever
     )
 
+scraper_errors = []
+
 # 1. Stormshield (Teamtailor Feed)
 try:
     ss_jobs = scrape_teamtailor({
@@ -392,6 +394,7 @@ try:
         print("[Stormshield] Feed monitored (awaiting new campaign publication).")
 except Exception as e:
     print(f"[Stormshield] Ingestion warning: {e}")
+    scraper_errors.append(f"Stormshield: {e}")
 
 # 2. Sekoia.io (Teamtailor Feed)
 try:
@@ -407,6 +410,7 @@ try:
         print("[Sekoia.io] Feed monitored (awaiting new campaign publication).")
 except Exception as e:
     print(f"[Sekoia.io] Ingestion warning: {e}")
+    scraper_errors.append(f"Sekoia: {e}")
 
 # 3. Thales Cyber (Workday CXS)
 try:
@@ -422,6 +426,7 @@ try:
         print("[Thales] Workday CXS monitored (awaiting new campaign publication).")
 except Exception as e:
     print(f"[Thales] Ingestion warning: {e}")
+    scraper_errors.append(f"Thales: {e}")
 
 # 4. Airbus Protect / Cyber (Workday CXS)
 try:
@@ -442,6 +447,7 @@ try:
         print("[Airbus] Workday CXS monitored (awaiting new campaign publication).")
 except Exception as e:
     print(f"[Airbus] Ingestion warning: {e}")
+    scraper_errors.append(f"Airbus Protect: {e}")
 
 # 5. Zama (Homerun Board)
 try:
@@ -456,6 +462,7 @@ try:
         print("[Zama] Site officiel monitored (awaiting new campaign publication).")
 except Exception as e:
     print(f"[Zama] Ingestion warning: {e}")
+    scraper_errors.append(f"Zama: {e}")
 
 # 6. SERMA Safety & Security (Site Officiel)
 try:
@@ -470,6 +477,7 @@ try:
         print("[SERMA] Site officiel monitored (awaiting new campaign publication).")
 except Exception as e:
     print(f"[SERMA] Ingestion warning: {e}")
+    scraper_errors.append(f"SERMA: {e}")
 
 # 7. Ledger (Lever API)
 try:
@@ -485,6 +493,97 @@ try:
         print("[Ledger] Lever API monitored (awaiting new campaign publication).")
 except Exception as e:
     print(f"[Ledger] Ingestion warning: {e}")
+    scraper_errors.append(f"Ledger: {e}")
+
+# 8. Wavestone (SmartRecruiters)
+try:
+    from scraper.ats_scrapers import scrape_smartrecruiters
+except ImportError:
+    from ats_scrapers import scrape_smartrecruiters
+
+try:
+    wave_jobs = scrape_smartrecruiters({
+        "id": "wavestone",
+        "name": "Wavestone (Cybersecurity & Digital Trust)",
+        "ats_company_id": "Wavestone1"
+    })
+    if wave_jobs:
+        print(f"[Wavestone] {len(wave_jobs)} new stages ingested!")
+        all_jobs.extend(wave_jobs)
+    else:
+        print("[Wavestone] SmartRecruiters monitored (awaiting new campaign publication).")
+except Exception as e:
+    print(f"[Wavestone] Ingestion warning: {e}")
+    scraper_errors.append(f"Wavestone: {e}")
+
+# 9. Devoteam Cyber Trust (SmartRecruiters)
+try:
+    devo_jobs = scrape_smartrecruiters({
+        "id": "devoteam-cyber-trust",
+        "name": "Devoteam Cyber Trust",
+        "ats_company_id": "Devoteam"
+    })
+    if devo_jobs:
+        print(f"[Devoteam] {len(devo_jobs)} new stages ingested!")
+        all_jobs.extend(devo_jobs)
+    else:
+        print("[Devoteam] SmartRecruiters monitored (awaiting new campaign publication).")
+except Exception as e:
+    print(f"[Devoteam] Ingestion warning: {e}")
+    scraper_errors.append(f"Devoteam: {e}")
+
+# 10. Advens (SmartRecruiters)
+try:
+    advens_jobs = scrape_smartrecruiters({
+        "id": "advens",
+        "name": "Advens (Pure-player Cybersécurité)",
+        "ats_company_id": "Advens"
+    })
+    if advens_jobs:
+        print(f"[Advens] {len(advens_jobs)} new stages ingested!")
+        all_jobs.extend(advens_jobs)
+    else:
+        print("[Advens] SmartRecruiters monitored (awaiting new campaign publication).")
+except Exception as e:
+    print(f"[Advens] Ingestion warning: {e}")
+    scraper_errors.append(f"Advens: {e}")
+
+# 11. CrowdSec (Recruitee)
+try:
+    from scraper.ats_scrapers import scrape_recruitee
+except ImportError:
+    from ats_scrapers import scrape_recruitee
+
+try:
+    cs_jobs = scrape_recruitee({
+        "id": "crowdsec",
+        "name": "CrowdSec",
+        "recruitee_slug": "crowdsec"
+    })
+    if cs_jobs:
+        print(f"[CrowdSec] {len(cs_jobs)} new stages ingested!")
+        all_jobs.extend(cs_jobs)
+    else:
+        print("[CrowdSec] Recruitee monitored (awaiting new campaign publication).")
+except Exception as e:
+    print(f"[CrowdSec] Ingestion warning: {e}")
+    scraper_errors.append(f"CrowdSec: {e}")
+
+# 12. XMCO (Recruitee)
+try:
+    xmco_jobs = scrape_recruitee({
+        "id": "xmco",
+        "name": "XMCO",
+        "recruitee_slug": "xmco"
+    })
+    if xmco_jobs:
+        print(f"[XMCO] {len(xmco_jobs)} new stages ingested!")
+        all_jobs.extend(xmco_jobs)
+    else:
+        print("[XMCO] Recruitee monitored (awaiting new campaign publication).")
+except Exception as e:
+    print(f"[XMCO] Ingestion warning: {e}")
+    scraper_errors.append(f"XMCO: {e}")
 
 # -------------------------------------------------------------
 # DEDUPLICATION & VALIDATION
@@ -518,6 +617,9 @@ meta_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file_
 with open(meta_path, "w", encoding="utf-8") as f:
     json.dump({
         "last_scraped_at": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "total": len(all_jobs)
+        "total": len(all_jobs),
+        "scraper_errors": scraper_errors
     }, f)
 print(f"Meta written to {meta_path}")
+if scraper_errors:
+    print(f"[HEALTH] {len(scraper_errors)} scraper error(s) detected: {scraper_errors}")

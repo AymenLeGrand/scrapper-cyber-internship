@@ -330,3 +330,41 @@ def send_all_notifications(new_jobs: List[Dict[str, Any]], seen_file_path: str =
 
     return sent_any
 
+
+def send_ntfy_health_alert(errors: list) -> bool:
+    """
+    Sends a single push when one or more scrapers fail.
+    Priority 4 so it rings through. Distinct title from job alerts.
+    """
+    raw_topic = os.getenv("NTFY_TOPIC", "")
+    if not raw_topic or not errors:
+        return False
+
+    topic = raw_topic.replace("https://ntfy.sh/", "").replace("http://ntfy.sh/", "").strip("/").strip()
+    if not topic:
+        return False
+
+    import urllib.request
+
+    message = "\n".join(f"- {e}" for e in errors)
+    payload = {
+        "topic": topic,
+        "title": f"[TRACKER] {len(errors)} scraper(s) en erreur",
+        "message": message,
+        "priority": 4,
+        "tags": ["warning"]
+    }
+
+    try:
+        req = urllib.request.Request(
+            "https://ntfy.sh",
+            data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+            headers={"Content-Type": "application/json; charset=utf-8"}
+        )
+        with urllib.request.urlopen(req, timeout=10):
+            pass
+        print(f"[ntfy] Health alert sent: {len(errors)} scraper error(s).")
+        return True
+    except Exception as e:
+        print(f"[ntfy] Failed to send health alert: {e}")
+        return False

@@ -749,5 +749,41 @@
     "posted_at": "2025-09-01",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "sr_Wavestone1_744000147239559",
+    "title": "Stage - Consultant·e Cybersécurité & Confiance Numérique",
+    "company_id": "wavestone",
+    "company_name": "Wavestone (Cybersecurity & Digital Trust)",
+    "location": "Puteaux, France",
+    "direct_url": "https://jobs.smartrecruiters.com/Wavestone1/744000147239559",
+    "domain": "Cybersecurity (General)",
+    "all_domains": [
+      "Cybersecurity (General)"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "SmartRecruiters (Official Portal)",
+    "posted_at": "2026-09-03T12:29:12.684Z"
+  },
+  {
+    "id": "sr_Wavestone1_744000141487086",
+    "title": "Consultant.e.s - Stage de fin d'études - Nantes - CYB - Quel framework et socle de sécurité à l'ère des nouvelles réglementations Européennes (NIS 2, REC, CRA, DORA) ?",
+    "company_id": "wavestone",
+    "company_name": "Wavestone (Cybersecurity & Digital Trust)",
+    "location": "Nantes, France",
+    "direct_url": "https://jobs.smartrecruiters.com/Wavestone1/744000141487086",
+    "domain": "Cloud / GRC / DevSecOps",
+    "all_domains": [
+      "Cloud / GRC / DevSecOps"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "SmartRecruiters (Official Portal)",
+    "posted_at": "2026-08-04T13:01:09.062Z"
   }
 ]

@@ -2,12 +2,14 @@
 Direct ATS and Company Career Portal Scrapers.
 Strict Zero-Aggregator Policy: All jobs link directly to the employer's official job posting.
 Covers:
-- SmartRecruiters API (Stormshield, Sekoia, Wavestone, Idemia, Dassault Systèmes, Devoteam)
-- Lever API (Ledger, Zama)
+- SmartRecruiters API (Wavestone, Devoteam, Advens, Idemia, Dassault Systèmes)
+- Lever API (Ledger)
 - Greenhouse API (GitGuardian)
-- Welcome to the Jungle Direct Org API (TEHTRIS, HarfangLab, Gatewatcher, Advens, Cosmian, YesWeHack, Yogosha, Patrowl)
+- Recruitee API (CrowdSec, XMCO)
+- Teamtailor JSON Feed (Stormshield, Sekoia)
 - Workday Direct CXS API (Thales, Airbus, NXP)
-- Custom Scrapers (SERMA Safety & Security, eShard, Secure-IC, Synacktiv, Quarkslab, CryptoExperts, Inria)
+- Custom Scrapers (SERMA Safety & Security, Synacktiv, Inria)
+- [DEPRECATED] Welcome to the Jungle API (dead since 2026)
 """
 
 import datetime
@@ -71,6 +73,8 @@ def scrape_smartrecruiters(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]
 
             # Check domain
             domain_info = categorize_job(title)
+            if not domain_info["is_crypto"] and not domain_info["is_cyber"]:
+                continue
             
             # Check eligibility
             eligible, reason = check_algerian_national_eligibility(title)
@@ -235,6 +239,10 @@ def scrape_greenhouse(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
 
 # =============================================================================
 # 4. WELCOME TO THE JUNGLE DIRECT ORG API
+# DEPRECATED: WTTJ API v1 returns 404 for all organizations as of 2026.
+# The website uses bot protection (empty 202 responses) and Algolia search
+# which requires browser-captured keys that rotate. This scraper is kept
+# for reference but will not return results.
 # =============================================================================
 
 def scrape_wttj(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
@@ -296,6 +304,74 @@ def scrape_wttj(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
 
     except Exception as e:
         logger.debug(f"WTTJ scrape error for {company_slug}: {e}")
+
+    return jobs
+
+
+# =============================================================================
+# 4b. RECRUITEE API (CrowdSec, XMCO)
+# =============================================================================
+
+def scrape_recruitee(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """
+    Scrapes Recruitee public API.
+    Endpoint: https://{slug}.recruitee.com/api/offers/
+    Used by: CrowdSec, XMCO.
+    """
+    slug = company_meta.get("recruitee_slug") or company_meta.get("ats_company_id") or company_meta["id"]
+    url = f"https://{slug}.recruitee.com/api/offers/"
+    jobs = []
+
+    try:
+        resp = requests.get(url, headers=DEFAULT_HEADERS, timeout=REQUEST_TIMEOUT)
+        if resp.status_code != 200:
+            return []
+
+        offers = resp.json().get("offers", [])
+
+        for o in offers:
+            title = o.get("title", "")
+            location = o.get("location", "")
+            department = o.get("department", "")
+            employment_type = (o.get("employment_type_code") or "").lower()
+            offer_url = o.get("careers_url") or o.get("url", "")
+
+            # Filter for internships
+            if employment_type not in ["internship", "stage", "intern"]:
+                if not is_internship(f"{title} {employment_type} {department}"):
+                    continue
+
+            # Filter for France
+            if location and not is_france_location(location):
+                continue
+
+            domain_info = categorize_job(title)
+            if not domain_info["is_crypto"] and not domain_info["is_cyber"]:
+                continue
+
+            eligible, reason = check_algerian_national_eligibility(title)
+            if not eligible:
+                continue
+
+            jobs.append({
+                "id": f"recruitee_{slug}_{o.get('id', '')}",
+                "title": title,
+                "company_id": company_meta["id"],
+                "company_name": company_meta["name"],
+                "location": f"{location}, France" if location and "France" not in location else (location or "France"),
+                "direct_url": offer_url,
+                "domain": domain_info["primary_domain"],
+                "all_domains": domain_info["all_domains"],
+                "is_crypto": domain_info["is_crypto"],
+                "is_cyber": domain_info["is_cyber"],
+                "eligible_algerian": eligible,
+                "eligibility_note": reason,
+                "source": "Recruitee (Official ATS)",
+                "posted_at": o.get("published_at", "")
+            })
+
+    except Exception as e:
+        logger.debug(f"Recruitee scrape error for {slug}: {e}")
 
     return jobs
 
@@ -768,7 +844,10 @@ def scrape_company_jobs(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
     elif ats_type == "greenhouse":
         return scrape_greenhouse(company_meta)
     elif ats_type == "wttj":
+        logger.warning(f"WTTJ API is deprecated and non-functional for {company_meta['id']}")
         return scrape_wttj(company_meta)
+    elif ats_type == "recruitee":
+        return scrape_recruitee(company_meta)
     elif ats_type == "workday":
         return scrape_workday(company_meta)
     elif ats_type == "zama":

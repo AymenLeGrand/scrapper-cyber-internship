@@ -343,8 +343,8 @@ COMPANIES = [
         "category": "pure_play_cyber",
         "website": "https://www.xmco.fr",
         "career_url": "https://www.xmco.fr/rejoignez-nous/",
-        "direct_ats_type": "wttj",
-        "ats_company_id": "xmco",
+        "direct_ats_type": "recruitee",
+        "recruitee_slug": "xmco",
         "tags": ["pentest", "cti", "soc", "audit"],
         "open_to_international": True
     },
@@ -671,6 +671,179 @@ COMPANIES = [
         "direct_ats_type": "wttj",
         "ats_company_id": "docaposte",
         "tags": ["digital_trust", "pki", "cryptology", "identity", "cloud_security"],
+        "open_to_international": True
+    },
+
+    # =========================================================================
+    # 7. NEW ADDITIONS (2026 expansion)
+    # =========================================================================
+    {
+        "id": "crowdsec",
+        "name": "CrowdSec",
+        "category": "pure_play_cyber",
+        "website": "https://www.crowdsec.net",
+        "career_url": "https://crowdsec.recruitee.com",
+        "direct_ats_type": "recruitee",
+        "recruitee_slug": "crowdsec",
+        "tags": ["ids_ips", "open_source", "threat_intelligence", "network_security"],
+        "open_to_international": True
+    },
+    {
+        "id": "synetis",
+        "name": "Synetis",
+        "category": "pure_play_cyber",
+        "website": "https://www.synetis.com",
+        "career_url": "https://www.welcometothejungle.com/fr/companies/synetis/jobs",
+        "direct_ats_type": "wttj",
+        "ats_company_id": "synetis",
+        "tags": ["pentest", "audit", "passi", "consulting", "microsoft_security"],
+        "open_to_international": True
+    },
+    {
+        "id": "almond",
+        "name": "Almond (ex-Provadys)",
+        "category": "pure_play_cyber",
+        "website": "https://www.almond.eu",
+        "career_url": "https://www.welcometothejungle.com/fr/companies/almond/jobs",
+        "direct_ats_type": "wttj",
+        "ats_company_id": "almond",
+        "tags": ["pentest", "audit", "passi", "grc", "soc"],
+        "open_to_international": True
+    },
+    {
+        "id": "formind",
+        "name": "Formind",
+        "category": "consulting_mssp",
+        "website": "https://www.formind.fr",
+        "career_url": "https://www.welcometothejungle.com/fr/companies/formind/jobs",
+        "direct_ats_type": "wttj",
+        "ats_company_id": "formind",
+        "tags": ["consulting", "soc", "incident_response", "grc"],
+        "open_to_international": True
+    },
+    {
+        "id": "akerva",
+        "name": "Akerva (Rennes)",
+        "category": "pure_play_cyber",
+        "website": "https://www.akerva.com",
+        "career_url": "https://www.akerva.com/recrutement/",
+        "direct_ats_type": "custom",
+        "tags": ["pentest", "audit", "passi", "rennes"],
+        "open_to_international": True
+    },
+    {
+        "id": "vaadata",
+        "name": "Vaadata",
+        "category": "pure_play_cyber",
+        "website": "https://www.vaadata.com",
+        "career_url": "https://www.vaadata.com/recrutement/",
+        "direct_ats_type": "custom",
+        "tags": ["pentest", "web_security", "mobile_security", "api_security"],
+        "open_to_international": True
+    },
+    {
+        "id": "algosecure",
+        "name": "AlgoSecure (Lyon)",
+        "category": "pure_play_cyber",
+        "website": "https://www.algosecure.fr",
+        "career_url": "https://www.algosecure.fr/recrutement",
+        "direct_ats_type": "custom",
+        "tags": ["pentest", "audit", "lyon", "red_team"],
+        "open_to_international": True
+    },
+    {
+        "id": "digitemis",
+        "name": "Digitemis (Nantes)",
+        "category": "pure_play_cyber",
+        "website": "https://www.digitemis.com",
+        "career_url": "https://www.digitemis.com/recrutement/",
+        "direct_ats_type": "custom",
+        "tags": ["pentest", "audit", "dpo", "nantes"],
+        "open_to_international": True
+    },
+    {
+        "id": "cybelangel",
+        "name": "CybelAngel",
+        "category": "pure_play_cyber",
+        "website": "https://cybelangel.com",
+        "career_url": "https://www.welcometothejungle.com/fr/companies/cybelangel/jobs",
+        "direct_ats_type": "wttj",
+        "ats_company_id": "cybelangel",
+        "tags": ["digital_risk", "osint", "threat_intelligence", "data_leak"],
+        "open_to_international": True
+    },
+    {
+        "id": "glimps",
+        "name": "Glimps (Rennes)",
+        "category": "pure_play_cyber",
+        "website": "https://www.glimps.re",
+        "career_url": "https://www.welcometothejungle.com/fr/companies/glimps/jobs",
+        "direct_ats_type": "wttj",
+        "ats_company_id": "glimps",
+        "tags": ["malware_analysis", "ai_detection", "reverse_engineering", "rennes"],
+        "open_to_international": True
+    },
+    {
+        "id": "hackuity",
+        "name": "Hackuity",
+        "category": "pure_play_cyber",
+        "website": "https://www.hackuity.io",
+        "career_url": "https://www.welcometothejungle.com/fr/companies/hackuity/jobs",
+        "direct_ats_type": "wttj",
+        "ats_company_id": "hackuity",
+        "tags": ["vulnerability_management", "risk_scoring", "devsecops"],
+        "open_to_international": True
+    },
+    {
+        "id": "thegreenbow",
+        "name": "TheGreenBow",
+        "category": "cryptology_rd",
+        "website": "https://thegreenbow.com",
+        "career_url": "https://thegreenbow.com/fr/a-propos/recrutement/",
+        "direct_ats_type": "custom",
+        "tags": ["vpn", "ipsec", "cryptology", "network_security", "post_quantum"],
+        "open_to_international": True
+    },
+    {
+        "id": "holiseum",
+        "name": "Holiseum",
+        "category": "consulting_mssp",
+        "website": "https://www.holiseum.com",
+        "career_url": "https://www.welcometothejungle.com/fr/companies/holiseum/jobs",
+        "direct_ats_type": "wttj",
+        "ats_company_id": "holiseum",
+        "tags": ["ot_security", "industrial_cyber", "ics_scada", "consulting"],
+        "open_to_international": True
+    },
+    {
+        "id": "citalid",
+        "name": "Citalid",
+        "category": "pure_play_cyber",
+        "website": "https://citalid.com",
+        "career_url": "https://www.welcometothejungle.com/fr/companies/citalid/jobs",
+        "direct_ats_type": "wttj",
+        "ats_company_id": "citalid",
+        "tags": ["cyber_risk", "risk_quantification", "cti"],
+        "open_to_international": True
+    },
+    {
+        "id": "pradeo",
+        "name": "Pradeo (Montpellier)",
+        "category": "pure_play_cyber",
+        "website": "https://www.pradeo.com",
+        "career_url": "https://www.pradeo.com/fr/carrieres",
+        "direct_ats_type": "custom",
+        "tags": ["mobile_security", "app_security", "montpellier"],
+        "open_to_international": True
+    },
+    {
+        "id": "mbda-defense",
+        "name": "MBDA (Systèmes de Défense)",
+        "category": "defense_industry",
+        "website": "https://www.mbda-systems.com",
+        "career_url": "https://www.mbda-careers.com",
+        "direct_ats_type": "custom",
+        "tags": ["defense", "embedded_security", "cryptology", "critical_systems"],
         "open_to_international": True
     }
 ]
