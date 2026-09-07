@@ -100,6 +100,12 @@ const SPONTANEOUS_COMPANIES = [
     email: "apply@synacktiv.com"
   },
   {
+    name: "Stormshield",
+    group: "offensive",
+    sector: "Éditeur Firewall, UTM & Endpoint (Airbus)",
+    url: "https://careers.stormshield.eu/"
+  },
+  {
     name: "Sekoia.io",
     group: "offensive",
     sector: "Éditeur SOC, CTI & XDR",
@@ -178,8 +184,8 @@ const SPONTANEOUS_COMPANIES = [
   {
     name: "Airbus Protect",
     group: "consulting_defense",
-    sector: "Cybersécurité Industrielle & Défense",
-    url: "https://airbusprotect.com/careers/"
+    sector: "Cybersécurité Industrielle, Défense & Sûreté de Fonctionnement",
+    url: "https://www.protect.airbus.com/careers/job-offers/"
   },
   {
     name: "VINCI / Axians",

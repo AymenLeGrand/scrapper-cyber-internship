@@ -405,18 +405,24 @@ def scrape_workday(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
         worker_sub_types = ["47200b8529d910215e133a260a722492"]  # Intern/Trainee facet
     elif tenant == "ag":
         endpoint = "https://ag.wd3.myworkdayjobs.com/wday/cxs/ag/Airbus/jobs"
-        queries = ["cyber", "cryptographie", "securite", "protect"]
+        queries = ["cyber", "cryptographie", "securite", "protect", "stage"]
         base_url = "https://ag.wd3.myworkdayjobs.com/en-US/Airbus"
         worker_sub_types = ["f5811cef9cb50193723ed01d470a6e15"]  # Trainee / Student facet
     else:
         return []
 
+    hiring_companies = company_meta.get("hiring_companies", [])
+
     for query in queries:
         try:
+            applied_facets = {}
+            if worker_sub_types and query != "stage":
+                applied_facets["workerSubType"] = worker_sub_types
+            if tenant == "ag" and hiring_companies:
+                applied_facets["hiringCompany"] = hiring_companies
+
             payload = {
-                "appliedFacets": {
-                    "workerSubType": worker_sub_types
-                },
+                "appliedFacets": applied_facets,
                 "limit": 20,
                 "offset": 0,
                 "searchText": query

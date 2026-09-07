@@ -426,8 +426,13 @@ except Exception as e:
 try:
     airbus_jobs = scrape_workday({
         "id": "airbus_protect",
-        "name": "Airbus Protect / Cyber",
-        "workday_tenant": "ag"
+        "name": "Airbus Protect (Cybersécurité & Sûreté)",
+        "workday_tenant": "ag",
+        "hiring_companies": [
+            "f5811cef9cb50166ff1fba124e0a295c",
+            "f5811cef9cb501eb3bf4e0124e0add5c",
+            "f5811cef9cb5013b35f9bb124e0a335c"
+        ]
     })
     if airbus_jobs:
         print(f"[Airbus] {len(airbus_jobs)} new stages ingested!")

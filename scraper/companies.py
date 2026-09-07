@@ -386,13 +386,18 @@ COMPANIES = [
     },
     {
         "id": "airbus-cyber",
-        "name": "Airbus CyberSecurity / Airbus Defence & Space",
+        "name": "Airbus Protect (Cybersécurité & Sûreté de Fonctionnement)",
         "category": "defense_industry",
-        "website": "https://www.airbus.com",
-        "career_url": "https://ag.wd3.myworkdayjobs.com/Airbus",
+        "website": "https://www.protect.airbus.com",
+        "career_url": "https://www.protect.airbus.com/careers/job-offers/",
         "direct_ats_type": "workday",
         "workday_tenant": "ag",
-        "tags": ["cybersecurity", "soc", "dfir", "industrial_security", "cloud_security"],
+        "hiring_companies": [
+            "f5811cef9cb50166ff1fba124e0a295c",
+            "f5811cef9cb501eb3bf4e0124e0add5c",
+            "f5811cef9cb5013b35f9bb124e0a335c"
+        ],
+        "tags": ["cybersecurity", "soc", "dfir", "industrial_security", "cloud_security", "safety"],
         "open_to_international": True
     },
     {
