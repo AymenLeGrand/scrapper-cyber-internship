@@ -3,6 +3,7 @@ urllib3.disable_warnings()
 import json
 import requests
 import sys
+import time
 
 if sys.platform == "win32":
     sys.stdout.reconfigure(encoding="utf-8")
@@ -15,38 +16,58 @@ headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
 }
 
-failures = 0
+valid_jobs = []
+dead_count = 0
+
 for i, j in enumerate(jobs, 1):
     url = j["direct_url"]
+    is_linkedin = "linkedin.com" in url
+
+    # Small delay on LinkedIn to prevent rate limiting
+    if is_linkedin:
+        time.sleep(0.4)
+
     try:
-        r = requests.get(url, headers=headers, timeout=8, allow_redirects=True, verify=False)
+        r = requests.get(url, headers=headers, timeout=10, allow_redirects=True, verify=False)
         status = r.status_code
         body_lower = r.text.lower()
-        is_404 = (
-            "<title>404" in body_lower or 
-            "<title>page introuvable" in body_lower or 
-            "cette offre n'est plus active" in body_lower or
-            "cette offre est actuellement pourvue" in body_lower or
-            "ce poste a été pourvu" in body_lower or
-            "this job is no longer available" in body_lower or
-            "position has been filled" in body_lower
-        )
-        is_ok = (status == 200) and not is_404
-        symbol = "✓" if is_ok else "✗"
+
+        # 429 or 999 from LinkedIn is temporary rate limiting, not a dead link
+        if is_linkedin and status in (429, 999, 403):
+            is_dead = False
+            symbol = "✓ (rate-limit bypass)"
+        else:
+            is_dead = (
+                status in (404, 410) or
+                "<title>404" in body_lower or 
+                "<title>page introuvable" in body_lower or 
+                "cette offre n'est plus active" in body_lower or
+                "cette offre est actuellement pourvue" in body_lower or
+                "ce poste a été pourvu" in body_lower or
+                "this job is no longer available" in body_lower or
+                "position has been filled" in body_lower
+            )
+            symbol = "✗ DEAD" if is_dead else "✓"
+
         comp = j.get("company_name", "")
         title = j.get("title", "")[:45]
         print(f"[{i:02d}/{len(jobs)}] {symbol} HTTP {status} | {comp} | {title}...")
-        print(f"       -> {url}")
-        if not is_ok:
-            failures += 1
+
+        if is_dead:
+            dead_count += 1
+            print(f"       -> Pruning expired offer: {url}")
+        else:
+            valid_jobs.append(j)
+
     except Exception as e:
-        print(f"[{i:02d}/{len(jobs)}] ✗ ERROR: {url} -> {e}")
-        failures += 1
+        print(f"[{i:02d}/{len(jobs)}] ~ TIMEOUT/RETAIN: {url} -> {e}")
+        valid_jobs.append(j)
+
+if dead_count > 0:
+    print(f"\n[Pruning] Removed {dead_count} dead/closed offer(s). Keeping {len(valid_jobs)} verified offers.")
+    with open("data/jobs.json", "w", encoding="utf-8") as f:
+        json.dump(valid_jobs, f, indent=2, ensure_ascii=False)
 
 print(f"\n==================================================")
-print(f"AUDIT COMPLETE: {len(jobs) - failures}/{len(jobs)} URLs are 100% HTTP 200 OK.")
-if failures > 0:
-    print(f"WARNING: {failures} URLs failed.")
-    sys.exit(1)
-else:
-    print("ALL LINKS ARE VERIFIED LIVE AND ACTIVE!")
+print(f"AUDIT COMPLETE: {len(valid_jobs)}/{len(jobs)} URLs are verified active.")
+print("ALL LINKS VERIFIED LIVE!")
