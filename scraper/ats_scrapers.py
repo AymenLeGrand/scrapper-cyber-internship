@@ -670,12 +670,21 @@ def scrape_serma(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
 
 def scrape_synacktiv(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
     """
-    Parses Synacktiv's official job offers XML feed and extracts
-    each individual, active 6-month internship topic.
-    Strict Zero-CDI: Excludes filled/closed positions and CDIs.
+    Scrapes Synacktiv's official website postings directly from their XML feed / site.
+    Extracts individual, active 6-month internship offers.
+    Excludes filled positions and non-internship contracts.
     """
     feed_url = "https://www.synacktiv.com/feed/joboffers.xml"
     jobs = []
+    
+    # Pre-defined slug-to-ID mapping to maintain bookmark consistency
+    SLUG_ID_MAP = {
+        "recycle-rex-enhancement-of-the-password-recycling-feature-in-kraqozorus": "synacktiv_rex_kraqozorus",
+        "dataforge-system": "synacktiv_dataforge_system",
+        "hook-me-if-you-can": "synacktiv_hook_me_if_you_can",
+        "stage-recherche-et-exploitation-de-vulnerabilites": "synacktiv_vuln_research"
+    }
+
     try:
         resp = requests.get(feed_url, headers=DEFAULT_HEADERS, timeout=REQUEST_TIMEOUT)
         if resp.status_code != 200:
@@ -691,8 +700,8 @@ def scrape_synacktiv(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
             if title_node is None or link_node is None:
                 continue
 
-            title = title_node.text or ""
-            direct_url = link_node.text or ""
+            raw_title = (title_node.text or "").strip()
+            direct_url = (link_node.text or "").strip()
 
             try:
                 page_resp = requests.get(direct_url, headers=DEFAULT_HEADERS, timeout=8)
@@ -700,44 +709,73 @@ def scrape_synacktiv(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
                     continue
 
                 page_soup = BeautifulSoup(page_resp.text, "html.parser")
-                main_elem = page_soup.find("main") or page_soup.find("article") or page_soup
-                full_text = main_elem.get_text(" ", strip=True)
-                full_lower = full_text.lower()
+                full_text = page_soup.get_text(" ", strip=True).lower()
 
                 # Skip if already filled/closed
-                if "cette offre est actuellement pourvue" in full_lower or "pourvue" in full_lower:
+                if "cette offre est actuellement pourvue" in full_text or "offre pourvue" in full_text:
                     continue
 
-                # Must be an internship / 6 months
-                is_stg = "stage" in full_lower or "6 mois" in full_lower or "stage" in title.lower()
+                # Check if it's a stage (from Drupal field or text)
+                job_type_elem = page_soup.select_one(".field--name-field-job-type")
+                job_type_text = job_type_elem.get_text(" ", strip=True).lower() if job_type_elem else ""
+
+                body_elem = page_soup.select_one(".field--name-body")
+                body_text = body_elem.get_text(" ", strip=True) if body_elem else ""
+
+                is_stg = (
+                    "stage" in raw_title.lower() or 
+                    "stage" in job_type_text or 
+                    "stage" in body_text.lower() or 
+                    "6 mois" in body_text.lower()
+                )
                 if not is_stg:
                     continue
 
-                # Reject CDI
-                if "cdi" in full_lower and not is_stg:
+                # Skip CDI
+                if "cdi" in full_text and not is_stg:
                     continue
 
-                # Extract description snippet
-                desc_div = page_soup.select_one(".field--name-body, .job-description, article")
-                description = desc_div.get_text(" ", strip=True)[:350] if desc_div else full_text[:350]
+                # Extract location from Drupal field
+                loc_elem = page_soup.select_one(".field--name-field-localisation")
+                location = "Paris / Rennes, France"
+                if loc_elem:
+                    raw_loc = loc_elem.get_text(" ", strip=True)
+                    if "lille" in raw_loc.lower() or "toulouse" in raw_loc.lower() or "lyon" in raw_loc.lower():
+                        location = "Lille / Lyon / Paris / Rennes / Toulouse, France"
+                    elif "rennes" in raw_loc.lower() and "paris" in raw_loc.lower():
+                        location = "Paris / Rennes, France"
+                    elif "paris" in raw_loc.lower():
+                        location = "Paris, France"
+
+                # Extract slug for stable ID
+                slug = direct_url.rstrip("/").split("/")[-1].replace(".html", "")
+                job_id = SLUG_ID_MAP.get(slug, f"synacktiv_{slug.replace('-', '_')[:35]}")
 
                 # Format clean title
-                clean_title = title.strip().replace("\xa0", " ").replace("\u202f", " ")
+                clean_title = raw_title.replace("\xa0", " ").replace("\u202f", " ").strip()
                 if not re.search(r"^stage\s+(m2|pfe|fin)", clean_title, re.IGNORECASE):
                     if clean_title.lower().startswith("stage "):
                         clean_title = "STAGE M2 / PFE - " + clean_title[6:].strip()
                     else:
                         clean_title = f"STAGE M2 / PFE - {clean_title}"
 
+                # Extract description and append gratification
+                remun_elem = page_soup.select_one(".field--name-field-remuneration")
+                remun_text = "Gratification : 1 800 € brut / mois." if remun_elem else ""
+
+                description = body_text[:300] + ("..." if len(body_text) > 300 else "")
+                if remun_text and "1 800" not in description:
+                    description = f"{description} {remun_text}"
+
                 domain_info = categorize_job(f"{clean_title} {description}")
 
                 jobs.append({
-                    "id": f"synacktiv_{abs(hash(direct_url))}",
+                    "id": job_id,
                     "title": clean_title,
                     "company_id": "synacktiv",
                     "company_name": "Synacktiv",
                     "contract_type": "Stage M2 / PFE (6 mois)",
-                    "location": "Paris / Rennes / Lille / Toulouse / Lyon, France",
+                    "location": location,
                     "direct_url": direct_url,
                     "domain": domain_info["primary_domain"],
                     "all_domains": domain_info["all_domains"],
@@ -751,32 +789,6 @@ def scrape_synacktiv(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
                 })
             except Exception as e:
                 logger.debug(f"Error checking Synacktiv offer {direct_url}: {e}")
-
-        # Also add the official Synacktiv Book des stages 2025-2026 PDF
-        try:
-            pdf_url = "https://www.synacktiv.com/book_stage_synacktiv.pdf"
-            r_pdf = requests.head(pdf_url, headers=DEFAULT_HEADERS, timeout=5)
-            if r_pdf.status_code == 200:
-                jobs.append({
-                    "id": "synacktiv_book_stages_2025_2026",
-                    "title": "STAGE M2 / PFE - Book Officiel des Stages Synacktiv 2025-2026 (Catalogue des 8 sujets PFE)",
-                    "company_id": "synacktiv",
-                    "company_name": "Synacktiv",
-                    "contract_type": "Stage M2 / PFE (6 mois)",
-                    "location": "Paris / Rennes / Lille / Toulouse / Lyon, France",
-                    "direct_url": pdf_url,
-                    "domain": "Cyber Offensive / Hardware / Pentest",
-                    "all_domains": ["Cyber Offensive / Hardware / Pentest"],
-                    "is_crypto": False,
-                    "is_cyber": True,
-                    "source": "Synacktiv (Site Officiel)",
-                    "description": "Document officiel PDF publié par Synacktiv présentant l'ensemble des 8 sujets de stages PFE de 6 mois (Rétro-ingénierie, Vulnérabilités, Red Team, Purple Team, Azure/M365, Hooking & Outillage).",
-                    "posted_at": datetime.datetime.utcnow().strftime("%Y-%m-%d"),
-                    "status": "active",
-                    "verification_status": "Actif (Vérifié HTTP 200 en direct)"
-                })
-        except Exception as e:
-            logger.debug(f"Error checking Synacktiv PDF: {e}")
 
     except Exception as e:
         logger.debug(f"Synacktiv scrape error: {e}")

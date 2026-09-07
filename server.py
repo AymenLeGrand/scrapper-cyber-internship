@@ -8,7 +8,7 @@ import threading
 from datetime import datetime
 
 PORT = 8000
-BASE_DIR = r"C:\Users\MSI\.gemini\antigravity\scratch\france-cyber-crypto-internships"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PYTHON_EXE = sys.executable
 
 is_scraping = False

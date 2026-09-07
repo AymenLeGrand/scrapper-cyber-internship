@@ -598,7 +598,7 @@ function setupEventListeners() {
   const ageFilter = document.getElementById('ageFilter');
   const sortFilter = document.getElementById('sortFilter');
   const hideAppliedToggle = document.getElementById('hideAppliedToggle');
-  const hideDismissedToggle = document.getElementById('hideDismissedToggle');
+  const showDismissedToggle = document.getElementById('showDismissedToggle');
   const exportCsvBtn = document.getElementById('exportCsvBtn');
   const resetFiltersBtn = document.getElementById('resetFiltersBtn');
   const chips = document.querySelectorAll('#categoryChips .category-chip');
@@ -609,7 +609,7 @@ function setupEventListeners() {
   if (ageFilter) ageFilter.addEventListener('change', () => renderJobs());
   if (sortFilter) sortFilter.addEventListener('change', () => renderJobs());
   if (hideAppliedToggle) hideAppliedToggle.addEventListener('change', () => renderJobs());
-  if (hideDismissedToggle) hideDismissedToggle.addEventListener('change', () => renderJobs());
+  if (showDismissedToggle) showDismissedToggle.addEventListener('change', () => renderJobs());
 
   chips.forEach(chip => {
     chip.addEventListener('click', () => {
@@ -628,7 +628,7 @@ function setupEventListeners() {
       if (ageFilter) ageFilter.value = 'all';
       if (sortFilter) sortFilter.value = 'newest';
       if (hideAppliedToggle) hideAppliedToggle.checked = false;
-      if (hideDismissedToggle) hideDismissedToggle.checked = false;
+      if (showDismissedToggle) showDismissedToggle.checked = false;
       chips.forEach(c => c.classList.remove('active'));
       chips[0].classList.add('active');
       activeCategory = 'all';
@@ -739,13 +739,14 @@ function getFilteredJobs() {
   const selectedAge = document.getElementById('ageFilter')?.value || 'all';
   const sortOrder = document.getElementById('sortFilter')?.value || 'newest';
   const hideApplied = document.getElementById('hideAppliedToggle')?.checked || false;
-  const hideDismissed = document.getElementById('hideDismissedToggle')?.checked || false;
+  const showDismissed = document.getElementById('showDismissedToggle')?.checked || false;
 
   const filtered = allJobs.filter(job => {
     if (job.status === 'closed' || job.status === 'expired') return false;
 
     if (hideApplied && appliedJobs.has(job.id)) return false;
-    if (hideDismissed && dismissedJobs.has(job.id)) return false;
+    // Default: Dismissed offers are completely hidden and never shown
+    if (!showDismissed && dismissedJobs.has(job.id)) return false;
 
     // Filter by Company
     if (selectedCompany !== 'all' && (job.company_name || '').trim() !== selectedCompany) {
@@ -837,13 +838,42 @@ function getFilteredJobs() {
   return filtered;
 }
 
+function updateDismissedCounter() {
+  const container = document.getElementById('showDismissedContainer');
+  const label = document.getElementById('showDismissedLabel');
+  if (!container || !label) return;
+
+  const count = allJobs.filter(j => dismissedJobs.has(j.id)).length;
+  if (count > 0) {
+    container.classList.remove('hidden');
+    label.textContent = `Afficher masquées (${count})`;
+  } else {
+    container.classList.add('hidden');
+  }
+}
+
+function updateResultsCount() {
+  const resultsCount = document.getElementById('resultsCount');
+  if (!resultsCount) return;
+  const filtered = getFilteredJobs();
+  resultsCount.textContent = `${filtered.length} offres`;
+  const emptyState = document.getElementById('emptyState');
+  if (emptyState) {
+    if (filtered.length === 0) {
+      emptyState.classList.remove('hidden');
+    } else {
+      emptyState.classList.add('hidden');
+    }
+  }
+}
+
 function renderJobs() {
   const container = document.getElementById('jobsContainer');
   const emptyState = document.getElementById('emptyState');
-  const resultsCount = document.getElementById('resultsCount');
 
   const filtered = getFilteredJobs();
-  resultsCount.textContent = `${filtered.length} offres`;
+  updateResultsCount();
+  updateDismissedCounter();
 
   if (filtered.length === 0) {
     container.innerHTML = '';
@@ -955,17 +985,24 @@ function createJobCardHtml(job) {
           </a>
 
           <div class="flex flex-wrap items-center gap-3 text-xs">
-            <button class="copy-link-btn text-xs text-zinc-500 hover:text-zinc-300 transition" data-url="${job.direct_url}">
+            <button class="copy-link-btn text-xs text-zinc-500 hover:text-zinc-300 transition cursor-pointer" data-url="${job.direct_url}">
               Copier le lien
             </button>
             <label class="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-zinc-200 cursor-pointer select-none">
               <input type="checkbox" class="toggle-applied rounded bg-zinc-900 border-zinc-700 text-indigo-500 focus:ring-0 w-3.5 h-3.5" data-id="${job.id}" ${isApplied ? 'checked' : ''}>
               <span>Postulé</span>
             </label>
-            <label class="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-zinc-200 cursor-pointer select-none" title="Marquer comme non intéressé">
-              <input type="checkbox" class="toggle-dismissed rounded bg-zinc-900 border-zinc-700 text-zinc-400 focus:ring-0 w-3.5 h-3.5" data-id="${job.id}" ${isDismissed ? 'checked' : ''}>
-              <span class="${isDismissed ? 'text-zinc-500 line-through' : ''}">Pas intéressé</span>
-            </label>
+            <button 
+              type="button" 
+              class="dismiss-job-btn inline-flex items-center gap-1.5 text-xs transition cursor-pointer select-none px-2 py-0.5 rounded border ${isDismissed ? 'text-amber-400 border-amber-800/60 bg-amber-950/30 hover:bg-amber-900/40' : 'text-zinc-500 border-zinc-800/80 hover:text-rose-400 hover:border-rose-900/60 hover:bg-rose-950/20'}" 
+              data-id="${job.id}" 
+              title="${isDismissed ? 'Restaurer cette offre' : 'Ne plus afficher cette offre (masquer définitivement)'}"
+            >
+              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${isDismissed ? 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' : 'M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636'}"></path>
+              </svg>
+              <span>${isDismissed ? 'Restaurer' : 'Pas intéressé'}</span>
+            </button>
           </div>
         </div>
 
@@ -1011,33 +1048,100 @@ function attachCardEvents() {
     });
   });
 
-  document.querySelectorAll('.toggle-dismissed').forEach(chk => {
-    chk.addEventListener('change', (e) => {
-      const id = e.target.getAttribute('data-id');
-      if (e.target.checked) {
-        dismissedJobs.add(id);
-      } else {
+  document.querySelectorAll('.dismiss-job-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = btn.getAttribute('data-id');
+      const card = btn.closest('.job-card');
+      const showDismissed = document.getElementById('showDismissedToggle')?.checked || false;
+
+      if (dismissedJobs.has(id)) {
+        // Restore
         dismissedJobs.delete(id);
-      }
-      localStorage.setItem('dismissed_jobs', JSON.stringify(Array.from(dismissedJobs)));
-      
-      const card = e.target.closest('.job-card');
-      if (card) {
-        card.classList.toggle('opacity-40', e.target.checked);
-        card.classList.toggle('grayscale', e.target.checked);
-        card.classList.toggle('border-dashed', e.target.checked);
-        const textSpan = chk.parentElement.querySelector('span');
-        if (textSpan) {
-          textSpan.classList.toggle('line-through', e.target.checked);
-          textSpan.classList.toggle('text-zinc-500', e.target.checked);
+        localStorage.setItem('dismissed_jobs', JSON.stringify(Array.from(dismissedJobs)));
+        showToast("Offre restaurée");
+        renderJobs();
+      } else {
+        // Dismiss
+        dismissedJobs.add(id);
+        localStorage.setItem('dismissed_jobs', JSON.stringify(Array.from(dismissedJobs)));
+
+        if (!showDismissed) {
+          if (card) {
+            card.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(-8px) scale(0.98)';
+            card.style.maxHeight = `${card.offsetHeight}px`;
+            setTimeout(() => {
+              card.style.maxHeight = '0';
+              card.style.paddingTop = '0';
+              card.style.paddingBottom = '0';
+              card.style.marginTop = '0';
+              card.style.marginBottom = '0';
+              card.style.border = 'none';
+              setTimeout(() => {
+                card.remove();
+                updateResultsCount();
+                updateDismissedCounter();
+              }, 300);
+            }, 50);
+          }
+          showToast("Offre masquée définitivement", () => {
+            undoDismiss(id);
+          });
+        } else {
+          renderJobs();
         }
       }
-
-      if (document.getElementById('hideDismissedToggle')?.checked) {
-        renderJobs();
-      }
+      updateDismissedCounter();
     });
   });
+}
+
+function undoDismiss(id) {
+  dismissedJobs.delete(id);
+  localStorage.setItem('dismissed_jobs', JSON.stringify(Array.from(dismissedJobs)));
+  renderJobs();
+  showToast("Offre restaurée");
+}
+
+function showToast(message, onUndo) {
+  const container = document.getElementById('toastContainer');
+  if (!container) return;
+
+  const toast = document.createElement('div');
+  toast.className = 'pointer-events-auto flex items-center justify-between gap-3 bg-zinc-900 border border-zinc-700/80 text-zinc-200 px-3.5 py-2.5 rounded-lg shadow-xl text-xs transition-all duration-300 transform translate-y-2 opacity-0 max-w-sm';
+  
+  const textSpan = document.createElement('span');
+  textSpan.textContent = message;
+  toast.appendChild(textSpan);
+
+  if (onUndo) {
+    const undoBtn = document.createElement('button');
+    undoBtn.className = 'text-indigo-400 hover:text-indigo-300 font-medium underline shrink-0 cursor-pointer ml-2';
+    undoBtn.textContent = 'Annuler';
+    undoBtn.addEventListener('click', () => {
+      onUndo();
+      removeToast(toast);
+    });
+    toast.appendChild(undoBtn);
+  }
+
+  container.appendChild(toast);
+
+  requestAnimationFrame(() => {
+    toast.classList.remove('translate-y-2', 'opacity-0');
+  });
+
+  const timer = setTimeout(() => {
+    removeToast(toast);
+  }, 4500);
+
+  function removeToast(t) {
+    clearTimeout(timer);
+    t.classList.add('opacity-0', 'translate-y-2');
+    setTimeout(() => t.remove(), 300);
+  }
 }
 
 function exportToCsv() {

@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 if sys.platform == 'win32':
     sys.stdout.reconfigure(encoding='utf-8')
 
-BASE_DIR = r"C:\Users\MSI\.gemini\antigravity\scratch\france-cyber-crypto-internships"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PYTHON_EXE = sys.executable
 
 INTERVAL_HOURS = 3
@@ -28,7 +28,9 @@ def run_scrape():
     next_run = datetime.now() + timedelta(seconds=INTERVAL_SECONDS)
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Run completed. Next run scheduled in {INTERVAL_HOURS:g} hours ({INTERVAL_SECONDS}s) at {next_run.strftime('%Y-%m-%d %H:%M:%S')}.\n", flush=True)
 
-if __name__ == '__main__':
+def main():
+    global INTERVAL_HOURS, INTERVAL_SECONDS
+
     parser = argparse.ArgumentParser(description="Continuous re-scrap scheduler")
     parser.add_argument("--hours", type=float, default=3.0, help="Interval in hours (default: 3.0)")
     parser.add_argument("--once", action="store_true", help="Run once and exit")
@@ -57,3 +59,6 @@ if __name__ == '__main__':
         except Exception as e:
             print(f"[ERROR] Scheduler exception: {e}", flush=True)
             time.sleep(60)
+
+if __name__ == '__main__':
+    main()
