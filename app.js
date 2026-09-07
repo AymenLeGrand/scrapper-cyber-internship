@@ -1040,39 +1040,56 @@ function escapeHtml(str) {
 }
 
 async function startScanTimer() {
-  const el = document.getElementById('nextScanTimer');
-  if (!el) return;
-
-  let nextScan = null;
+  const timerEl = document.getElementById('nextScanTimer');
+  const lastScrapedEl = document.getElementById('lastScrapedText');
+  if (!timerEl) return;
 
   try {
     const res = await fetch('./data/meta.json?t=' + Date.now());
     if (res.ok) {
       const meta = await res.json();
-      if (meta.last_scraped_at) {
-        nextScan = new Date(meta.last_scraped_at).getTime() + 3 * 3600 * 1000;
+      if (meta.last_scraped_at && lastScrapedEl) {
+        const d = new Date(meta.last_scraped_at);
+        if (!isNaN(d.getTime())) {
+          const hh = String(d.getHours()).padStart(2, '0');
+          const mm = String(d.getMinutes()).padStart(2, '0');
+          const dd = String(d.getDate()).padStart(2, '0');
+          const mo = String(d.getMonth() + 1).padStart(2, '0');
+          lastScrapedEl.textContent = `Dernier scan : ${dd}/${mo} à ${hh}h${mm}`;
+        }
       }
     }
-  } catch (_) {}
+  } catch (_) {
+    if (lastScrapedEl) lastScrapedEl.textContent = 'Dernier scan : Enregistré';
+  }
 
-  // Fallback: anchor to next multiple of 3 hours UTC (0, 3, 6, 9, 12, 15, 18, 21 UTC)
-  if (!nextScan || isNaN(nextScan)) {
+  function getNextScheduledTime() {
+    // 3-hour schedule (00:00, 03:00, 06:00, 09:00, 12:00, 15:00, 18:00, 21:00 UTC)
     const now = new Date();
-    const utcH = now.getUTCHours();
-    const nextH = Math.floor(utcH / 3) * 3 + 3;
-    nextScan = Date.UTC(
-      now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),
-      nextH
+    const currentUtcH = now.getUTCHours();
+    const nextUtcH = Math.floor(currentUtcH / 3) * 3 + 3;
+    return Date.UTC(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate(),
+      nextUtcH, 0, 0, 0
     );
   }
 
   function tick() {
-    const remaining = Math.max(0, nextScan - Date.now());
+    let target = getNextScheduledTime();
+    let remaining = target - Date.now();
+    
+    // If the slot has passed or is right now, roll forward 3 hours
+    while (remaining <= 0) {
+      target += 3 * 3600 * 1000;
+      remaining = target - Date.now();
+    }
+
     const h = Math.floor(remaining / 3600000);
     const m = Math.floor((remaining % 3600000) / 60000);
     const s = Math.floor((remaining % 60000) / 1000);
-    el.textContent = `${String(h).padStart(2, '0')}h ${String(m).padStart(2, '0')}m ${String(s).padStart(2, '0')}s`;
-    if (remaining === 0) el.textContent = 'en cours...';
+    timerEl.textContent = `${String(h).padStart(2, '0')}h ${String(m).padStart(2, '0')}m ${String(s).padStart(2, '0')}s`;
   }
 
   tick();
