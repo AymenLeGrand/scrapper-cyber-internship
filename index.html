@@ -28,6 +28,12 @@
         <button id="exportCsvBtn" class="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-md border border-zinc-800 bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white transition">
           Export CSV
         </button>
+        <button id="lockBtn" title="Verrouiller l'accès" class="hidden inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md border border-zinc-800 bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-zinc-200 transition cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+          </svg>
+          <span class="hidden sm:inline">Verrouiller</span>
+        </button>
       </div>
     </div>
   </header>
@@ -178,6 +184,60 @@
     Stages Cybersécurité & Cryptologie — France
   </footer>
 
-  <script src="app.js?v=9.0"></script>
+  <!-- Lock Screen Modal -->
+  <div id="authOverlay" class="fixed inset-0 z-50 bg-[#09090b] flex items-center justify-center p-4">
+    <div class="w-full max-w-sm bg-zinc-900/95 border border-zinc-800 p-6 rounded-xl shadow-2xl space-y-4">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-zinc-800/80 border border-zinc-700/60 flex items-center justify-center text-zinc-300 shrink-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+          </svg>
+        </div>
+        <div>
+          <h2 class="text-sm font-semibold text-zinc-100">Accès restreint</h2>
+          <p class="text-xs text-zinc-400">Tracker PFE Cyber & Cryptologie</p>
+        </div>
+      </div>
+
+      <form id="authForm" class="space-y-3 pt-2">
+        <div>
+          <label for="authPassword" class="block text-xs font-medium text-zinc-400 mb-1">Mot de passe</label>
+          <input 
+            type="password" 
+            id="authPassword" 
+            placeholder="••••••••••••"
+            required
+            autocomplete="current-password"
+            class="w-full px-3.5 py-2 text-sm bg-zinc-950 border border-zinc-800 rounded-md text-zinc-200 placeholder-zinc-600 focus:outline-none focus:border-zinc-500 font-mono tracking-wider transition"
+          >
+          <p id="authError" class="hidden text-xs text-rose-400 mt-1.5 flex items-center gap-1">
+            Mot de passe incorrect
+          </p>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-zinc-400">
+          <label class="inline-flex items-center gap-1.5 cursor-pointer select-none">
+            <input type="checkbox" id="authRemember" class="rounded bg-zinc-950 border-zinc-800 text-indigo-500 focus:ring-0 w-3.5 h-3.5">
+            <span>Mémoriser sur cet appareil</span>
+          </label>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full py-2 px-4 rounded-md bg-zinc-100 text-zinc-950 hover:bg-white font-medium text-xs transition cursor-pointer"
+        >
+          Déverrouiller
+        </button>
+      </form>
+
+      <div class="text-[11px] text-zinc-600 text-center pt-2 border-t border-zinc-800/60 font-mono">
+        Authentification SHA-256 (WebCrypto)
+      </div>
+
+    </div>
+  </div>
+
+  <script src="app.js?v=9.1"></script>
 </body>
 </html>

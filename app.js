@@ -301,12 +301,102 @@ const SPONTANEOUS_COMPANIES = [
   }
 ];
 
-document.addEventListener('DOMContentLoaded', async () => {
+// =============================================================================
+// AUTHENTICATION & ACCESS CONTROL (SHA-256 WebCrypto)
+// Default Password: "cyber2026"
+// =============================================================================
+const DEFAULT_AUTH_HASH = 'fa2a6c475b0f565a40816f4f71014337823ef9c35f1a9f4bdf1fb21ca0a1a748';
+
+async function sha256(str) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(str);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  return Array.from(new Uint8Array(hashBuffer))
+    .map(b => b.toString(16).padStart(2, '0'))
+    .join('');
+}
+
+function isAuthenticated() {
+  const expectedHash = localStorage.getItem('custom_auth_hash') || DEFAULT_AUTH_HASH;
+  const sessionToken = sessionStorage.getItem('auth_token');
+  const localToken = localStorage.getItem('auth_token');
+  return sessionToken === expectedHash || localToken === expectedHash;
+}
+
+let appInitialized = false;
+
+async function initApp() {
+  if (appInitialized) return;
+  appInitialized = true;
+
+  const lockBtn = document.getElementById('lockBtn');
+  if (lockBtn) lockBtn.classList.remove('hidden');
+
   renderSpontaneousGrid();
   setupSpontaneousToggle();
   await loadJobs();
   setupEventListeners();
   startScanTimer();
+}
+
+function setupAuth() {
+  const overlay = document.getElementById('authOverlay');
+  const form = document.getElementById('authForm');
+  const pwdInput = document.getElementById('authPassword');
+  const errText = document.getElementById('authError');
+  const rememberChk = document.getElementById('authRemember');
+  const lockBtn = document.getElementById('lockBtn');
+
+  if (isAuthenticated()) {
+    if (overlay) overlay.classList.add('hidden');
+    initApp();
+  } else {
+    if (overlay) overlay.classList.remove('hidden');
+    if (pwdInput) {
+      setTimeout(() => pwdInput.focus(), 100);
+    }
+  }
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const pwd = pwdInput.value;
+      if (!pwd) return;
+
+      const hash = await sha256(pwd);
+      const expectedHash = localStorage.getItem('custom_auth_hash') || DEFAULT_AUTH_HASH;
+
+      if (hash === expectedHash) {
+        if (errText) errText.classList.add('hidden');
+        sessionStorage.setItem('auth_token', hash);
+        if (rememberChk && rememberChk.checked) {
+          localStorage.setItem('auth_token', hash);
+        }
+        if (overlay) overlay.classList.add('hidden');
+        initApp();
+      } else {
+        if (errText) {
+          errText.classList.remove('hidden');
+        }
+        pwdInput.classList.add('border-rose-500');
+        pwdInput.value = '';
+        pwdInput.focus();
+        setTimeout(() => pwdInput.classList.remove('border-rose-500'), 2000);
+      }
+    });
+  }
+
+  if (lockBtn) {
+    lockBtn.addEventListener('click', () => {
+      sessionStorage.removeItem('auth_token');
+      localStorage.removeItem('auth_token');
+      location.reload();
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setupAuth();
 });
 
 function renderSpontaneousGrid() {
