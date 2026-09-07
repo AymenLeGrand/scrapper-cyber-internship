@@ -13,6 +13,11 @@ if BASE_DIR not in sys.path:
 if sys.platform == "win32":
     sys.stdout.reconfigure(encoding="utf-8")
 
+try:
+    from scraper.filters import is_valid_cyber_crypto_job
+except ImportError:
+    from filters import is_valid_cyber_crypto_job
+
 all_jobs = []
 
 # -------------------------------------------------------------
@@ -591,19 +596,63 @@ except Exception as e:
     scraper_errors.append(f"LinkedIn: {e}")
 
 # -------------------------------------------------------------
-# DEDUPLICATION & VALIDATION
+# DEDUPLICATION, PERSISTENCE & MERGE
+# Prevents jobs from disappearing if an API temporarily rotates or rate-limits
 # -------------------------------------------------------------
+output_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "jobs.json")
+existing_jobs = []
+if os.path.exists(output_path):
+    try:
+        with open(output_path, "r", encoding="utf-8") as f:
+            existing_jobs = json.load(f)
+    except Exception as e:
+        print(f"[Persistence] Warning reading existing jobs: {e}")
+
 unique_jobs = []
 seen_ids = set()
 seen_urls = set()
 
+# 0. Filter out non-cyber GRC and generic digital/business postings
+all_jobs = [j for j in all_jobs if is_valid_cyber_crypto_job(j.get("title", ""), j.get("description", ""))]
+existing_jobs = [ej for ej in existing_jobs if is_valid_cyber_crypto_job(ej.get("title", ""), ej.get("description", ""))]
+
+# 1. Add newly scraped jobs first (freshest data)
 for j in all_jobs:
     if not j.get("status"):
         j["status"] = "active"
-    if j["id"] not in seen_ids and j["direct_url"] not in seen_urls:
-        seen_ids.add(j["id"])
-        seen_urls.add(j["direct_url"])
+    # Normalize timestamp if relative contains hours/minutes
+    rel = j.get("posted_relative") or ""
+    p_at = j.get("posted_at") or ""
+    if rel and (not p_at or "T" not in p_at):
+        m_hour = re.search(r"(\d+)\s*(?:heure|h|hour)", rel, re.I)
+        m_min = re.search(r"(\d+)\s*(?:minute|min)", rel, re.I)
+        now_utc = datetime.datetime.now(datetime.timezone.utc)
+        if m_hour:
+            j["posted_at"] = (now_utc - datetime.timedelta(hours=int(m_hour.group(1)))).strftime("%Y-%m-%dT%H:%M:%SZ")
+        elif m_min:
+            j["posted_at"] = (now_utc - datetime.timedelta(minutes=int(m_min.group(1)))).strftime("%Y-%m-%dT%H:%M:%SZ")
+    jid = j["id"]
+    jurl = j["direct_url"]
+    if jid not in seen_ids and jurl not in seen_urls:
+        seen_ids.add(jid)
+        seen_urls.add(jurl)
         unique_jobs.append(j)
+
+# 2. Retain any existing active jobs that were not part of this specific scrape batch
+retained_count = 0
+for ej in existing_jobs:
+    ejid = ej.get("id", "")
+    ejurl = ej.get("direct_url", "")
+    if ejid not in seen_ids and ejurl not in seen_urls:
+        # Only retain if not explicitly closed/expired
+        if ej.get("status") not in ("closed", "expired"):
+            seen_ids.add(ejid)
+            seen_urls.add(ejurl)
+            unique_jobs.append(ej)
+            retained_count += 1
+
+if retained_count > 0:
+    print(f"[Persistence] Retained {retained_count} existing active job(s) from previous scans.")
 
 all_jobs = unique_jobs
 
@@ -613,7 +662,6 @@ for comp, cnt in sorted(c.items()):
     print(f" - {comp}: {cnt}")
 
 # Write to data/jobs.json
-output_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "jobs.json")
 with open(output_path, "w", encoding="utf-8") as f:
     json.dump(all_jobs, f, ensure_ascii=False, indent=2)
 
@@ -626,7 +674,7 @@ with open(meta_path, "w", encoding="utf-8") as f:
         "last_scraped_at": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
         "total": len(all_jobs),
         "scraper_errors": scraper_errors
-    }, f)
+    }, f, ensure_ascii=False, indent=2)
 print(f"Meta written to {meta_path}")
 if scraper_errors:
     print(f"[HEALTH] {len(scraper_errors)} scraper error(s) detected: {scraper_errors}")

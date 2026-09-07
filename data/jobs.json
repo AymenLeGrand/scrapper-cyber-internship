@@ -721,82 +721,6 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "sr_Wavestone1_744000147947609",
-    "title": "Stage de fin d’études – Business Development & Transformation par l’Intelligence Artificielle",
-    "company_id": "wavestone",
-    "company_name": "Wavestone (Cybersecurity & Digital Trust)",
-    "location": "Paris, France",
-    "direct_url": "https://jobs.smartrecruiters.com/Wavestone1/744000147947609",
-    "domain": "AI & Cybersecurity",
-    "all_domains": [
-      "AI & Cybersecurity"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "SmartRecruiters (Official Portal)",
-    "posted_at": "2026-09-07T13:53:50.022Z",
-    "status": "active"
-  },
-  {
-    "id": "sr_Wavestone1_744000147929329",
-    "title": "Consultant.e Junior en Transformation Digitale - B CTO - Comment optimiser les processus opérationnels en tirant profit de la GenAI afin d’assurer une livraison de bout en bout en garantissant la qualité de ces services en interne ? (Stage de fin d'études)",
-    "company_id": "wavestone",
-    "company_name": "Wavestone (Cybersecurity & Digital Trust)",
-    "location": "Paris, France",
-    "direct_url": "https://jobs.smartrecruiters.com/Wavestone1/744000147929329",
-    "domain": "AI & Cybersecurity",
-    "all_domains": [
-      "AI & Cybersecurity"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "SmartRecruiters (Official Portal)",
-    "posted_at": "2026-09-07T12:46:01.230Z",
-    "status": "active"
-  },
-  {
-    "id": "sr_Wavestone1_744000147929139",
-    "title": "Consultant.e Junior en Transformation Digitale - Future of Work - Workplace Security : Poste de travail moderne : comment éviter sa compromission ? (Stage de fin d'études)",
-    "company_id": "wavestone",
-    "company_name": "Wavestone (Cybersecurity & Digital Trust)",
-    "location": "Paris, France",
-    "direct_url": "https://jobs.smartrecruiters.com/Wavestone1/744000147929139",
-    "domain": "Cybersecurity (General)",
-    "all_domains": [
-      "Cybersecurity (General)"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "SmartRecruiters (Official Portal)",
-    "posted_at": "2026-09-07T12:45:33.200Z",
-    "status": "active"
-  },
-  {
-    "id": "sr_Wavestone1_744000147928549",
-    "title": "Consultant·e en Transformation Digitale - Boosting CTO : Quel rôle doit jouer le CTO/CIO Office de demain pour répondre aux nouveaux défis technologiques, organisationnels et stratégiques des DSI à l'ère de l'Intelligence Artificielle ? (SFE)",
-    "company_id": "wavestone",
-    "company_name": "Wavestone (Cybersecurity & Digital Trust)",
-    "location": "Paris, France",
-    "direct_url": "https://jobs.smartrecruiters.com/Wavestone1/744000147928549",
-    "domain": "AI & Cybersecurity",
-    "all_domains": [
-      "AI & Cybersecurity"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "SmartRecruiters (Official Portal)",
-    "posted_at": "2026-09-07T12:44:11.923Z",
-    "status": "active"
-  },
-  {
     "id": "sr_Wavestone1_744000147239559",
     "title": "Stage - Consultant·e Cybersécurité & Confiance Numérique",
     "company_id": "wavestone",
@@ -814,160 +738,6 @@
     "source": "SmartRecruiters (Official Portal)",
     "posted_at": "2026-09-03T12:29:12.684Z",
     "status": "active"
-  },
-  {
-    "id": "sr_Wavestone1_744000141503245",
-    "title": "Consultant.e.s - Stage de fin d'études - Nantes - CYB - Quelles nouvelles méthodologies et modèles de gouvernance pour la sécurité ?",
-    "company_id": "wavestone",
-    "company_name": "Wavestone (Cybersecurity & Digital Trust)",
-    "location": "Nantes, France",
-    "direct_url": "https://jobs.smartrecruiters.com/Wavestone1/744000141503245",
-    "domain": "Cloud / GRC / DevSecOps",
-    "all_domains": [
-      "Cloud / GRC / DevSecOps"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "SmartRecruiters (Official Portal)",
-    "posted_at": "2026-08-04T14:00:10.577Z",
-    "status": "active"
-  },
-  {
-    "id": "sr_Wavestone1_744000141500819",
-    "title": "Consultant.e.s - Stage de fin d'études - Nantes - CIO – Quels sont les cas d’usage de l’IA générative à plus fort ROI  dans les DSI des grandes organisations ?",
-    "company_id": "wavestone",
-    "company_name": "Wavestone (Cybersecurity & Digital Trust)",
-    "location": "Nantes, France",
-    "direct_url": "https://jobs.smartrecruiters.com/Wavestone1/744000141500819",
-    "domain": "AI & Cybersecurity",
-    "all_domains": [
-      "AI & Cybersecurity"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "SmartRecruiters (Official Portal)",
-    "posted_at": "2026-08-04T13:43:00.631Z",
-    "status": "active"
-  },
-  {
-    "id": "sr_Wavestone1_744000141495999",
-    "title": "Consultant.e.s - Stage de fin d'études - Nantes – CIO – Comment déployer un dispositif GenBI à l’échelle ? Architecture, gouvernance sémantique et conduite du changement ",
-    "company_id": "wavestone",
-    "company_name": "Wavestone (Cybersecurity & Digital Trust)",
-    "location": "Nantes, France",
-    "direct_url": "https://jobs.smartrecruiters.com/Wavestone1/744000141495999",
-    "domain": "Cloud / GRC / DevSecOps",
-    "all_domains": [
-      "Cloud / GRC / DevSecOps"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "SmartRecruiters (Official Portal)",
-    "posted_at": "2026-08-04T13:23:14.901Z",
-    "status": "active"
-  },
-  {
-    "id": "sr_Wavestone1_744000141493420",
-    "title": "Consultant.e.s - Stage de fin d'études - Nantes - CYB - Identity & Access Management : Role mining & Intelligence Artificielle",
-    "company_id": "wavestone",
-    "company_name": "Wavestone (Cybersecurity & Digital Trust)",
-    "location": "Nantes, France",
-    "direct_url": "https://jobs.smartrecruiters.com/Wavestone1/744000141493420",
-    "domain": "AI & Cybersecurity",
-    "all_domains": [
-      "AI & Cybersecurity"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "SmartRecruiters (Official Portal)",
-    "posted_at": "2026-08-04T13:14:57.751Z",
-    "status": "active"
-  },
-  {
-    "id": "sr_Wavestone1_744000141491839",
-    "title": "Consultant.e.s - Stage de fin d'études - Nantes – CIO – IA × RSE – Comment maîtriser coûts et empreinte environnementale d’un système d’IA générative ? FinOps & GreenOps des SIA ",
-    "company_id": "wavestone",
-    "company_name": "Wavestone (Cybersecurity & Digital Trust)",
-    "location": "Nantes, France",
-    "direct_url": "https://jobs.smartrecruiters.com/Wavestone1/744000141491839",
-    "domain": "AI & Cybersecurity",
-    "all_domains": [
-      "AI & Cybersecurity"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "SmartRecruiters (Official Portal)",
-    "posted_at": "2026-08-04T13:06:25.363Z",
-    "status": "active"
-  },
-  {
-    "id": "sr_Wavestone1_744000141487086",
-    "title": "Consultant.e.s - Stage de fin d'études - Nantes - CYB - Quel framework et socle de sécurité à l'ère des nouvelles réglementations Européennes (NIS 2, REC, CRA, DORA) ?",
-    "company_id": "wavestone",
-    "company_name": "Wavestone (Cybersecurity & Digital Trust)",
-    "location": "Nantes, France",
-    "direct_url": "https://jobs.smartrecruiters.com/Wavestone1/744000141487086",
-    "domain": "Cloud / GRC / DevSecOps",
-    "all_domains": [
-      "Cloud / GRC / DevSecOps"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "SmartRecruiters (Official Portal)",
-    "posted_at": "2026-08-04T13:01:09.062Z",
-    "status": "active"
-  },
-  {
-    "id": "sr_Wavestone1_744000141488271",
-    "title": "Consultant.e.s - Stage de fin d'études - Nantes - CIO - Intelligence artificielle : comment choisir son architecture RAG ?",
-    "company_id": "wavestone",
-    "company_name": "Wavestone (Cybersecurity & Digital Trust)",
-    "location": "Nantes, France",
-    "direct_url": "https://jobs.smartrecruiters.com/Wavestone1/744000141488271",
-    "domain": "AI & Cybersecurity",
-    "all_domains": [
-      "AI & Cybersecurity"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "SmartRecruiters (Official Portal)",
-    "posted_at": "2026-08-04T12:58:00.870Z",
-    "status": "active"
-  },
-  {
-    "id": "linkedin_4457166196",
-    "title": "STAGE - Cyber Sécurité & Gouvernance SMSI (H/F)",
-    "company_name": "Volkswagen Group France",
-    "location": "Roissy-en-France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-cyber-s%C3%A9curit%C3%A9-gouvernance-smsi-h-f-at-volkswagen-group-france-4457166196",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D560BAQFDzqet0GNGLA/company-logo_100_100/company-logo_100_100/0/1706629435018/groupe_volkswagen_france_logo?e=2147483647&v=beta&t=26O5XvxtaGVX1CIIcbbTf5gD1TrspQr5t6Ciie4WXk8",
-    "posted_at": "2026-08-24",
-    "posted_relative": "il y a 2 semaines",
-    "domain": "Cloud / GRC / DevSecOps",
-    "all_domains": [
-      "Cloud / GRC / DevSecOps"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
   },
   {
     "id": "linkedin_4460294369",
@@ -997,8 +767,8 @@
     "location": "Vélizy-Villacoublay, France",
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-ing%C3%A9nieur-cybers%C3%A9curit%C3%A9-f-h-at-dassault-syst%C3%A8mes-4464098101",
     "logo_url": "https://media.licdn.com/dms/image/v2/C560BAQHroRzeNTva6Q/company-logo_100_100/company-logo_100_100/0/1631330934922?e=2147483647&v=beta&t=Y_LaLgUh3t_AY4PloiAtAbGGfEr2fGl7C4_RBhQ7Vok",
-    "posted_at": "2026-09-07",
-    "posted_relative": "il y a 14 heures",
+    "posted_at": "2026-09-07T05:56:33Z",
+    "posted_relative": "il y a 15 heures",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -1054,20 +824,20 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4458115482",
-    "title": "Internship - FPGA Hardware Design - PQ Cryptography Hardware Accelerator",
-    "company_name": "CryptoNext Security",
+    "id": "linkedin_4442211939",
+    "title": "Stage -  Ingénieur·e DevSecOps",
+    "company_name": "Numberly",
     "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/internship-fpga-hardware-design-pq-cryptography-hardware-accelerator-at-cryptonext-security-4458115482",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQH9Wpe4VaO7Zg/company-logo_100_100/B4EZfpF1kHHcAU-/0/1751962311259/cryptonext_security_logo?e=2147483647&v=beta&t=OoWKM78C9HmcgJc-Y2BhbRqh6ggdq-xr6MevWAtRcU0",
-    "posted_at": "2026-08-23",
-    "posted_relative": "il y a 2 semaines",
-    "domain": "Cryptology",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-ing%C3%A9nieur%C2%B7e-devsecops-at-numberly-4442211939",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEZtoQcDlMOnA/company-logo_100_100/B4EZv.rR4yGwAQ-/0/1769504317567/numberly_logo?e=2147483647&v=beta&t=3MmAO2mD8Z9FCDw9aLbLBWz6R2pCti4k6BuTyoAhYS4",
+    "posted_at": "2026-08-31",
+    "posted_relative": "il y a 1 semaine",
+    "domain": "Cloud / DevSecOps",
     "all_domains": [
-      "Cryptology"
+      "Cloud / DevSecOps"
     ],
-    "is_crypto": true,
-    "is_cyber": false,
+    "is_crypto": false,
+    "is_cyber": true,
     "eligible_algerian": true,
     "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
     "source": "LinkedIn (Offres Publiques)",
@@ -1081,7 +851,7 @@
     "location": "Toulon, France",
     "direct_url": "https://fr.linkedin.com/jobs/view/r%C3%A9alisation-de-contr%C3%B4le-cybers%C3%A9curit%C3%A9-des-syst%C3%A8mes-d%E2%80%99information-stage-at-french-cyber-command-4458411010",
     "logo_url": "https://media.licdn.com/dms/image/v2/C4D0BAQGXTxKhUBzgxQ/company-logo_100_100/company-logo_100_100/0/1630546121906/commandement_de_la_cyberdfense_logo?e=2147483647&v=beta&t=aVfbworurih8AxGC_6RER0gBSNkZ4NS7VLl0pSwJ_hM",
-    "posted_at": "2026-08-28",
+    "posted_at": "2026-08-31",
     "posted_relative": "il y a 1 semaine",
     "domain": "Cybersecurity (General)",
     "all_domains": [
@@ -1117,6 +887,109 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
+    "id": "linkedin_4462856345",
+    "title": "Stage – Ingénieur(e) technique Cybersécurité – Défense & Sécurité – Île-de-France",
+    "company_name": "Sopra Steria",
+    "location": "Montreuil, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-%E2%80%93-ing%C3%A9nieur-e-technique-cybers%C3%A9curit%C3%A9-%E2%80%93-d%C3%A9fense-s%C3%A9curit%C3%A9-%E2%80%93-%C3%AEle-de-france-at-sopra-steria-4462856345",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
+    "posted_at": "2026-09-03",
+    "posted_relative": "il y a 4 jours",
+    "domain": "Cybersecurity (General)",
+    "all_domains": [
+      "Cybersecurity (General)"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4459812438",
+    "title": "2027 Intern, Forensic & Litigation Consulting, Cyber",
+    "company_name": "FTI Consulting",
+    "location": "Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/2027-intern-forensic-litigation-consulting-cyber-at-fti-consulting-4459812438",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEP6MdwujALoQ/company-logo_100_100/company-logo_100_100/0/1719924229766/fti_consulting_logo?e=2147483647&v=beta&t=uAwBl30gpwVGgVq4eJbmTimtqRE8pgCP1_IjD_Z5aIg",
+    "posted_at": "2026-08-31",
+    "posted_relative": "il y a 1 semaine",
+    "domain": "Cyber Defensive / SOC / DFIR",
+    "all_domains": [
+      "Cyber Defensive / SOC / DFIR"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4462835914",
+    "title": "Stage - Analyste MDR - Detection Cybersécurité - Île-de-France",
+    "company_name": "Sopra Steria",
+    "location": "Courbevoie, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-analyste-mdr-detection-cybers%C3%A9curit%C3%A9-%C3%AEle-de-france-at-sopra-steria-4462835914",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
+    "posted_at": "2026-09-03",
+    "posted_relative": "il y a 4 jours",
+    "domain": "Cyber Defensive / SOC / DFIR",
+    "all_domains": [
+      "Cyber Defensive / SOC / DFIR"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4458115482",
+    "title": "Internship - FPGA Hardware Design - PQ Cryptography Hardware Accelerator",
+    "company_name": "CryptoNext Security",
+    "location": "Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/internship-fpga-hardware-design-pq-cryptography-hardware-accelerator-at-cryptonext-security-4458115482",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQH9Wpe4VaO7Zg/company-logo_100_100/B4EZfpF1kHHcAU-/0/1751962311259/cryptonext_security_logo?e=2147483647&v=beta&t=OoWKM78C9HmcgJc-Y2BhbRqh6ggdq-xr6MevWAtRcU0",
+    "posted_at": "2026-08-24",
+    "posted_relative": "il y a 2 semaines",
+    "domain": "Cryptology",
+    "all_domains": [
+      "Cryptology"
+    ],
+    "is_crypto": true,
+    "is_cyber": false,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "sr_Wavestone1_744000141493420",
+    "title": "Consultant.e.s - Stage de fin d'études - Nantes - CYB - Identity & Access Management : Role mining & Intelligence Artificielle",
+    "company_id": "wavestone",
+    "company_name": "Wavestone (Cybersecurity & Digital Trust)",
+    "location": "Nantes, France",
+    "direct_url": "https://jobs.smartrecruiters.com/Wavestone1/744000141493420",
+    "domain": "AI & Cybersecurity",
+    "all_domains": [
+      "AI & Cybersecurity"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "SmartRecruiters (Official Portal)",
+    "posted_at": "2026-08-04T13:14:57.751Z",
+    "status": "active"
+  },
+  {
     "id": "linkedin_4464307038",
     "title": "STAGE - Chargé d'Opérations Cybersécurité (F/H)",
     "company_name": "Dassault Systèmes",
@@ -1124,7 +997,28 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-charg%C3%A9-d-op%C3%A9rations-cybers%C3%A9curit%C3%A9-f-h-at-dassault-syst%C3%A8mes-4464307038",
     "logo_url": "https://media.licdn.com/dms/image/v2/C560BAQHroRzeNTva6Q/company-logo_100_100/company-logo_100_100/0/1631330934922?e=2147483647&v=beta&t=Y_LaLgUh3t_AY4PloiAtAbGGfEr2fGl7C4_RBhQ7Vok",
     "posted_at": "2026-09-07",
-    "posted_relative": "il y a 14 heures",
+    "posted_relative": "il y a 15 heures",
+    "domain": "Cyber Defensive / SOC / DFIR",
+    "all_domains": [
+      "Cyber Defensive / SOC / DFIR"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4462834988",
+    "title": "Stage - Analyste MDR - Detection Cybersécurité - Rennes",
+    "company_name": "Sopra Steria",
+    "location": "Cesson-Sévigné, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-analyste-mdr-detection-cybers%C3%A9curit%C3%A9-rennes-at-sopra-steria-4462834988",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
+    "posted_at": "2026-09-03",
+    "posted_relative": "il y a 4 jours",
     "domain": "Cyber Defensive / SOC / DFIR",
     "all_domains": [
       "Cyber Defensive / SOC / DFIR"
@@ -1159,35 +1053,14 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4462856345",
-    "title": "Stage – Ingénieur(e) technique Cybersécurité – Défense & Sécurité – Île-de-France",
-    "company_name": "Sopra Steria",
-    "location": "Montreuil, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-%E2%80%93-ing%C3%A9nieur-e-technique-cybers%C3%A9curit%C3%A9-%E2%80%93-d%C3%A9fense-s%C3%A9curit%C3%A9-%E2%80%93-%C3%AEle-de-france-at-sopra-steria-4462856345",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
-    "posted_at": "2026-09-03",
-    "posted_relative": "il y a 4 jours",
-    "domain": "Cybersecurity (General)",
-    "all_domains": [
-      "Cybersecurity (General)"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4442211939",
-    "title": "Stage -  Ingénieur·e DevSecOps",
-    "company_name": "Numberly",
-    "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-ing%C3%A9nieur%C2%B7e-devsecops-at-numberly-4442211939",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEZtoQcDlMOnA/company-logo_100_100/B4EZv.rR4yGwAQ-/0/1769504317567/numberly_logo?e=2147483647&v=beta&t=3MmAO2mD8Z9FCDw9aLbLBWz6R2pCti4k6BuTyoAhYS4",
-    "posted_at": "2026-08-31",
-    "posted_relative": "il y a 1 semaine",
+    "id": "linkedin_4462946302",
+    "title": "Stage – Consultant Sécurité IAM RUN (H/F)",
+    "company_name": "SYNETIS",
+    "location": "Cesson-Sévigné, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-%E2%80%93-consultant-s%C3%A9curit%C3%A9-iam-run-h-f-at-synetis-4462946302",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQGOWhtaZF2Qbg/company-logo_100_100/company-logo_100_100/0/1704186084079/synetis_logo?e=2147483647&v=beta&t=9oVbxFjvhl6Zvd0ORHMRZVHyZz1qEqaW6-wyOmJ_qyo",
+    "posted_at": "2026-09-07",
+    "posted_relative": "il y a 11 heures",
     "domain": "Cloud / GRC / DevSecOps",
     "all_domains": [
       "Cloud / GRC / DevSecOps"

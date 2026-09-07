@@ -141,6 +141,12 @@ const SPONTANEOUS_COMPANIES = [
     url: "https://jobs.smartrecruiters.com/Wavestone1"
   },
   {
+    name: "Nomios",
+    group: "consulting_defense",
+    sector: "Intégrateur Réseaux & Sécurité / NetSec",
+    url: "https://www.nomios.fr/recrutement/"
+  },
+  {
     name: "Devoteam Cyber Trust",
     group: "consulting_defense",
     sector: "Conseil & Intégration Sécurité",
@@ -639,48 +645,143 @@ function setupEventListeners() {
   if (exportCsvBtn) {
     exportCsvBtn.addEventListener('click', exportToCsv);
   }
+
+  const triggerScanBtn = document.getElementById('triggerScanBtn');
+  const scanBtnIcon = document.getElementById('scanBtnIcon');
+  const scanBtnText = document.getElementById('scanBtnText');
+
+  if (triggerScanBtn) {
+    triggerScanBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+
+      const isLocalServer = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
+      if (!isLocalServer) {
+        window.open('https://github.com/clementgre/stage-cyber-france/actions', '_blank', 'noopener,noreferrer');
+        showToast("Ouverture de GitHub Actions pour déclencher le scan cloud.");
+        return;
+      }
+
+      if (triggerScanBtn.disabled) return;
+
+      triggerScanBtn.disabled = true;
+      triggerScanBtn.classList.add('opacity-70', 'cursor-not-allowed');
+      if (scanBtnIcon) scanBtnIcon.classList.add('animate-spin');
+      if (scanBtnText) scanBtnText.textContent = "Scan en cours (15-30s)...";
+      showToast("Scan démarré en local...");
+
+      try {
+        const response = await fetch('/api/scrape', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (!response.ok) {
+          const errData = await response.json().catch(() => ({}));
+          throw new Error(errData.message || `Erreur serveur (${response.status})`);
+        }
+
+        const data = await response.json();
+        if (typeof refreshMeta === 'function') {
+          await refreshMeta();
+        }
+        await loadJobs();
+        showToast(`Scan terminé ! ${data.jobs_count || allJobs.length} offres actives.`);
+      } catch (err) {
+        console.error('Scrape error:', err);
+        showToast(`Erreur lors du scan : ${err.message || 'Échec de la requête'}`);
+      } finally {
+        triggerScanBtn.disabled = false;
+        triggerScanBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+        if (scanBtnIcon) scanBtnIcon.classList.remove('animate-spin');
+        if (scanBtnText) scanBtnText.textContent = "Lancer un scan maintenant";
+      }
+    });
+  }
+}
+
+function getJobTimeMs(job) {
+  const rel = (job.posted_relative || '').toLowerCase();
+
+  // 1. Check relative string with minutes, hours, days, weeks, months
+  const mMin = rel.match(/(\d+)\s*(?:minute|min)/);
+  if (mMin) {
+    return Date.now() - parseInt(mMin[1], 10) * 60 * 1000;
+  }
+  const mHour = rel.match(/(\d+)\s*(?:heure|h|hour)/);
+  if (mHour) {
+    return Date.now() - parseInt(mHour[1], 10) * 3600 * 1000;
+  }
+  const mDay = rel.match(/(\d+)\s*(?:jour|j|day)/);
+  if (mDay) {
+    return Date.now() - parseInt(mDay[1], 10) * 86400 * 1000;
+  }
+  const mWeek = rel.match(/(\d+)\s*(?:semaine|sem|week)/);
+  if (mWeek) {
+    return Date.now() - parseInt(mWeek[1], 10) * 7 * 86400 * 1000;
+  }
+  const mMonth = rel.match(/(\d+)\s*(?:mois|month)/);
+  if (mMonth) {
+    return Date.now() - parseInt(mMonth[1], 10) * 30 * 86400 * 1000;
+  }
+  if (rel.includes("aujourd'hui") || rel.includes('today')) {
+    return Date.now() - 4 * 3600 * 1000;
+  }
+
+  // 2. Parse posted_at timestamp
+  if (job.posted_at) {
+    if (job.posted_at.includes('T')) {
+      const t = new Date(job.posted_at).getTime();
+      if (!isNaN(t)) return t;
+    }
+    const dateStr = job.posted_at.slice(0, 10);
+    const t = new Date(`${dateStr}T12:00:00Z`).getTime();
+    if (!isNaN(t)) return t;
+  }
+
+  return 0;
 }
 
 function getJobAgeDays(job) {
-  if (job.posted_at) {
-    const d = new Date(job.posted_at);
-    if (!isNaN(d.getTime())) {
-      const diffMs = Math.max(0, Date.now() - d.getTime());
-      return diffMs / (1000 * 3600 * 24);
-    }
-  }
-  const rel = (job.posted_relative || '').toLowerCase();
-  if (rel.includes('heure') || rel.includes('hour') || rel.includes('minute') || rel.includes("aujourd'hui") || rel.includes('today')) {
-    return 0.1;
-  }
-  const daysMatch = rel.match(/(\d+)\s*(?:jour|day)/);
-  if (daysMatch) return parseInt(daysMatch[1], 10);
-  const weeksMatch = rel.match(/(\d+)\s*(?:semaine|week)/);
-  if (weeksMatch) return parseInt(weeksMatch[1], 10) * 7;
-  const monthsMatch = rel.match(/(\d+)\s*(?:mois|month)/);
-  if (monthsMatch) return parseInt(monthsMatch[1], 10) * 30;
-
-  return 999;
+  const timeMs = getJobTimeMs(job);
+  if (!timeMs) return 999;
+  return Math.max(0, (Date.now() - timeMs) / (1000 * 3600 * 24));
 }
 
 function formatJobAge(job) {
-  if (job.posted_relative) {
-    return job.posted_relative;
+  const timeMs = getJobTimeMs(job);
+  if (!timeMs) {
+    return job.posted_relative || job.posted_at || '';
   }
-  if (job.posted_at) {
-    const d = new Date(job.posted_at);
-    if (!isNaN(d.getTime())) {
-      const days = Math.floor((Date.now() - d.getTime()) / (1000 * 3600 * 24));
-      if (days <= 0) return "Aujourd'hui";
-      if (days === 1) return "Hier";
-      if (days < 7) return `Il y a ${days}j`;
-      if (days < 14) return "Il y a 1 sem.";
-      if (days < 30) return `Il y a ${Math.floor(days / 7)} sem.`;
-      return job.posted_at;
-    }
-    return job.posted_at;
+
+  const diffMs = Math.max(0, Date.now() - timeMs);
+  const diffMin = Math.floor(diffMs / 60000);
+  const diffHour = Math.floor(diffMs / 3600000);
+  const diffDay = Math.floor(diffMs / (3600000 * 24));
+
+  if (diffMin < 60) {
+    return diffMin <= 2 ? "À l'instant" : `Il y a ${diffMin} min`;
   }
-  return '';
+  if (diffHour < 24) {
+    return `Il y a ${diffHour}h`;
+  }
+  if (diffDay === 1) {
+    return "Hier";
+  }
+  if (diffDay < 7) {
+    return `Il y a ${diffDay}j`;
+  }
+  if (diffDay < 14) {
+    return "Il y a 1 sem.";
+  }
+  if (diffDay < 30) {
+    return `Il y a ${Math.floor(diffDay / 7)} sem.`;
+  }
+  if (job.posted_at && job.posted_at.length >= 10) {
+    const parts = job.posted_at.slice(0, 10).split('-');
+    if (parts.length === 3) return `${parts[2]}/${parts[1]}`;
+  }
+  return job.posted_relative || '';
 }
 
 function getCompanyLogoUrl(job) {
@@ -696,6 +797,9 @@ function getCompanyLogoUrl(job) {
   if (name.includes('devoteam')) return 'https://www.google.com/s2/favicons?domain=devoteam.com&sz=128';
   if (name.includes('octo')) return 'https://www.google.com/s2/favicons?domain=octo.com&sz=128';
   if (name.includes('headmind')) return 'https://www.google.com/s2/favicons?domain=headmind.com&sz=128';
+  if (name.includes('nomios')) return 'https://www.google.com/s2/favicons?domain=nomios.fr&sz=128';
+  if (name.includes('numberly')) return 'https://www.google.com/s2/favicons?domain=numberly.com&sz=128';
+  if (name.includes('cybelangel')) return 'https://www.google.com/s2/favicons?domain=cybelangel.com&sz=128';
   if (name.includes('vinci')) return 'https://media.licdn.com/dms/image/v2/C4D0BAQHdpGbxdHCNDw/company-logo_100_100/company-logo_100_100/0/1630573746574/vinci_construction_logo?e=2147483647&v=beta&t=jlIl5DMX7EJ7-RL0G8WVOhgX1YGxwMr-ySBSmUwvNRs';
   if (name.includes('sia')) return 'https://www.google.com/s2/favicons?domain=sia-partners.com&sz=128';
   if (name.includes('mazars')) return 'https://www.google.com/s2/favicons?domain=mazars.com&sz=128';
@@ -776,6 +880,13 @@ function getFilteredJobs() {
       });
       if (!isDef && !(job.domain || '').includes('SOC') && !(job.domain || '').includes('Defensive')) return false;
     }
+    if (activeCategory === 'netsec') {
+      const isNetSec = (job.all_domains || []).some(d => {
+        const dl = d.toLowerCase();
+        return dl.includes('netsec') || dl.includes('réseau') || dl.includes('network') || dl.includes('firewall') || dl.includes('pare-feu') || dl.includes('vpn') || dl.includes('telecom');
+      });
+      if (!isNetSec && !(job.domain || '').toLowerCase().includes('netsec') && !(job.domain || '').toLowerCase().includes('réseau')) return false;
+    }
     if (activeCategory === 'cloud_devsecops') {
       const isCloud = (job.all_domains || []).some(d => {
         const dl = d.toLowerCase();
@@ -826,13 +937,13 @@ function getFilteredJobs() {
     if (sortOrder === 'company') {
       return (a.company_name || '').localeCompare(b.company_name || '');
     }
-    const ageA = getJobAgeDays(a);
-    const ageB = getJobAgeDays(b);
+    const timeA = getJobTimeMs(a);
+    const timeB = getJobTimeMs(b);
     if (sortOrder === 'oldest') {
-      return ageB - ageA;
+      return timeA - timeB;
     }
-    // Default: 'newest'
-    return ageA - ageB;
+    // Default: 'newest' (highest timestamp on top)
+    return timeB - timeA;
   });
 
   return filtered;
@@ -899,8 +1010,12 @@ function createJobCardHtml(job) {
     badgeStyle = 'bg-rose-950/70 text-rose-300 border border-rose-900/60';
   } else if ((job.domain || '').includes('SOC') || (job.domain || '').includes('Defensive')) {
     badgeStyle = 'bg-sky-950/70 text-sky-300 border border-sky-900/60';
+  } else if ((job.domain || '').includes('NetSec') || (job.domain || '').includes('Réseau')) {
+    badgeStyle = 'bg-emerald-950/70 text-emerald-300 border border-emerald-900/60';
   } else if ((job.domain || '').includes('Cloud')) {
     badgeStyle = 'bg-purple-950/70 text-purple-300 border border-purple-900/60';
+  } else if ((job.domain || '').includes('IA') || (job.domain || '').includes('AI')) {
+    badgeStyle = 'bg-amber-950/70 text-amber-300 border border-amber-900/60';
   }
 
   const logoUrl = getCompanyLogoUrl(job);
@@ -1182,29 +1297,71 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
-async function startScanTimer() {
-  const timerEl = document.getElementById('nextScanTimer');
-  const lastScrapedEl = document.getElementById('lastScrapedText');
-  if (!timerEl) return;
+let currentLastScrapedAt = null;
 
+function formatScanDate(isoString) {
+  if (!isoString) return 'Dernier scan : Enregistré';
+  const d = new Date(isoString);
+  if (isNaN(d.getTime())) return 'Dernier scan : Enregistré';
+
+  const now = new Date();
+  const diffMs = Math.max(0, now.getTime() - d.getTime());
+  const diffMin = Math.floor(diffMs / 60000);
+  const diffHour = Math.floor(diffMs / 3600000);
+
+  const hh = String(d.getHours()).padStart(2, '0');
+  const mm = String(d.getMinutes()).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  const mo = String(d.getMonth() + 1).padStart(2, '0');
+
+  let relative = '';
+  if (diffMin < 1) {
+    relative = "à l'instant";
+  } else if (diffMin < 60) {
+    relative = `il y a ${diffMin} min`;
+  } else if (diffHour < 24) {
+    relative = `il y a ${diffHour}h`;
+  } else {
+    relative = `${dd}/${mo}`;
+  }
+
+  return `Dernier scan : ${dd}/${mo} à ${hh}h${mm} (${relative})`;
+}
+
+async function refreshMeta() {
+  const lastScrapedEl = document.getElementById('lastScrapedText');
   try {
     const res = await fetch('./data/meta.json?t=' + Date.now());
     if (res.ok) {
       const meta = await res.json();
-      if (meta.last_scraped_at && lastScrapedEl) {
-        const d = new Date(meta.last_scraped_at);
-        if (!isNaN(d.getTime())) {
-          const hh = String(d.getHours()).padStart(2, '0');
-          const mm = String(d.getMinutes()).padStart(2, '0');
-          const dd = String(d.getDate()).padStart(2, '0');
-          const mo = String(d.getMonth() + 1).padStart(2, '0');
-          lastScrapedEl.textContent = `Dernier scan : ${dd}/${mo} à ${hh}h${mm}`;
+      if (meta.last_scraped_at) {
+        if (lastScrapedEl) {
+          lastScrapedEl.textContent = formatScanDate(meta.last_scraped_at);
+        }
+        if (currentLastScrapedAt && currentLastScrapedAt !== meta.last_scraped_at) {
+          currentLastScrapedAt = meta.last_scraped_at;
+          await loadJobs();
+          showToast("Mise à jour : nouvelles offres synchronisées !");
+        } else {
+          currentLastScrapedAt = meta.last_scraped_at;
         }
       }
     }
   } catch (_) {
-    if (lastScrapedEl) lastScrapedEl.textContent = 'Dernier scan : Enregistré';
+    if (lastScrapedEl && !lastScrapedEl.textContent.includes('Dernier scan')) {
+      lastScrapedEl.textContent = 'Dernier scan : Enregistré';
+    }
   }
+}
+
+async function startScanTimer() {
+  const timerEl = document.getElementById('nextScanTimer');
+  if (!timerEl) return;
+
+  await refreshMeta();
+
+  // Poll for background/cloud updates every 30 seconds
+  setInterval(refreshMeta, 30000);
 
   function getNextScheduledTime() {
     // 3-hour schedule (00:00, 03:00, 06:00, 09:00, 12:00, 15:00, 18:00, 21:00 UTC)
@@ -1219,6 +1376,7 @@ async function startScanTimer() {
     );
   }
 
+  let wasExpired = false;
   function tick() {
     let target = getNextScheduledTime();
     let remaining = target - Date.now();
@@ -1227,6 +1385,13 @@ async function startScanTimer() {
     while (remaining <= 0) {
       target += 3 * 3600 * 1000;
       remaining = target - Date.now();
+      if (!wasExpired) {
+        wasExpired = true;
+        setTimeout(refreshMeta, 2500);
+      }
+    }
+    if (remaining > 10000) {
+      wasExpired = false;
     }
 
     const h = Math.floor(remaining / 3600000);

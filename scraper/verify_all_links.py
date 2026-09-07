@@ -1,5 +1,6 @@
 import urllib3
 urllib3.disable_warnings()
+import os
 import json
 import requests
 import sys
@@ -36,14 +37,15 @@ for i, j in enumerate(jobs, 1):
         if is_linkedin and status in (429, 999, 403):
             is_dead = False
             symbol = "✓ (rate-limit bypass)"
+        elif status in (404, 410):
+            is_dead = True
+            symbol = f"✗ DEAD (HTTP {status})"
         else:
             is_dead = (
-                status in (404, 410) or
                 "<title>404" in body_lower or 
                 "<title>page introuvable" in body_lower or 
                 "cette offre n'est plus active" in body_lower or
                 "cette offre est actuellement pourvue" in body_lower or
-                "ce poste a été pourvu" in body_lower or
                 "this job is no longer available" in body_lower or
                 "position has been filled" in body_lower
             )
@@ -68,6 +70,22 @@ if dead_count > 0:
     with open("data/jobs.json", "w", encoding="utf-8") as f:
         json.dump(valid_jobs, f, indent=2, ensure_ascii=False)
 
+# Keep data/meta.json in perfect sync with the verified jobs count
+meta_path = "data/meta.json"
+meta = {}
+if os.path.exists(meta_path):
+    try:
+        with open(meta_path, "r", encoding="utf-8") as f:
+            meta = json.load(f)
+    except Exception:
+        pass
+meta["total"] = len(valid_jobs)
+import datetime
+meta["last_scraped_at"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+with open(meta_path, "w", encoding="utf-8") as f:
+    json.dump(meta, f, indent=2, ensure_ascii=False)
+
 print(f"\n==================================================")
 print(f"AUDIT COMPLETE: {len(valid_jobs)}/{len(jobs)} URLs are verified active.")
+print(f"Meta synchronized at {meta['last_scraped_at']} ({len(valid_jobs)} total offers).")
 print("ALL LINKS VERIFIED LIVE!")

@@ -474,14 +474,16 @@ def scrape_workday(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
     jobs = []
     seen_paths = set()
 
+    location_countries = []
     if tenant == "thales":
         endpoint = "https://thales.wd3.myworkdayjobs.com/wday/cxs/thales/Careers/jobs"
-        queries = ["cyber", "cryptographie", "securite", "pentest", "soc"]
+        queries = ["stage cyber", "stage cybersécurité", "stage securite", "stage cryptographie", "stage pentest", "stage soc", "stage siem", "stage netsec", "stage reseau", "stage devsecops"]
         base_url = "https://thales.wd3.myworkdayjobs.com/fr-FR/Careers"
-        worker_sub_types = ["47200b8529d910215e133a260a722492"]  # Intern/Trainee facet
+        worker_sub_types = []  # Thales tags almost all stages as Regular Employee in Workday, do not restrict by workerSubType
+        location_countries = ["54c5b6971ffb4bf0b116fe7651ec789a"]  # France
     elif tenant == "ag":
         endpoint = "https://ag.wd3.myworkdayjobs.com/wday/cxs/ag/Airbus/jobs"
-        queries = ["cyber", "cryptographie", "securite", "protect", "stage"]
+        queries = ["cyber", "cryptographie", "securite", "protect", "stage", "netsec", "pentest"]
         base_url = "https://ag.wd3.myworkdayjobs.com/en-US/Airbus"
         worker_sub_types = ["f5811cef9cb50193723ed01d470a6e15"]  # Trainee / Student facet
     else:
@@ -492,6 +494,8 @@ def scrape_workday(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
     for query in queries:
         try:
             applied_facets = {}
+            if location_countries:
+                applied_facets["locationCountry"] = location_countries
             if worker_sub_types and query != "stage":
                 applied_facets["workerSubType"] = worker_sub_types
             if tenant == "ag" and hiring_companies:

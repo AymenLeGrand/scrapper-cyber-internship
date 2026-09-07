@@ -9,6 +9,7 @@ import re
 import time
 import urllib.parse
 from typing import List, Dict, Any
+from datetime import datetime, timezone, timedelta
 import requests
 from bs4 import BeautifulSoup
 
@@ -40,6 +41,13 @@ KEYWORDS = [
     "stage pfe cyber",
     "stage securite informatique",
     "stage reverse engineering",
+    "stage netsec",
+    "stage securite reseau",
+    "stage devsecops",
+    "stage cloud security",
+    "stage cti incident",
+    "stage cryptologie",
+    "stage malware dfir",
 ]
 
 
@@ -118,6 +126,26 @@ def scrape_linkedin(max_pages_per_kw: int = 2) -> List[Dict[str, Any]]:
                     if time_elem:
                         posted_at = time_elem.get("datetime") or ""
                         posted_relative = time_elem.get_text(strip=True) or ""
+
+                        # Calculate accurate timestamp from relative time if available
+                        now_utc = datetime.now(timezone.utc)
+                        m_min = re.search(r"(\d+)\s*(?:minute|min)", posted_relative, re.I)
+                        m_hour = re.search(r"(\d+)\s*(?:heure|h|hour)", posted_relative, re.I)
+                        m_day = re.search(r"(\d+)\s*(?:jour|j|day)", posted_relative, re.I)
+                        m_week = re.search(r"(\d+)\s*(?:semaine|sem|week)", posted_relative, re.I)
+
+                        if m_min:
+                            exact_dt = now_utc - timedelta(minutes=int(m_min.group(1)))
+                            posted_at = exact_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+                        elif m_hour:
+                            exact_dt = now_utc - timedelta(hours=int(m_hour.group(1)))
+                            posted_at = exact_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+                        elif m_day:
+                            exact_dt = now_utc - timedelta(days=int(m_day.group(1)))
+                            posted_at = exact_dt.strftime("%Y-%m-%d")
+                        elif m_week:
+                            exact_dt = now_utc - timedelta(weeks=int(m_week.group(1)))
+                            posted_at = exact_dt.strftime("%Y-%m-%d")
 
                     logo_url = ""
                     if img_elem:

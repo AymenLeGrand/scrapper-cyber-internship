@@ -52,6 +52,21 @@ class CustomHTTPHandler(http.server.SimpleHTTPRequestHandler):
                     with open(jobs_path, "r", encoding="utf-8") as f:
                         count = len(json.load(f))
 
+                from datetime import timezone
+                now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+                meta_path = os.path.join(BASE_DIR, "data", "meta.json")
+                meta = {}
+                if os.path.exists(meta_path):
+                    try:
+                        with open(meta_path, "r", encoding="utf-8") as f:
+                            meta = json.load(f)
+                    except Exception:
+                        pass
+                meta["total"] = count
+                meta["last_scraped_at"] = now_iso
+                with open(meta_path, "w", encoding="utf-8") as f:
+                    json.dump(meta, f, ensure_ascii=False, indent=2)
+
                 print(f"[{datetime.now().strftime('%H:%M:%S')}] Scraping completed successfully! {count} jobs active.", flush=True)
                 
                 self.send_response(200)
@@ -60,7 +75,8 @@ class CustomHTTPHandler(http.server.SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps({
                     "status": "success",
                     "jobs_count": count,
-                    "timestamp": datetime.now().strftime("%H:%M:%S"),
+                    "last_scraped_at": now_iso,
+                    "timestamp": now_iso,
                     "message": f"Scraping terminé avec succès ! {count} stages M2 vérifiés et à jour."
                 }, ensure_ascii=False).encode('utf-8'))
             except Exception as e:

@@ -66,10 +66,12 @@
       <div class="flex items-center gap-3 text-zinc-500">
         <span>Prochain scan auto : <span id="nextScanTimer" class="font-mono text-zinc-300 font-medium tabular-nums">--h --m --s</span></span>
         <span class="text-zinc-700 hidden sm:inline">•</span>
-        <a href="https://github.com/AymenLeGrand/scrapper-cyber-internship/actions/workflows/scrape_and_notify.yml" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-200 underline inline-flex items-center gap-1.5 transition text-zinc-400 font-medium">
-          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8z"/></svg>
-          Lancer un scan maintenant
-        </a>
+        <button id="triggerScanBtn" class="hover:text-zinc-200 underline inline-flex items-center gap-1.5 transition text-zinc-400 font-medium cursor-pointer bg-transparent border-0 p-0">
+          <svg id="scanBtnIcon" class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+            <path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+          </svg>
+          <span id="scanBtnText">Lancer un scan maintenant</span>
+        </button>
       </div>
     </div>
 
@@ -78,7 +80,7 @@
       <button id="toggleSpontaneousBtn" class="w-full flex items-center justify-between text-left focus:outline-none cursor-pointer">
         <div class="flex items-center gap-2">
           <span class="text-xs font-semibold text-zinc-200">Candidatures spontanées</span>
-          <span class="text-xs text-zinc-500" id="spontaneousHeaderCount">• 44 entreprises</span>
+          <span class="text-xs text-zinc-500" id="spontaneousHeaderCount">• 45 entreprises</span>
         </div>
         <span id="spontaneousToggleText" class="text-xs text-zinc-400 hover:text-zinc-200">Afficher</span>
       </button>
@@ -86,11 +88,11 @@
       <div id="spontaneousContent" class="hidden mt-3 pt-3 border-t border-zinc-800/60 space-y-3">
         <!-- Spontaneous Category Chips -->
         <div class="flex flex-wrap items-center gap-1.5" id="spontaneousCategoryChips">
-          <button data-spont-cat="all" class="category-chip active">Toutes (44)</button>
+          <button data-spont-cat="all" class="category-chip active">Toutes (45)</button>
           <button data-spont-cat="hardware" class="category-chip">Sécu Embarquée & CESTI (6)</button>
           <button data-spont-cat="crypto" class="category-chip">Cryptologie & R&D (6)</button>
           <button data-spont-cat="offensive" class="category-chip">Offensive & Éditeurs (17)</button>
-          <button data-spont-cat="consulting_defense" class="category-chip">Conseil, Défense & État (15)</button>
+          <button data-spont-cat="consulting_defense" class="category-chip">Conseil, Défense & État (16)</button>
         </div>
 
         <div id="spontaneousGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
@@ -118,6 +120,7 @@
           <button data-category="crypto" class="category-chip">Cryptologie</button>
           <button data-category="offensive" class="category-chip">Offensive</button>
           <button data-category="defensive" class="category-chip">SOC / Détection</button>
+          <button data-category="netsec" class="category-chip">Réseau & NetSec</button>
           <button data-category="cloud_devsecops" class="category-chip">Cloud / DevSecOps</button>
           <button data-category="ai_cyber" class="category-chip">IA</button>
         </div>
