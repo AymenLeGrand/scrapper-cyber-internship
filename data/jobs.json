@@ -956,7 +956,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-cyber-s%C3%A9curit%C3%A9-gouvernance-smsi-h-f-at-volkswagen-group-france-4457166196",
     "logo_url": "https://media.licdn.com/dms/image/v2/D560BAQFDzqet0GNGLA/company-logo_100_100/company-logo_100_100/0/1706629435018/groupe_volkswagen_france_logo?e=2147483647&v=beta&t=26O5XvxtaGVX1CIIcbbTf5gD1TrspQr5t6Ciie4WXk8",
     "posted_at": "2026-08-24",
-    "posted_relative": "il y a 1 semaine",
+    "posted_relative": "il y a 2 semaines",
     "domain": "Cloud / GRC / DevSecOps",
     "all_domains": [
       "Cloud / GRC / DevSecOps"
@@ -998,7 +998,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-ing%C3%A9nieur-cybers%C3%A9curit%C3%A9-f-h-at-dassault-syst%C3%A8mes-4464098101",
     "logo_url": "https://media.licdn.com/dms/image/v2/C560BAQHroRzeNTva6Q/company-logo_100_100/company-logo_100_100/0/1631330934922?e=2147483647&v=beta&t=Y_LaLgUh3t_AY4PloiAtAbGGfEr2fGl7C4_RBhQ7Vok",
     "posted_at": "2026-09-07",
-    "posted_relative": "il y a 8 heures",
+    "posted_relative": "il y a 14 heures",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -1054,6 +1054,27 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
+    "id": "linkedin_4458115482",
+    "title": "Internship - FPGA Hardware Design - PQ Cryptography Hardware Accelerator",
+    "company_name": "CryptoNext Security",
+    "location": "Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/internship-fpga-hardware-design-pq-cryptography-hardware-accelerator-at-cryptonext-security-4458115482",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQH9Wpe4VaO7Zg/company-logo_100_100/B4EZfpF1kHHcAU-/0/1751962311259/cryptonext_security_logo?e=2147483647&v=beta&t=OoWKM78C9HmcgJc-Y2BhbRqh6ggdq-xr6MevWAtRcU0",
+    "posted_at": "2026-08-23",
+    "posted_relative": "il y a 2 semaines",
+    "domain": "Cryptology",
+    "all_domains": [
+      "Cryptology"
+    ],
+    "is_crypto": true,
+    "is_cyber": false,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
     "id": "linkedin_4458411010",
     "title": "Réalisation de contrôle cybersécurité des systèmes d’information [Stage]",
     "company_name": "Commandement de la cyberdéfense (COMCYBER)",
@@ -1062,27 +1083,6 @@
     "logo_url": "https://media.licdn.com/dms/image/v2/C4D0BAQGXTxKhUBzgxQ/company-logo_100_100/company-logo_100_100/0/1630546121906/commandement_de_la_cyberdfense_logo?e=2147483647&v=beta&t=aVfbworurih8AxGC_6RER0gBSNkZ4NS7VLl0pSwJ_hM",
     "posted_at": "2026-08-28",
     "posted_relative": "il y a 1 semaine",
-    "domain": "Cybersecurity (General)",
-    "all_domains": [
-      "Cybersecurity (General)"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4126307616",
-    "title": "Stage de fin d'études - Consultant(e) Cybersécurité - Nantes - 2026 H/F",
-    "company_name": "Forvis Mazars en France",
-    "location": "Nantes, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-de-fin-d-%C3%A9tudes-consultant-e-cybers%C3%A9curit%C3%A9-nantes-2026-h-f-at-forvis-mazars-en-france-4126307616",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEjCDBiIXRhDA/company-logo_100_100/company-logo_100_100/0/1719256788450/forvis_mazars_en_france_logo?e=2147483647&v=beta&t=46wUzxIBoELIkN5x9eGwxVI9up2eZa7K-txo38exh2g",
-    "posted_at": "2026-09-03",
-    "posted_relative": "il y a 4 jours",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -1117,6 +1117,48 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
+    "id": "linkedin_4464307038",
+    "title": "STAGE - Chargé d'Opérations Cybersécurité (F/H)",
+    "company_name": "Dassault Systèmes",
+    "location": "Vélizy-Villacoublay, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-charg%C3%A9-d-op%C3%A9rations-cybers%C3%A9curit%C3%A9-f-h-at-dassault-syst%C3%A8mes-4464307038",
+    "logo_url": "https://media.licdn.com/dms/image/v2/C560BAQHroRzeNTva6Q/company-logo_100_100/company-logo_100_100/0/1631330934922?e=2147483647&v=beta&t=Y_LaLgUh3t_AY4PloiAtAbGGfEr2fGl7C4_RBhQ7Vok",
+    "posted_at": "2026-09-07",
+    "posted_relative": "il y a 14 heures",
+    "domain": "Cyber Defensive / SOC / DFIR",
+    "all_domains": [
+      "Cyber Defensive / SOC / DFIR"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4126307616",
+    "title": "Stage de fin d'études - Consultant(e) Cybersécurité - Nantes - 2026 H/F",
+    "company_name": "Forvis Mazars en France",
+    "location": "Nantes, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-de-fin-d-%C3%A9tudes-consultant-e-cybers%C3%A9curit%C3%A9-nantes-2026-h-f-at-forvis-mazars-en-france-4126307616",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEjCDBiIXRhDA/company-logo_100_100/company-logo_100_100/0/1719256788450/forvis_mazars_en_france_logo?e=2147483647&v=beta&t=46wUzxIBoELIkN5x9eGwxVI9up2eZa7K-txo38exh2g",
+    "posted_at": "2026-09-03",
+    "posted_relative": "il y a 4 jours",
+    "domain": "Cybersecurity (General)",
+    "all_domains": [
+      "Cybersecurity (General)"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
     "id": "linkedin_4462856345",
     "title": "Stage – Ingénieur(e) technique Cybersécurité – Défense & Sécurité – Île-de-France",
     "company_name": "Sopra Steria",
@@ -1124,7 +1166,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-%E2%80%93-ing%C3%A9nieur-e-technique-cybers%C3%A9curit%C3%A9-%E2%80%93-d%C3%A9fense-s%C3%A9curit%C3%A9-%E2%80%93-%C3%AEle-de-france-at-sopra-steria-4462856345",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
     "posted_at": "2026-09-03",
-    "posted_relative": "il y a 3 jours",
+    "posted_relative": "il y a 4 jours",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -1138,123 +1180,17 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4461774563",
-    "title": "Stage – Assistant Chef de projet Cybersécurité, Gouvernance & Intelligence Artificielle H/F",
-    "company_name": "Christian Dior Couture",
+    "id": "linkedin_4442211939",
+    "title": "Stage -  Ingénieur·e DevSecOps",
+    "company_name": "Numberly",
     "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-%E2%80%93-assistant-chef-de-projet-cybers%C3%A9curit%C3%A9-gouvernance-intelligence-artificielle-h-f-at-christian-dior-couture-4461774563",
-    "logo_url": "https://media.licdn.com/dms/image/v2/C4D0BAQFf1jQWl-iyPw/company-logo_100_100/company-logo_100_100/0/1630535198645/christian_dior_couture_logo?e=2147483647&v=beta&t=40qhzX8KnRVLYh_sysEitXvrAMWNS5pB5mGezzSTFTI",
-    "posted_at": "2026-09-01",
-    "posted_relative": "il y a 5 jours",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-ing%C3%A9nieur%C2%B7e-devsecops-at-numberly-4442211939",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEZtoQcDlMOnA/company-logo_100_100/B4EZv.rR4yGwAQ-/0/1769504317567/numberly_logo?e=2147483647&v=beta&t=3MmAO2mD8Z9FCDw9aLbLBWz6R2pCti4k6BuTyoAhYS4",
+    "posted_at": "2026-08-31",
+    "posted_relative": "il y a 1 semaine",
     "domain": "Cloud / GRC / DevSecOps",
     "all_domains": [
-      "Cloud / GRC / DevSecOps",
-      "AI & Cybersecurity"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4462834988",
-    "title": "Stage - Analyste MDR - Detection Cybersécurité - Rennes",
-    "company_name": "Sopra Steria",
-    "location": "Cesson-Sévigné, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-analyste-mdr-detection-cybers%C3%A9curit%C3%A9-rennes-at-sopra-steria-4462834988",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
-    "posted_at": "2026-09-03",
-    "posted_relative": "il y a 3 jours",
-    "domain": "Cyber Defensive / SOC / DFIR",
-    "all_domains": [
-      "Cyber Defensive / SOC / DFIR"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4462835914",
-    "title": "Stage - Analyste MDR - Detection Cybersécurité - Île-de-France",
-    "company_name": "Sopra Steria",
-    "location": "Courbevoie, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-analyste-mdr-detection-cybers%C3%A9curit%C3%A9-%C3%AEle-de-france-at-sopra-steria-4462835914",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
-    "posted_at": "2026-09-03",
-    "posted_relative": "il y a 3 jours",
-    "domain": "Cyber Defensive / SOC / DFIR",
-    "all_domains": [
-      "Cyber Defensive / SOC / DFIR"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4458408031",
-    "title": "Ingénieur en data - Optimisation d'une base de données et suivi d'incidents cyber [Stage]",
-    "company_name": "Commandement de la cyberdéfense (COMCYBER)",
-    "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/ing%C3%A9nieur-en-data-optimisation-d-une-base-de-donn%C3%A9es-et-suivi-d-incidents-cyber-stage-at-french-cyber-command-4458408031",
-    "logo_url": "https://media.licdn.com/dms/image/v2/C4D0BAQGXTxKhUBzgxQ/company-logo_100_100/company-logo_100_100/0/1630546121906/commandement_de_la_cyberdfense_logo?e=2147483647&v=beta&t=aVfbworurih8AxGC_6RER0gBSNkZ4NS7VLl0pSwJ_hM",
-    "posted_at": "2026-08-28",
-    "posted_relative": "il y a 1 semaine",
-    "domain": "Cybersecurity (General)",
-    "all_domains": [
-      "Cybersecurity (General)"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4458115482",
-    "title": "Internship - FPGA Hardware Design - PQ Cryptography Hardware Accelerator",
-    "company_name": "CryptoNext Security",
-    "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/internship-fpga-hardware-design-pq-cryptography-hardware-accelerator-at-cryptonext-security-4458115482",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQH9Wpe4VaO7Zg/company-logo_100_100/B4EZfpF1kHHcAU-/0/1751962311259/cryptonext_security_logo?e=2147483647&v=beta&t=OoWKM78C9HmcgJc-Y2BhbRqh6ggdq-xr6MevWAtRcU0",
-    "posted_at": "2026-08-23",
-    "posted_relative": "il y a 2 semaines",
-    "domain": "Cryptology",
-    "all_domains": [
-      "Cryptology"
-    ],
-    "is_crypto": true,
-    "is_cyber": false,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4464346275",
-    "title": "Consultant Stagiaire Tech & Data & Cyber (H/F)",
-    "company_name": "BearingPoint",
-    "location": "Ville de Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/consultant-stagiaire-tech-data-cyber-h-f-at-bearingpoint-4464346275",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEh1Eh-6uugnA/company-logo_100_100/B4EZcWBwsvHAAU-/0/1748421250249/bearingpoint_logo?e=2147483647&v=beta&t=H42MZqGNY1Idd6qRMzeTOB1uf7Q6twsHVNIwAyBO-Hs",
-    "posted_at": "2026-09-07",
-    "posted_relative": "il y a 48 minutes",
-    "domain": "Cybersecurity (General)",
-    "all_domains": [
-      "Cybersecurity (General)"
+      "Cloud / GRC / DevSecOps"
     ],
     "is_crypto": false,
     "is_cyber": true,
