@@ -168,10 +168,16 @@
     <!-- Results Count Bar -->
     <div class="flex items-center justify-between text-xs text-zinc-400 px-0.5">
       <div id="resultsCount">-- offres</div>
-      <label class="inline-flex items-center gap-2 cursor-pointer select-none">
-        <input type="checkbox" id="hideAppliedToggle" class="rounded bg-zinc-900 border-zinc-700 text-indigo-500 focus:ring-0 w-3.5 h-3.5">
-        <span>Masquer postulées</span>
-      </label>
+      <div class="flex items-center gap-3 sm:gap-4">
+        <label class="inline-flex items-center gap-1.5 cursor-pointer select-none">
+          <input type="checkbox" id="hideAppliedToggle" class="rounded bg-zinc-900 border-zinc-700 text-indigo-500 focus:ring-0 w-3.5 h-3.5">
+          <span>Masquer postulées</span>
+        </label>
+        <label class="inline-flex items-center gap-1.5 cursor-pointer select-none">
+          <input type="checkbox" id="hideDismissedToggle" class="rounded bg-zinc-900 border-zinc-700 text-zinc-400 focus:ring-0 w-3.5 h-3.5">
+          <span>Masquer pas intéressé</span>
+        </label>
+      </div>
     </div>
 
     <!-- Job Cards List -->

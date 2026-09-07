@@ -5,6 +5,7 @@
 
 let allJobs = [];
 let appliedJobs = new Set(JSON.parse(localStorage.getItem('applied_jobs') || '[]'));
+let dismissedJobs = new Set(JSON.parse(localStorage.getItem('dismissed_jobs') || '[]'));
 let activeCategory = 'all';
 let activeSpontaneousCategory = 'all';
 
@@ -597,6 +598,7 @@ function setupEventListeners() {
   const ageFilter = document.getElementById('ageFilter');
   const sortFilter = document.getElementById('sortFilter');
   const hideAppliedToggle = document.getElementById('hideAppliedToggle');
+  const hideDismissedToggle = document.getElementById('hideDismissedToggle');
   const exportCsvBtn = document.getElementById('exportCsvBtn');
   const resetFiltersBtn = document.getElementById('resetFiltersBtn');
   const chips = document.querySelectorAll('#categoryChips .category-chip');
@@ -607,6 +609,7 @@ function setupEventListeners() {
   if (ageFilter) ageFilter.addEventListener('change', () => renderJobs());
   if (sortFilter) sortFilter.addEventListener('change', () => renderJobs());
   if (hideAppliedToggle) hideAppliedToggle.addEventListener('change', () => renderJobs());
+  if (hideDismissedToggle) hideDismissedToggle.addEventListener('change', () => renderJobs());
 
   chips.forEach(chip => {
     chip.addEventListener('click', () => {
@@ -625,6 +628,7 @@ function setupEventListeners() {
       if (ageFilter) ageFilter.value = 'all';
       if (sortFilter) sortFilter.value = 'newest';
       if (hideAppliedToggle) hideAppliedToggle.checked = false;
+      if (hideDismissedToggle) hideDismissedToggle.checked = false;
       chips.forEach(c => c.classList.remove('active'));
       chips[0].classList.add('active');
       activeCategory = 'all';
@@ -735,11 +739,13 @@ function getFilteredJobs() {
   const selectedAge = document.getElementById('ageFilter')?.value || 'all';
   const sortOrder = document.getElementById('sortFilter')?.value || 'newest';
   const hideApplied = document.getElementById('hideAppliedToggle')?.checked || false;
+  const hideDismissed = document.getElementById('hideDismissedToggle')?.checked || false;
 
   const filtered = allJobs.filter(job => {
     if (job.status === 'closed' || job.status === 'expired') return false;
 
     if (hideApplied && appliedJobs.has(job.id)) return false;
+    if (hideDismissed && dismissedJobs.has(job.id)) return false;
 
     // Filter by Company
     if (selectedCompany !== 'all' && (job.company_name || '').trim() !== selectedCompany) {
@@ -853,6 +859,7 @@ function renderJobs() {
 
 function createJobCardHtml(job) {
   const isApplied = appliedJobs.has(job.id);
+  const isDismissed = dismissedJobs.has(job.id);
   const isCrypto = job.is_crypto;
   
   let badgeStyle = 'bg-zinc-800 text-zinc-300';
@@ -871,7 +878,7 @@ function createJobCardHtml(job) {
   const ageBadge = formatJobAge(job);
 
   return `
-    <article class="job-card bg-zinc-900/40 rounded-lg border border-zinc-800/70 p-4 hover:border-zinc-700 transition ${isApplied ? 'opacity-50' : ''}">
+    <article class="job-card bg-zinc-900/40 rounded-lg border border-zinc-800/70 p-4 hover:border-zinc-700 transition ${isApplied ? 'opacity-50' : ''} ${isDismissed ? 'opacity-40 grayscale border-dashed border-zinc-800' : ''}">
       <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3.5">
         
         <!-- Logo + Job Details -->
@@ -947,13 +954,17 @@ function createJobCardHtml(job) {
             </svg>
           </a>
 
-          <div class="flex items-center gap-3 text-xs">
+          <div class="flex flex-wrap items-center gap-3 text-xs">
             <button class="copy-link-btn text-xs text-zinc-500 hover:text-zinc-300 transition" data-url="${job.direct_url}">
               Copier le lien
             </button>
-            <label class="inline-flex items-center gap-1.5 text-xs text-zinc-400 cursor-pointer select-none">
+            <label class="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-zinc-200 cursor-pointer select-none">
               <input type="checkbox" class="toggle-applied rounded bg-zinc-900 border-zinc-700 text-indigo-500 focus:ring-0 w-3.5 h-3.5" data-id="${job.id}" ${isApplied ? 'checked' : ''}>
               <span>Postulé</span>
+            </label>
+            <label class="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-zinc-200 cursor-pointer select-none" title="Marquer comme non intéressé">
+              <input type="checkbox" class="toggle-dismissed rounded bg-zinc-900 border-zinc-700 text-zinc-400 focus:ring-0 w-3.5 h-3.5" data-id="${job.id}" ${isDismissed ? 'checked' : ''}>
+              <span class="${isDismissed ? 'text-zinc-500 line-through' : ''}">Pas intéressé</span>
             </label>
           </div>
         </div>
@@ -994,7 +1005,35 @@ function attachCardEvents() {
         card.classList.toggle('opacity-50', e.target.checked);
       }
 
-      if (document.getElementById('hideAppliedToggle').checked) {
+      if (document.getElementById('hideAppliedToggle')?.checked) {
+        renderJobs();
+      }
+    });
+  });
+
+  document.querySelectorAll('.toggle-dismissed').forEach(chk => {
+    chk.addEventListener('change', (e) => {
+      const id = e.target.getAttribute('data-id');
+      if (e.target.checked) {
+        dismissedJobs.add(id);
+      } else {
+        dismissedJobs.delete(id);
+      }
+      localStorage.setItem('dismissed_jobs', JSON.stringify(Array.from(dismissedJobs)));
+      
+      const card = e.target.closest('.job-card');
+      if (card) {
+        card.classList.toggle('opacity-40', e.target.checked);
+        card.classList.toggle('grayscale', e.target.checked);
+        card.classList.toggle('border-dashed', e.target.checked);
+        const textSpan = chk.parentElement.querySelector('span');
+        if (textSpan) {
+          textSpan.classList.toggle('line-through', e.target.checked);
+          textSpan.classList.toggle('text-zinc-500', e.target.checked);
+        }
+      }
+
+      if (document.getElementById('hideDismissedToggle')?.checked) {
         renderJobs();
       }
     });
