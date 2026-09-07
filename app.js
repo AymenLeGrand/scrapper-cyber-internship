@@ -555,7 +555,7 @@ function populateCompanyFilter() {
   const select = document.getElementById('companyFilter');
   if (!select) return;
 
-  const activeJobs = allJobs.filter(j => j.status === 'active');
+  const activeJobs = allJobs.filter(j => j.status !== 'closed' && j.status !== 'expired');
   const counts = {};
 
   activeJobs.forEach(job => {
@@ -580,7 +580,7 @@ function populateCompanyFilter() {
 }
 
 function updateStats() {
-  const activeJobs = allJobs.filter(j => j.status === 'active');
+  const activeJobs = allJobs.filter(j => j.status !== 'closed' && j.status !== 'expired');
   const cryptoJobs = activeJobs.filter(j => j.is_crypto);
   const cyberJobs = activeJobs.filter(j => !j.is_crypto);
 
@@ -737,7 +737,7 @@ function getFilteredJobs() {
   const hideApplied = document.getElementById('hideAppliedToggle')?.checked || false;
 
   const filtered = allJobs.filter(job => {
-    if (job.status !== 'active') return false;
+    if (job.status === 'closed' || job.status === 'expired') return false;
 
     if (hideApplied && appliedJobs.has(job.id)) return false;
 

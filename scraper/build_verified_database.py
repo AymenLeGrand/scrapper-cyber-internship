@@ -616,6 +616,8 @@ seen_ids = set()
 seen_urls = set()
 
 for j in all_jobs:
+    if not j.get("status"):
+        j["status"] = "active"
     if j["id"] not in seen_ids and j["direct_url"] not in seen_urls:
         seen_ids.add(j["id"])
         seen_urls.add(j["direct_url"])
