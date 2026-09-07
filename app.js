@@ -200,6 +200,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   setupSpontaneousToggle();
   await loadJobs();
   setupEventListeners();
+  startScanTimer();
 });
 
 function renderSpontaneousGrid() {
@@ -640,4 +641,44 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
+}
+
+async function startScanTimer() {
+  const el = document.getElementById('nextScanTimer');
+  if (!el) return;
+
+  let nextScan = null;
+
+  try {
+    const res = await fetch('./data/meta.json?t=' + Date.now());
+    if (res.ok) {
+      const meta = await res.json();
+      if (meta.last_scraped_at) {
+        nextScan = new Date(meta.last_scraped_at).getTime() + 12 * 3600 * 1000;
+      }
+    }
+  } catch (_) {}
+
+  // Fallback: anchor to next UTC 00:00 or 12:00 (cron schedule)
+  if (!nextScan || isNaN(nextScan)) {
+    const now = new Date();
+    const utcH = now.getUTCHours();
+    const hoursUntilNext = utcH < 12 ? (12 - utcH) : (24 - utcH);
+    nextScan = Date.UTC(
+      now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),
+      utcH < 12 ? 12 : 0
+    ) + (utcH >= 12 ? 86400000 : 0);
+  }
+
+  function tick() {
+    const remaining = Math.max(0, nextScan - Date.now());
+    const h = Math.floor(remaining / 3600000);
+    const m = Math.floor((remaining % 3600000) / 60000);
+    const s = Math.floor((remaining % 60000) / 1000);
+    el.textContent = `${String(h).padStart(2, '0')}h ${String(m).padStart(2, '0')}m ${String(s).padStart(2, '0')}s`;
+    if (remaining === 0) el.textContent = 'en cours...';
+  }
+
+  tick();
+  setInterval(tick, 1000);
 }

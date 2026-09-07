@@ -3,6 +3,7 @@ import json
 import requests
 import re
 import sys
+import datetime
 from collections import Counter
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -511,3 +512,12 @@ with open(output_path, "w", encoding="utf-8") as f:
     json.dump(all_jobs, f, ensure_ascii=False, indent=2)
 
 print(f"\nSUCCESS: Written {len(all_jobs)} verified offers to {output_path}!")
+
+# Write meta.json with scrape timestamp (used by frontend countdown timer)
+meta_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "meta.json")
+with open(meta_path, "w", encoding="utf-8") as f:
+    json.dump({
+        "last_scraped_at": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "total": len(all_jobs)
+    }, f)
+print(f"Meta written to {meta_path}")
