@@ -1050,19 +1050,20 @@ async function startScanTimer() {
     if (res.ok) {
       const meta = await res.json();
       if (meta.last_scraped_at) {
-        nextScan = new Date(meta.last_scraped_at).getTime() + 12 * 3600 * 1000;
+        nextScan = new Date(meta.last_scraped_at).getTime() + 3 * 3600 * 1000;
       }
     }
   } catch (_) {}
 
-  // Fallback: anchor to next UTC 00:00 or 12:00 (cron schedule)
+  // Fallback: anchor to next multiple of 3 hours UTC (0, 3, 6, 9, 12, 15, 18, 21 UTC)
   if (!nextScan || isNaN(nextScan)) {
     const now = new Date();
     const utcH = now.getUTCHours();
+    const nextH = Math.floor(utcH / 3) * 3 + 3;
     nextScan = Date.UTC(
       now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),
-      utcH < 12 ? 12 : 0
-    ) + (utcH >= 12 ? 86400000 : 0);
+      nextH
+    );
   }
 
   function tick() {

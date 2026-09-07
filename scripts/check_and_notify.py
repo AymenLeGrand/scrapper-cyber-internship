@@ -1,7 +1,7 @@
 """
-Autonomous 12-Hour Pipeline Runner for France Cyber & Crypto M2 Tracker.
+Autonomous 3-Hour Pipeline Runner for France Cyber & Crypto M2 Tracker.
 Runs:
-1. build_verified_database.py (ATS scrape + Quarkslab blog monitor)
+1. build_verified_database.py (ATS scrape + LinkedIn scrape + Quarkslab blog monitor)
 2. verify_all_links.py (Liveness verification)
 3. Computes diff with data/seen_jobs.json
 4. Dispatches mobile alerts via Telegram, Discord, ntfy.sh, or Email
@@ -19,7 +19,7 @@ sys.path.insert(0, BASE_DIR)
 from scraper.notifier import send_all_notifications, load_seen_job_ids, save_seen_job_ids, send_ntfy_health_alert
 
 def main():
-    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting 12-hour automated verification pipeline...")
+    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting 3-hour automated verification pipeline...")
     
     # 1. Run database builder
     builder_script = os.path.join(BASE_DIR, 'scraper', 'build_verified_database.py')

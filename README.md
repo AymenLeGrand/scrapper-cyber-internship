@@ -101,7 +101,7 @@ pip install -r requirements.txt
 # 2. Lancer une recherche et validation manuelle
 python -m scraper.main --dry-run
 
-# 3. Lancer le scraper automatique en boucle locale (toutes les 1 heure)
+# 3. Lancer le scraper automatique en boucle locale (toutes les 3 heures)
 python scripts/run_hourly.py
 
 # 4. Lancer le serveur web localement
@@ -116,9 +116,11 @@ Ouvrez ensuite [http://localhost:8000](http://localhost:8000) dans votre navigat
 ```text
 ├── .github/
 │   └── workflows/
-│       └── scrape_and_notify.yml   # Workflow Cron (toutes les 1h) et envoi d'emails
+│       └── scrape_and_notify.yml   # Workflow Cron (toutes les 3h) et notifications
 ├── scripts/
-│   └── run_hourly.py               # Démon de scraping local toutes les 1h
+│   ├── run_hourly.py               # Démon de re-scraping périodique (toutes les 3h)
+│   ├── run_periodic.py             # Alias pour le scheduler périodique
+│   └── check_and_notify.py         # Pipeline de vérification 3h et envoi d'alertes
 ├── data/
 │   ├── jobs.json                   # Base active des offres vérifiées en direct
 │   └── seen_jobs.json              # Historique des offres notifiées (anti-doublons)
