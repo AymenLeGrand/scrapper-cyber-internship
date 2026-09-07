@@ -382,6 +382,7 @@ async function loadJobs() {
     allJobs = await res.json();
     
     updateStats();
+    populateCompanyFilter();
     populateLocationFilter();
     renderJobs();
   } catch (err) {
@@ -460,6 +461,34 @@ function populateLocationFilter() {
   }
 }
 
+function populateCompanyFilter() {
+  const select = document.getElementById('companyFilter');
+  if (!select) return;
+
+  const activeJobs = allJobs.filter(j => j.status === 'active');
+  const counts = {};
+
+  activeJobs.forEach(job => {
+    const name = (job.company_name || 'Autre').trim();
+    counts[name] = (counts[name] || 0) + 1;
+  });
+
+  const prevSelected = select.value;
+  let html = `<option value="all">Toutes les entreprises (${activeJobs.length})</option>`;
+
+  const sortedCompanies = Object.entries(counts).sort((a, b) => a[0].localeCompare(b[0]));
+  sortedCompanies.forEach(([company, count]) => {
+    html += `<option value="${escapeHtml(company)}">${escapeHtml(company)} (${count})</option>`;
+  });
+
+  select.innerHTML = html;
+  if (prevSelected && counts[prevSelected]) {
+    select.value = prevSelected;
+  } else {
+    select.value = 'all';
+  }
+}
+
 function updateStats() {
   const activeJobs = allJobs.filter(j => j.status === 'active');
   const cryptoJobs = activeJobs.filter(j => j.is_crypto);
@@ -473,15 +502,21 @@ function updateStats() {
 
 function setupEventListeners() {
   const searchInput = document.getElementById('searchInput');
+  const companyFilter = document.getElementById('companyFilter');
   const locationFilter = document.getElementById('locationFilter');
+  const ageFilter = document.getElementById('ageFilter');
+  const sortFilter = document.getElementById('sortFilter');
   const hideAppliedToggle = document.getElementById('hideAppliedToggle');
   const exportCsvBtn = document.getElementById('exportCsvBtn');
   const resetFiltersBtn = document.getElementById('resetFiltersBtn');
   const chips = document.querySelectorAll('#categoryChips .category-chip');
 
-  searchInput.addEventListener('input', () => renderJobs());
-  locationFilter.addEventListener('change', () => renderJobs());
-  hideAppliedToggle.addEventListener('change', () => renderJobs());
+  if (searchInput) searchInput.addEventListener('input', () => renderJobs());
+  if (companyFilter) companyFilter.addEventListener('change', () => renderJobs());
+  if (locationFilter) locationFilter.addEventListener('change', () => renderJobs());
+  if (ageFilter) ageFilter.addEventListener('change', () => renderJobs());
+  if (sortFilter) sortFilter.addEventListener('change', () => renderJobs());
+  if (hideAppliedToggle) hideAppliedToggle.addEventListener('change', () => renderJobs());
 
   chips.forEach(chip => {
     chip.addEventListener('click', () => {
@@ -494,9 +529,12 @@ function setupEventListeners() {
 
   if (resetFiltersBtn) {
     resetFiltersBtn.addEventListener('click', () => {
-      searchInput.value = '';
-      locationFilter.value = 'all';
-      hideAppliedToggle.checked = false;
+      if (searchInput) searchInput.value = '';
+      if (companyFilter) companyFilter.value = 'all';
+      if (locationFilter) locationFilter.value = 'all';
+      if (ageFilter) ageFilter.value = 'all';
+      if (sortFilter) sortFilter.value = 'newest';
+      if (hideAppliedToggle) hideAppliedToggle.checked = false;
       chips.forEach(c => c.classList.remove('active'));
       chips[0].classList.add('active');
       activeCategory = 'all';
@@ -509,16 +547,123 @@ function setupEventListeners() {
   }
 }
 
-function getFilteredJobs() {
-  const query = (document.getElementById('searchInput').value || '').toLowerCase().trim();
-  const selectedLocation = document.getElementById('locationFilter').value;
-  const hideApplied = document.getElementById('hideAppliedToggle').checked;
+function getJobAgeDays(job) {
+  if (job.posted_at) {
+    const d = new Date(job.posted_at);
+    if (!isNaN(d.getTime())) {
+      const diffMs = Math.max(0, Date.now() - d.getTime());
+      return diffMs / (1000 * 3600 * 24);
+    }
+  }
+  const rel = (job.posted_relative || '').toLowerCase();
+  if (rel.includes('heure') || rel.includes('hour') || rel.includes('minute') || rel.includes("aujourd'hui") || rel.includes('today')) {
+    return 0.1;
+  }
+  const daysMatch = rel.match(/(\d+)\s*(?:jour|day)/);
+  if (daysMatch) return parseInt(daysMatch[1], 10);
+  const weeksMatch = rel.match(/(\d+)\s*(?:semaine|week)/);
+  if (weeksMatch) return parseInt(weeksMatch[1], 10) * 7;
+  const monthsMatch = rel.match(/(\d+)\s*(?:mois|month)/);
+  if (monthsMatch) return parseInt(monthsMatch[1], 10) * 30;
 
-  return allJobs.filter(job => {
+  return 999;
+}
+
+function formatJobAge(job) {
+  if (job.posted_relative) {
+    return job.posted_relative;
+  }
+  if (job.posted_at) {
+    const d = new Date(job.posted_at);
+    if (!isNaN(d.getTime())) {
+      const days = Math.floor((Date.now() - d.getTime()) / (1000 * 3600 * 24));
+      if (days <= 0) return "Aujourd'hui";
+      if (days === 1) return "Hier";
+      if (days < 7) return `Il y a ${days}j`;
+      if (days < 14) return "Il y a 1 sem.";
+      if (days < 30) return `Il y a ${Math.floor(days / 7)} sem.`;
+      return job.posted_at;
+    }
+    return job.posted_at;
+  }
+  return '';
+}
+
+function getCompanyLogoUrl(job) {
+  if (job.logo_url && !job.logo_url.includes('ghost') && !job.logo_url.includes('static.licdn.com/aero-v1/sc/h/6puxblwmhnodu6fjircz4dn4h')) {
+    return job.logo_url;
+  }
+
+  const name = (job.company_name || '').toLowerCase();
+
+  if (name.includes('synacktiv')) return 'https://www.google.com/s2/favicons?domain=synacktiv.com&sz=128';
+  if (name.includes('wavestone')) return 'https://media.licdn.com/dms/image/v2/D4E0BAQFyqb85NQkquw/company-logo_100_100/company-logo_100_100/0/1724759903350/wavestone_logo?e=2147483647&v=beta&t=W6J2HyilAYBczm27yfZ4kPnfscwYJ0ldonQApVY6og8';
+  if (name.includes('sopra steria')) return 'https://www.google.com/s2/favicons?domain=soprasteria.com&sz=128';
+  if (name.includes('devoteam')) return 'https://www.google.com/s2/favicons?domain=devoteam.com&sz=128';
+  if (name.includes('octo')) return 'https://www.google.com/s2/favicons?domain=octo.com&sz=128';
+  if (name.includes('headmind')) return 'https://www.google.com/s2/favicons?domain=headmind.com&sz=128';
+  if (name.includes('vinci')) return 'https://media.licdn.com/dms/image/v2/C4D0BAQHdpGbxdHCNDw/company-logo_100_100/company-logo_100_100/0/1630573746574/vinci_construction_logo?e=2147483647&v=beta&t=jlIl5DMX7EJ7-RL0G8WVOhgX1YGxwMr-ySBSmUwvNRs';
+  if (name.includes('sia')) return 'https://www.google.com/s2/favicons?domain=sia-partners.com&sz=128';
+  if (name.includes('mazars')) return 'https://www.google.com/s2/favicons?domain=mazars.com&sz=128';
+  if (name.includes('synetis')) return 'https://media.licdn.com/dms/image/v2/D4E0BAQGOWhtaZF2Qbg/company-logo_100_100/company-logo_100_100/0/1704186084079/synetis_logo?e=2147483647&v=beta&t=9oVbxFjvhl6Zvd0ORHMRZVHyZz1qEqaW6-wyOmJ_qyo';
+  if (name.includes('almond')) return 'https://media.licdn.com/dms/image/v2/D560BAQFF-z5yKf1PbA/company-logo_100_100/company-logo_100_100/0/1680617730948/almond_consult_logo?e=2147483647&v=beta&t=slIonx8_UFG7yFUtiJ6GErE8le2h24NAfKWRAmNaHtE';
+  if (name.includes('dassault')) return 'https://media.licdn.com/dms/image/v2/C560BAQHroRzeNTva6Q/company-logo_100_100/company-logo_100_100/0/1631330934922?e=2147483647&v=beta&t=Y_LaLgUh3t_AY4PloiAtAbGGfEr2fGl7C4_RBhQ7Vok';
+  if (name.includes('cryptonext')) return 'https://media.licdn.com/dms/image/v2/D4E0BAQH9Wpe4VaO7Zg/company-logo_100_100/company-logo_100_100/0/1662993850000/cryptonext_security_logo?e=2147483647&v=beta&t=M_logo';
+  if (name.includes('comcyber') || name.includes('cyberdéfense')) return 'https://media.licdn.com/dms/image/v2/C4D0BAQGXTxKhUBzgxQ/company-logo_100_100/company-logo_100_100/0/1630546121906/commandement_de_la_cyberdfense_logo?e=2147483647&v=beta&t=aVfbworurih8AxGC_6RER0gBSNkZ4NS7VLl0pSwJ_hM';
+  if (name.includes('astek')) return 'https://www.google.com/s2/favicons?domain=astekgroup.fr&sz=128';
+  if (name.includes('volkswagen')) return 'https://www.google.com/s2/favicons?domain=volkswagen.fr&sz=128';
+  if (name.includes('thales')) return 'https://www.google.com/s2/favicons?domain=thalesgroup.com&sz=128';
+  if (name.includes('airbus')) return 'https://www.google.com/s2/favicons?domain=airbus.com&sz=128';
+  if (name.includes('serma')) return 'https://media.licdn.com/dms/image/v2/D4E0BAQEJIsd2FVaQMQ/company-logo_100_100/company-logo_100_100/0/1734362977572/serma_safety_and_security_logo?e=2147483647&v=beta&t=emfEIg1Im4wwaAZ3SLErphAis6neCdYSMv2KSp_xZCo';
+  if (name.includes('zama')) return 'https://www.google.com/s2/favicons?domain=zama.ai&sz=128';
+  if (name.includes('ledger')) return 'https://www.google.com/s2/favicons?domain=ledger.com&sz=128';
+  if (name.includes('crowdsec')) return 'https://www.google.com/s2/favicons?domain=crowdsec.net&sz=128';
+  if (name.includes('xmco')) return 'https://www.google.com/s2/favicons?domain=xmco.fr&sz=128';
+
+  const domainMatch = (job.direct_url || '').match(/^https?:\/\/([^/?#]+)/i);
+  if (domainMatch && !domainMatch[1].includes('linkedin.com') && !domainMatch[1].includes('smartrecruiters.com')) {
+    return `https://www.google.com/s2/favicons?domain=${domainMatch[1]}&sz=128`;
+  }
+
+  return '';
+}
+
+function getCompanyInitials(name) {
+  if (!name) return 'CY';
+  const clean = name.replace(/\(.*?\)/g, '').trim();
+  const parts = clean.split(/\s+/).filter(Boolean);
+  if (parts.length >= 2) {
+    return (parts[0][0] + parts[1][0]).toUpperCase();
+  }
+  return clean.substring(0, 2).toUpperCase();
+}
+
+function getFilteredJobs() {
+  const query = (document.getElementById('searchInput')?.value || '').toLowerCase().trim();
+  const selectedCompany = document.getElementById('companyFilter')?.value || 'all';
+  const selectedLocation = document.getElementById('locationFilter')?.value || 'all';
+  const selectedAge = document.getElementById('ageFilter')?.value || 'all';
+  const sortOrder = document.getElementById('sortFilter')?.value || 'newest';
+  const hideApplied = document.getElementById('hideAppliedToggle')?.checked || false;
+
+  const filtered = allJobs.filter(job => {
     if (job.status !== 'active') return false;
 
     if (hideApplied && appliedJobs.has(job.id)) return false;
 
+    // Filter by Company
+    if (selectedCompany !== 'all' && (job.company_name || '').trim() !== selectedCompany) {
+      return false;
+    }
+
+    // Filter by Age
+    if (selectedAge !== 'all') {
+      const maxDays = parseFloat(selectedAge);
+      const ageDays = getJobAgeDays(job);
+      if (ageDays > maxDays) return false;
+    }
+
+    // Filter by Category
     if (activeCategory === 'crypto' && !job.is_crypto) return false;
     if (activeCategory === 'offensive') {
       const isOff = (job.all_domains || []).some(d => {
@@ -549,7 +694,7 @@ function getFilteredJobs() {
       if (!isAi && !(job.domain || '').includes('IA')) return false;
     }
 
-    // Dynamic Location filter
+    // Filter by Location
     if (selectedLocation !== 'all') {
       const hub = FRENCH_HUBS.find(h => h.label === selectedLocation);
       const loc = (job.location || '').toLowerCase();
@@ -560,6 +705,7 @@ function getFilteredJobs() {
       }
     }
 
+    // Filter by Query
     if (query) {
       const searchTarget = [
         job.title,
@@ -577,6 +723,22 @@ function getFilteredJobs() {
 
     return true;
   });
+
+  // Sort
+  filtered.sort((a, b) => {
+    if (sortOrder === 'company') {
+      return (a.company_name || '').localeCompare(b.company_name || '');
+    }
+    const ageA = getJobAgeDays(a);
+    const ageB = getJobAgeDays(b);
+    if (sortOrder === 'oldest') {
+      return ageB - ageA;
+    }
+    // Default: 'newest'
+    return ageA - ageB;
+  });
+
+  return filtered;
 }
 
 function renderJobs() {
@@ -614,37 +776,75 @@ function createJobCardHtml(job) {
     badgeStyle = 'bg-purple-950/70 text-purple-300 border border-purple-900/60';
   }
 
+  const logoUrl = getCompanyLogoUrl(job);
+  const initials = getCompanyInitials(job.company_name);
+  const ageBadge = formatJobAge(job);
+
   return `
     <article class="job-card bg-zinc-900/40 rounded-lg border border-zinc-800/70 p-4 hover:border-zinc-700 transition ${isApplied ? 'opacity-50' : ''}">
-      <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+      <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3.5">
         
-        <div class="space-y-2 flex-1">
-          <div>
-            <span class="text-[11px] font-medium px-2 py-0.5 rounded ${badgeStyle}">
-              ${escapeHtml(job.domain || 'Cybersécurité')}
-            </span>
+        <!-- Logo + Job Details -->
+        <div class="flex items-start gap-3.5 flex-1 min-w-0">
+          
+          <!-- Company Logo Container -->
+          <div class="w-11 h-11 rounded-lg border border-zinc-800 bg-zinc-950 p-1 flex items-center justify-center shrink-0 overflow-hidden shadow-inner">
+            ${logoUrl ? `
+              <img src="${logoUrl}" alt="${escapeHtml(job.company_name)}" class="w-full h-full object-contain rounded" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="hidden w-full h-full items-center justify-center font-bold text-xs text-zinc-300 bg-zinc-900 rounded select-none">
+                ${escapeHtml(initials)}
+              </div>
+            ` : `
+              <div class="w-full h-full flex items-center justify-center font-bold text-xs text-zinc-300 bg-zinc-900 rounded select-none">
+                ${escapeHtml(initials)}
+              </div>
+            `}
           </div>
 
-          <h2 class="text-sm font-semibold text-zinc-100 hover:text-indigo-400 transition tracking-tight">
-            <a href="${job.direct_url}" target="_blank" rel="noopener noreferrer">
-              ${escapeHtml(job.title)}
-            </a>
-          </h2>
+          <!-- Main Info -->
+          <div class="space-y-1.5 flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5">
+              <span class="text-[11px] font-medium px-2 py-0.5 rounded ${badgeStyle}">
+                ${escapeHtml(job.domain || 'Cybersécurité')}
+              </span>
+              ${ageBadge ? `
+                <span class="text-[11px] font-medium px-2 py-0.5 rounded bg-zinc-800/90 text-zinc-300 inline-flex items-center gap-1 font-mono">
+                  <svg class="w-3 h-3 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  ${escapeHtml(ageBadge)}
+                </span>
+              ` : ''}
+              ${job.source && job.source.includes('LinkedIn') ? `
+                <span class="text-[10px] font-medium px-1.5 py-0.5 rounded bg-sky-950/60 text-sky-400 border border-sky-900/50">
+                  LinkedIn
+                </span>
+              ` : ''}
+            </div>
 
-          <div class="flex flex-wrap items-center gap-x-2 text-xs text-zinc-400">
-            <span class="font-medium text-zinc-200">${escapeHtml(job.company_name)}</span>
-            <span class="text-zinc-600">•</span>
-            <span>${escapeHtml(job.location || 'France')}</span>
+            <h2 class="text-sm font-semibold text-zinc-100 hover:text-indigo-400 transition tracking-tight leading-snug">
+              <a href="${job.direct_url}" target="_blank" rel="noopener noreferrer">
+                ${escapeHtml(job.title)}
+              </a>
+            </h2>
+
+            <div class="flex flex-wrap items-center gap-x-2 text-xs text-zinc-400">
+              <span class="font-medium text-zinc-200">${escapeHtml(job.company_name)}</span>
+              <span class="text-zinc-600">•</span>
+              <span>${escapeHtml(job.location || 'France')}</span>
+            </div>
+
+            ${job.description ? `
+              <p class="text-xs text-zinc-400 pt-0.5 line-clamp-2 leading-relaxed">
+                ${escapeHtml(job.description)}
+              </p>
+            ` : ''}
           </div>
 
-          ${job.description ? `
-            <p class="text-xs text-zinc-400 pt-0.5 line-clamp-2 leading-relaxed">
-              ${escapeHtml(job.description)}
-            </p>
-          ` : ''}
         </div>
 
-        <div class="flex flex-col sm:items-end gap-2.5 shrink-0 pt-2 sm:pt-0">
+        <!-- Apply & Actions -->
+        <div class="flex flex-col sm:items-end gap-2.5 shrink-0 pt-2 sm:pt-0 sm:self-start">
           <a 
             href="${job.direct_url}" 
             target="_blank" 

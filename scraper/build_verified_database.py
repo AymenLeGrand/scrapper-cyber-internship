@@ -585,6 +585,23 @@ except Exception as e:
     print(f"[XMCO] Ingestion warning: {e}")
     scraper_errors.append(f"XMCO: {e}")
 
+# 13. LINKEDIN (Public Guest Jobs API)
+try:
+    try:
+        from scraper.linkedin_scraper import scrape_linkedin
+    except ImportError:
+        from linkedin_scraper import scrape_linkedin
+
+    linkedin_jobs = scrape_linkedin(max_pages_per_kw=2)
+    if linkedin_jobs:
+        print(f"[LinkedIn] {len(linkedin_jobs)} new stages ingested!")
+        all_jobs.extend(linkedin_jobs)
+    else:
+        print("[LinkedIn] Feed monitored (0 matches or rate-limited).")
+except Exception as e:
+    print(f"[LinkedIn] Ingestion warning: {e}")
+    scraper_errors.append(f"LinkedIn: {e}")
+
 # -------------------------------------------------------------
 # DEDUPLICATION & VALIDATION
 # -------------------------------------------------------------

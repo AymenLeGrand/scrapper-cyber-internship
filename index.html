@@ -95,9 +95,8 @@
         >
       </div>
 
-      <!-- Filter Chips & Dropdown -->
-      <div class="flex flex-wrap items-center justify-between gap-2.5 pt-2 border-t border-zinc-800/50">
-        <!-- Categories -->
+      <!-- Filter Chips -->
+      <div class="pt-2 border-t border-zinc-800/50">
         <div class="flex flex-wrap items-center gap-1.5" id="categoryChips">
           <button data-category="all" class="category-chip active">Toutes (<span id="countAll">0</span>)</button>
           <button data-category="crypto" class="category-chip">Cryptologie</button>
@@ -106,11 +105,47 @@
           <button data-category="cloud_devsecops" class="category-chip">Cloud / DevSecOps</button>
           <button data-category="ai_cyber" class="category-chip">IA</button>
         </div>
+      </div>
 
-        <!-- Location selector (dynamically populated) -->
-        <select id="locationFilter" class="text-xs bg-zinc-950 border border-zinc-800 rounded-md px-2.5 py-1.5 text-zinc-300 focus:outline-none focus:border-zinc-700">
-          <option value="all">Toutes les villes</option>
-        </select>
+      <!-- Advanced Selectors: Company, Location, Age, Sort -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-zinc-800/50">
+        <!-- Company selector -->
+        <div>
+          <label for="companyFilter" class="block text-[11px] font-medium text-zinc-400 mb-1">Entreprise</label>
+          <select id="companyFilter" class="w-full text-xs bg-zinc-950 border border-zinc-800 rounded-md px-2.5 py-1.5 text-zinc-300 focus:outline-none focus:border-zinc-700">
+            <option value="all">Toutes les entreprises</option>
+          </select>
+        </div>
+
+        <!-- Location selector -->
+        <div>
+          <label for="locationFilter" class="block text-[11px] font-medium text-zinc-400 mb-1">Ville / Hub</label>
+          <select id="locationFilter" class="w-full text-xs bg-zinc-950 border border-zinc-800 rounded-md px-2.5 py-1.5 text-zinc-300 focus:outline-none focus:border-zinc-700">
+            <option value="all">Toutes les villes</option>
+          </select>
+        </div>
+
+        <!-- Age selector -->
+        <div>
+          <label for="ageFilter" class="block text-[11px] font-medium text-zinc-400 mb-1">Ancienneté</label>
+          <select id="ageFilter" class="w-full text-xs bg-zinc-950 border border-zinc-800 rounded-md px-2.5 py-1.5 text-zinc-300 focus:outline-none focus:border-zinc-700">
+            <option value="all">Toutes les dates</option>
+            <option value="1">Moins de 24h</option>
+            <option value="7">Moins de 7 jours</option>
+            <option value="14">Moins de 14 jours</option>
+            <option value="30">Moins de 30 jours</option>
+          </select>
+        </div>
+
+        <!-- Sort selector -->
+        <div>
+          <label for="sortFilter" class="block text-[11px] font-medium text-zinc-400 mb-1">Trier par</label>
+          <select id="sortFilter" class="w-full text-xs bg-zinc-950 border border-zinc-800 rounded-md px-2.5 py-1.5 text-zinc-300 focus:outline-none focus:border-zinc-700">
+            <option value="newest">Plus récentes d'abord</option>
+            <option value="oldest">Plus anciennes d'abord</option>
+            <option value="company">Entreprise (A &rarr; Z)</option>
+          </select>
+        </div>
       </div>
     </section>
 
