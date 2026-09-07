@@ -33,7 +33,7 @@ synacktiv_entries = [
         "is_cyber": True,
         "source": "synacktiv_portal",
         "description": "Amélioration des fonctionnalités de recyclage et analyse cryptographique de mots de passe au sein de l'outil Kraqozorus de Synacktiv. Sujet de recherche et développement offensif.",
-        "posted_at": "2025-09-01",
+        "posted_at": "2025-10-29",
         "status": "active",
         "verification_status": "VERIFIED_ACTIVE"
     },
@@ -51,7 +51,7 @@ synacktiv_entries = [
         "is_cyber": True,
         "source": "synacktiv_portal",
         "description": "Développement et outillage système interne pour la forge, manipulation et analyse de flux de données complexes lors d'exercices d'intrusion et de recherche de vulnérabilités.",
-        "posted_at": "2025-09-01",
+        "posted_at": "2025-10-02",
         "status": "active",
         "verification_status": "VERIFIED_ACTIVE"
     },
@@ -69,7 +69,7 @@ synacktiv_entries = [
         "is_cyber": True,
         "source": "synacktiv_portal",
         "description": "Recherche sur les techniques avancées de hooking, d'interception d'API et d'évasion d'EDR au niveau noyau/userland pour les audits de sécurité et tests d'intrusion.",
-        "posted_at": "2025-09-01",
+        "posted_at": "2024-10-30",
         "status": "active",
         "verification_status": "VERIFIED_ACTIVE"
     },
@@ -87,7 +87,7 @@ synacktiv_entries = [
         "is_cyber": True,
         "source": "synacktiv_portal",
         "description": "Fuzzing avancé, rétro-ingénierie et conception de preuves de concept (PoC) d'exploitation de vulnérabilités mémoires ou logicielles complexes.",
-        "posted_at": "2025-09-01",
+        "posted_at": "2025-10-02",
         "status": "active",
         "verification_status": "VERIFIED_ACTIVE"
     },
@@ -105,7 +105,7 @@ synacktiv_entries = [
         "is_cyber": True,
         "source": "synacktiv_official_pdf",
         "description": "Catalogue officiel complet des 8 sujets de stage de fin d'études PFE Master 2 proposés par Synacktiv pour la promo 2025-2026 (Pentest, R&D, Reverse, Crypto, Outillage).",
-        "posted_at": "2025-09-01",
+        "posted_at": "2025-10-01",
         "status": "active",
         "verification_status": "VERIFIED_ACTIVE"
     }
@@ -115,6 +115,8 @@ all_jobs.extend(synacktiv_entries)
 # -------------------------------------------------------------
 # 2. WAVESTONE (Cybersecurity & Digital Trust) - 25 verified stages
 # -------------------------------------------------------------
+WAVESTONE_DATES = {'744000145959338': '2026-08-27', '744000140454334': '2026-07-29', '744000140456385': '2026-07-29', '744000140458560': '2026-07-29', '744000140458551': '2026-07-29', '744000140459329': '2026-07-29', '744000140454926': '2026-07-29', '744000146453695': '2026-08-31', '744000141496819': '2026-08-04', '744000141506609': '2026-08-04', '744000141503529': '2026-08-04', '744000141492638': '2026-08-04', '744000141503840': '2026-08-04'}
+
 wavestone_postings = [
     # Paris / Puteaux (Strictly Technical)
     ("744000145959338", "STAGE M2 / PFE - AI & Cybersecurity Consultant (Puteaux)", "Puteaux (Paris)", "Intelligence Artificielle & Cybersécurité", ["IA & Cyber", "Sécurité des LLM", "Prompt Injection", "Audit Technique"]),
@@ -149,7 +151,7 @@ for jid, title, city, domain, domains in wavestone_postings:
         "is_cyber": True,
         "source": "smartrecruiters_wavestone",
         "description": f"Stage de fin d'études Bac+5 / PFE de 6 mois au sein de la practice Cybersécurité & Digital Trust de Wavestone à {city}. Sujet : {title}.",
-        "posted_at": "2025-09-01",
+        "posted_at": WAVESTONE_DATES.get(jid, "2026-08-04"),
         "status": "active",
         "verification_status": "VERIFIED_ACTIVE"
     })
@@ -157,6 +159,8 @@ for jid, title, city, domain, domains in wavestone_postings:
 # -------------------------------------------------------------
 # 3. SOPRA STERIA (Cybersecurity) - 7 verified stages with disambiguated city titles
 # -------------------------------------------------------------
+SOPRA_DATES = {'744000147248678': '2026-09-03', '744000147246974': '2026-09-03', '744000147248409': '2026-09-03', '744000147506608': '2026-09-04', '744000147506149': '2026-09-04', '744000147550118': '2026-09-04', '744000147473198': '2026-09-04'}
+
 sopra_postings = [
     ("744000147248678", "STAGE M2 / PFE - Analyste MDR : Détection Cybersécurité (Rennes)", "Cesson-Sévigné (Rennes)", "Détection & MDR", ["SOC / MDR", "Détection", "SIEM", "Incident Response"]),
     ("744000147246974", "STAGE M2 / PFE - Analyste MDR : Détection Cybersécurité (Paris)", "Courbevoie (Paris)", "Détection & MDR", ["SOC / MDR", "Détection", "SIEM", "Incident Response"]),
@@ -182,7 +186,7 @@ for jid, title, city, domain, domains in sopra_postings:
         "is_cyber": True,
         "source": "smartrecruiters_soprasteria",
         "description": f"Stage de fin d'études Bac+5 / PFE de 6 mois au sein du pôle Cybersécurité de Sopra Steria à {city}. Missions opérationnelles sur {domain}.",
-        "posted_at": "2025-09-01",
+        "posted_at": SOPRA_DATES.get(jid, "2026-09-03"),
         "status": "active",
         "verification_status": "VERIFIED_ACTIVE"
     })
@@ -210,7 +214,7 @@ for slug, title, city, domain, domains in headmind_postings:
         "is_cyber": True,
         "source": "headmind_careers",
         "description": f"Stage de fin d'études Bac+5 / PFE de 6 mois chez HeadMind Partners à {city}. Missions de pointe en cyberdéfense et conseil avec perspective d'embauche en CDI.",
-        "posted_at": "2025-09-01",
+        "posted_at": "2026-09-01",
         "status": "active",
         "verification_status": "VERIFIED_ACTIVE"
     })
@@ -237,7 +241,7 @@ for jid, title, url, domain, domains in vinci_postings:
         "is_cyber": True,
         "source": "vinci_careers",
         "description": f"Stage de fin d'études Bac+5 / PFE de 6 mois pré-embauche chez VINCI Construction SI (Nanterre). Intégration au sein de la DSI sur le sujet : {title}.",
-        "posted_at": "2025-09-01",
+        "posted_at": "2026-09-01",
         "status": "active",
         "verification_status": "VERIFIED_ACTIVE"
     })
@@ -245,6 +249,8 @@ for jid, title, url, domain, domains in vinci_postings:
 # -------------------------------------------------------------
 # 6. OCTO TECHNOLOGY (Accenture) - 2 verified stages
 # -------------------------------------------------------------
+OCTO_DATES = {'744000146426969': '2026-08-31', '744000146940465': '2026-09-02'}
+
 octo_postings = [
     ("744000146426969", "STAGE M2 / PFE - Cloud Security & Automatisation de la Sécurité Cloud Souverain (Paris)", "Paris", "Sécurité Cloud & Automatisation", ["Cloud Security", "DevSecOps", "Scaleway", "Python", "Go"]),
     ("744000146940465", "STAGE M2 / PFE - AI Engineer & Sécurisation des Applications Agentiques (Paris)", "Paris", "IA & Sécurité Applicative", ["Agents IA", "Cybersécurité", "LLM Security", "Software Engineering"])
@@ -265,7 +271,7 @@ for jid, title, city, domain, domains in octo_postings:
         "is_cyber": True,
         "source": "smartrecruiters_octo",
         "description": f"Stage de fin d'études Bac+5 / PFE de 6 mois chez OCTO Technology (Paris). R&D appliquée et ingénierie de sécurité de pointe.",
-        "posted_at": "2025-09-01",
+        "posted_at": OCTO_DATES.get(jid, "2026-09-01"),
         "status": "active",
         "verification_status": "VERIFIED_ACTIVE"
     })
@@ -287,7 +293,7 @@ all_jobs.append({
     "is_cyber": True,
     "source": "smartrecruiters_sia",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois avec perspective d'embauche au sein de la Business Line Cybersecurity de Sia Partners. Sujets de recherche au Sia CyberLab (AI systems, Zero Trust, Web3, Forensics).",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-09-02",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
 })
@@ -309,7 +315,7 @@ all_jobs.append({
     "is_cyber": True,
     "source": "smartrecruiters_mazars",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein de l'équipe Cybersécurité qualifiée PASSI de Forvis Mazars à Nantes. Missions d'audits techniques, tests d'intrusion et conseil.",
-    "posted_at": "2025-09-01",
+    "posted_at": "2025-10-16",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
 })
@@ -336,7 +342,7 @@ for jid, title, city, domain, domains in devoteam_postings:
         "is_cyber": True,
         "source": "smartrecruiters_devoteam",
         "description": f"Stage de fin d'études Bac+5 / PFE de 6 mois au sein de Devoteam Cyber Trust à {city}. Sujet : {title}.",
-        "posted_at": "2025-09-01",
+        "posted_at": "2026-09-03",
         "status": "active",
         "verification_status": "VERIFIED_ACTIVE"
     })

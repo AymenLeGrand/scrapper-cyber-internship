@@ -18,7 +18,7 @@
     "is_cyber": true,
     "source": "synacktiv_portal",
     "description": "Amélioration des fonctionnalités de recyclage et analyse cryptographique de mots de passe au sein de l'outil Kraqozorus de Synacktiv. Sujet de recherche et développement offensif.",
-    "posted_at": "2025-09-01",
+    "posted_at": "2025-10-29",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -40,7 +40,7 @@
     "is_cyber": true,
     "source": "synacktiv_portal",
     "description": "Développement et outillage système interne pour la forge, manipulation et analyse de flux de données complexes lors d'exercices d'intrusion et de recherche de vulnérabilités.",
-    "posted_at": "2025-09-01",
+    "posted_at": "2025-10-02",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -63,7 +63,7 @@
     "is_cyber": true,
     "source": "synacktiv_portal",
     "description": "Recherche sur les techniques avancées de hooking, d'interception d'API et d'évasion d'EDR au niveau noyau/userland pour les audits de sécurité et tests d'intrusion.",
-    "posted_at": "2025-09-01",
+    "posted_at": "2024-10-30",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -86,7 +86,7 @@
     "is_cyber": true,
     "source": "synacktiv_portal",
     "description": "Fuzzing avancé, rétro-ingénierie et conception de preuves de concept (PoC) d'exploitation de vulnérabilités mémoires ou logicielles complexes.",
-    "posted_at": "2025-09-01",
+    "posted_at": "2025-10-02",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -109,7 +109,7 @@
     "is_cyber": true,
     "source": "synacktiv_official_pdf",
     "description": "Catalogue officiel complet des 8 sujets de stage de fin d'études PFE Master 2 proposés par Synacktiv pour la promo 2025-2026 (Pentest, R&D, Reverse, Crypto, Outillage).",
-    "posted_at": "2025-09-01",
+    "posted_at": "2025-10-01",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -132,7 +132,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_wavestone",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein de la practice Cybersécurité & Digital Trust de Wavestone à Puteaux (Paris). Sujet : STAGE M2 / PFE - AI & Cybersecurity Consultant (Puteaux).",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-08-27",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -155,7 +155,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_wavestone",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein de la practice Cybersécurité & Digital Trust de Wavestone à Paris. Sujet : STAGE M2 / PFE - Trust Services : PKI, Signature & Cryptographie (Paris).",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-07-29",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -177,7 +177,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_wavestone",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein de la practice Cybersécurité & Digital Trust de Wavestone à Paris. Sujet : STAGE M2 / PFE - Garantir la confiance dans les échanges électroniques & PKI (Paris).",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-07-29",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -199,7 +199,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_wavestone",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein de la practice Cybersécurité & Digital Trust de Wavestone à Paris. Sujet : STAGE M2 / PFE - Cybersécurité des SI industriels et innovation OT (Paris).",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-07-29",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -221,7 +221,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_wavestone",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein de la practice Cybersécurité & Digital Trust de Wavestone à Paris. Sujet : STAGE M2 / PFE - Cybersécurité des SI industriels & Risques IA / Industrie 4.0 (Paris).",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-07-29",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -243,7 +243,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_wavestone",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein de la practice Cybersécurité & Digital Trust de Wavestone à Paris. Sujet : STAGE M2 / PFE - Intelligence Artificielle & Cybersécurité : Sécurisation des systèmes émergents (Paris).",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-07-29",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -265,7 +265,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_wavestone",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein de la practice Cybersécurité & Digital Trust de Wavestone à Paris. Sujet : STAGE M2 / PFE - Cybersécurité IoT : Sécurisation de bout en bout de la puce au Cloud (Paris).",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-07-29",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -287,7 +287,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_wavestone",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein de la practice Cybersécurité & Digital Trust de Wavestone à Paris. Sujet : STAGE M2 / PFE - Workplace Security : Prévention de la compromission du poste de travail (Paris).",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-08-31",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -309,7 +309,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_wavestone",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein de la practice Cybersécurité & Digital Trust de Wavestone à Nantes. Sujet : STAGE M2 / PFE - Pentest & Red Teaming à l'ère de l'IA générative (Nantes).",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-08-04",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -332,7 +332,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_wavestone",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein de la practice Cybersécurité & Digital Trust de Wavestone à Nantes. Sujet : STAGE M2 / PFE - Détection et Réaction par l'IA en Cybersécurité (Nantes).",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-08-04",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -355,7 +355,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_wavestone",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein de la practice Cybersécurité & Digital Trust de Wavestone à Nantes. Sujet : STAGE M2 / PFE - Cloud et sécurité : architectures et modèles de confiance (Nantes).",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-08-04",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -377,7 +377,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_wavestone",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein de la practice Cybersécurité & Digital Trust de Wavestone à Nantes. Sujet : STAGE M2 / PFE - DevSecOps et sécurité du développement agile (Nantes).",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-08-04",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -399,7 +399,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_wavestone",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein de la practice Cybersécurité & Digital Trust de Wavestone à Nantes. Sujet : STAGE M2 / PFE - Détection des menaces dans le SI Industriel OT (Nantes).",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-08-04",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -422,7 +422,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_soprasteria",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein du pôle Cybersécurité de Sopra Steria à Cesson-Sévigné (Rennes). Missions opérationnelles sur Détection & MDR.",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-09-03",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -445,7 +445,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_soprasteria",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein du pôle Cybersécurité de Sopra Steria à Courbevoie (Paris). Missions opérationnelles sur Détection & MDR.",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-09-03",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -468,7 +468,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_soprasteria",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein du pôle Cybersécurité de Sopra Steria à Colomiers (Toulouse). Missions opérationnelles sur Détection & MDR.",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-09-03",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -491,7 +491,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_soprasteria",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein du pôle Cybersécurité de Sopra Steria à Courbevoie (Paris). Missions opérationnelles sur Threat Intelligence & Vulnérabilités.",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-09-04",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -514,7 +514,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_soprasteria",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein du pôle Cybersécurité de Sopra Steria à Colomiers (Toulouse). Missions opérationnelles sur Threat Intelligence & Vulnérabilités.",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-09-04",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -537,7 +537,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_soprasteria",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein du pôle Cybersécurité de Sopra Steria à Colomiers (Toulouse). Missions opérationnelles sur Investigation Numérique & DFIR.",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-09-04",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -560,7 +560,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_soprasteria",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein du pôle Cybersécurité de Sopra Steria à Colomiers (Toulouse). Missions opérationnelles sur Réponse aux Incidents & CSIRT.",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-09-04",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -583,7 +583,7 @@
     "is_cyber": true,
     "source": "headmind_careers",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois chez HeadMind Partners à Paris. Missions de pointe en cyberdéfense et conseil avec perspective d'embauche en CDI.",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-09-01",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -606,7 +606,7 @@
     "is_cyber": true,
     "source": "headmind_careers",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois chez HeadMind Partners à Paris. Missions de pointe en cyberdéfense et conseil avec perspective d'embauche en CDI.",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-09-01",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -629,7 +629,7 @@
     "is_cyber": true,
     "source": "vinci_careers",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois pré-embauche chez VINCI Construction SI (Nanterre). Intégration au sein de la DSI sur le sujet : STAGE M2 / PFE - Analyste Cyberdéfense (Nanterre).",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-09-01",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -653,7 +653,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_octo",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois chez OCTO Technology (Paris). R&D appliquée et ingénierie de sécurité de pointe.",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-08-31",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -676,7 +676,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_octo",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois chez OCTO Technology (Paris). R&D appliquée et ingénierie de sécurité de pointe.",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-09-02",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -700,7 +700,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_sia",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois avec perspective d'embauche au sein de la Business Line Cybersecurity de Sia Partners. Sujets de recherche au Sia CyberLab (AI systems, Zero Trust, Web3, Forensics).",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-09-02",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -723,7 +723,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_mazars",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein de l'équipe Cybersécurité qualifiée PASSI de Forvis Mazars à Nantes. Missions d'audits techniques, tests d'intrusion et conseil.",
-    "posted_at": "2025-09-01",
+    "posted_at": "2025-10-16",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -746,7 +746,7 @@
     "is_cyber": true,
     "source": "smartrecruiters_devoteam",
     "description": "Stage de fin d'études Bac+5 / PFE de 6 mois au sein de Devoteam Cyber Trust à Levallois-Perret (Paris). Sujet : STAGE M2 / PFE - Ingénieur(e) R&D Intelligence Artificielle & Cybersécurité (Paris).",
-    "posted_at": "2025-09-01",
+    "posted_at": "2026-09-03",
     "status": "active",
     "verification_status": "VERIFIED_ACTIVE"
   },
@@ -787,35 +787,14 @@
     "posted_at": "2026-08-04T13:01:09.062Z"
   },
   {
-    "id": "linkedin_4458411010",
-    "title": "Réalisation de contrôle cybersécurité des systèmes d’information [Stage]",
-    "company_name": "Commandement de la cyberdéfense (COMCYBER)",
-    "location": "Toulon, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/r%C3%A9alisation-de-contr%C3%B4le-cybers%C3%A9curit%C3%A9-des-syst%C3%A8mes-d%E2%80%99information-stage-at-french-cyber-command-4458411010",
-    "logo_url": "https://media.licdn.com/dms/image/v2/C4D0BAQGXTxKhUBzgxQ/company-logo_100_100/company-logo_100_100/0/1630546121906/commandement_de_la_cyberdfense_logo?e=2147483647&v=beta&t=aVfbworurih8AxGC_6RER0gBSNkZ4NS7VLl0pSwJ_hM",
-    "posted_at": "2026-08-28",
+    "id": "linkedin_4457166196",
+    "title": "STAGE - Cyber Sécurité & Gouvernance SMSI (H/F)",
+    "company_name": "Volkswagen Group France",
+    "location": "Roissy-en-France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-cyber-s%C3%A9curit%C3%A9-gouvernance-smsi-h-f-at-volkswagen-group-france-4457166196",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D560BAQFDzqet0GNGLA/company-logo_100_100/company-logo_100_100/0/1706629435018/groupe_volkswagen_france_logo?e=2147483647&v=beta&t=26O5XvxtaGVX1CIIcbbTf5gD1TrspQr5t6Ciie4WXk8",
+    "posted_at": "2026-08-24",
     "posted_relative": "il y a 1 semaine",
-    "domain": "Cybersecurity (General)",
-    "all_domains": [
-      "Cybersecurity (General)"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4464098101",
-    "title": "STAGE - Ingénieur cybersécurité (F/H)",
-    "company_name": "Dassault Systèmes",
-    "location": "Vélizy-Villacoublay, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-ing%C3%A9nieur-cybers%C3%A9curit%C3%A9-f-h-at-dassault-syst%C3%A8mes-4464098101",
-    "logo_url": "https://media.licdn.com/dms/image/v2/C560BAQHroRzeNTva6Q/company-logo_100_100/company-logo_100_100/0/1631330934922?e=2147483647&v=beta&t=Y_LaLgUh3t_AY4PloiAtAbGGfEr2fGl7C4_RBhQ7Vok",
-    "posted_at": "2026-09-07",
-    "posted_relative": "il y a 3 heures",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -850,14 +829,14 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4462164418",
-    "title": "Stage de fin d'études - Consultant.e Cybersécurité - Lyon",
-    "company_name": "Wavestone",
-    "location": "Lyon, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-de-fin-d-%C3%A9tudes-consultant-e-cybers%C3%A9curit%C3%A9-lyon-at-wavestone-4462164418",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQFyqb85NQkquw/company-logo_100_100/company-logo_100_100/0/1724759903350/wavestone_logo?e=2147483647&v=beta&t=W6J2HyilAYBczm27yfZ4kPnfscwYJ0ldonQApVY6og8",
-    "posted_at": "2026-09-02",
-    "posted_relative": "il y a 4 jours",
+    "id": "linkedin_4464098101",
+    "title": "STAGE - Ingénieur cybersécurité (F/H)",
+    "company_name": "Dassault Systèmes",
+    "location": "Vélizy-Villacoublay, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-ing%C3%A9nieur-cybers%C3%A9curit%C3%A9-f-h-at-dassault-syst%C3%A8mes-4464098101",
+    "logo_url": "https://media.licdn.com/dms/image/v2/C560BAQHroRzeNTva6Q/company-logo_100_100/company-logo_100_100/0/1631330934922?e=2147483647&v=beta&t=Y_LaLgUh3t_AY4PloiAtAbGGfEr2fGl7C4_RBhQ7Vok",
+    "posted_at": "2026-09-07",
+    "posted_relative": "il y a 3 heures",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -871,13 +850,13 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4462144257",
-    "title": "Final Year Internship Consultant - Cybersecurity",
-    "company_name": "Sia",
+    "id": "linkedin_4460603119",
+    "title": "Stage - Consultant cybersécurité Microsoft - H/F",
+    "company_name": "SYNETIS",
     "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/final-year-internship-consultant-cybersecurity-at-sia-4462144257",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQFV-HsSw3lYlg/company-logo_100_100/company-logo_100_100/0/1737563199089/sia_partners_logo?e=2147483647&v=beta&t=iqcL_fq4KldnQwUZgnRu_8gDwA401jRc-XQiZS0qkTI",
-    "posted_at": "2026-09-02",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-consultant-cybers%C3%A9curit%C3%A9-microsoft-h-f-at-synetis-4460603119",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQGOWhtaZF2Qbg/company-logo_100_100/company-logo_100_100/0/1704186084079/synetis_logo?e=2147483647&v=beta&t=9oVbxFjvhl6Zvd0ORHMRZVHyZz1qEqaW6-wyOmJ_qyo",
+    "posted_at": "2026-09-01",
     "posted_relative": "il y a 5 jours",
     "domain": "Cybersecurity (General)",
     "all_domains": [
@@ -913,77 +892,77 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4461167654",
-    "title": "Stage    -     Stage de fin d’études / Ingénieur Innovation Cybersécurité & Cryptographie Avancée - Rennes, France  (H/F)",
-    "company_name": "Astek",
-    "location": "Rennes, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-stage-de-fin-d%E2%80%99%C3%A9tudes-ing%C3%A9nieur-innovation-cybers%C3%A9curit%C3%A9-cryptographie-avanc%C3%A9e-rennes-france-h-f-at-astek-4461167654",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4D0BAQGYx0fox5gMCQ/company-logo_100_100/company-logo_100_100/0/1721227620337/astek_logo?e=2147483647&v=beta&t=YSrKNlvpShhMQUwJxQaoS4kWUr-Ho3tnTnDLjablHTQ",
-    "posted_at": "2026-09-04",
-    "posted_relative": "il y a 2 jours",
-    "domain": "Cryptology",
-    "all_domains": [
-      "Cryptology"
-    ],
-    "is_crypto": true,
-    "is_cyber": false,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4462834988",
-    "title": "Stage - Analyste MDR - Detection Cybersécurité - Rennes",
-    "company_name": "Sopra Steria",
-    "location": "Cesson-Sévigné, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-analyste-mdr-detection-cybers%C3%A9curit%C3%A9-rennes-at-sopra-steria-4462834988",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
-    "posted_at": "2026-09-03",
-    "posted_relative": "il y a 3 jours",
-    "domain": "Cybersecurity (General)",
-    "all_domains": [
-      "Cybersecurity (General)"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4462835914",
-    "title": "Stage - Analyste MDR - Detection Cybersécurité - Île-de-France",
-    "company_name": "Sopra Steria",
-    "location": "Courbevoie, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-analyste-mdr-detection-cybers%C3%A9curit%C3%A9-%C3%AEle-de-france-at-sopra-steria-4462835914",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
-    "posted_at": "2026-09-03",
-    "posted_relative": "il y a 3 jours",
-    "domain": "Cybersecurity (General)",
-    "all_domains": [
-      "Cybersecurity (General)"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4457166196",
-    "title": "STAGE - Cyber Sécurité & Gouvernance SMSI (H/F)",
-    "company_name": "Volkswagen Group France",
-    "location": "Roissy-en-France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-cyber-s%C3%A9curit%C3%A9-gouvernance-smsi-h-f-at-volkswagen-group-france-4457166196",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D560BAQFDzqet0GNGLA/company-logo_100_100/company-logo_100_100/0/1706629435018/groupe_volkswagen_france_logo?e=2147483647&v=beta&t=26O5XvxtaGVX1CIIcbbTf5gD1TrspQr5t6Ciie4WXk8",
-    "posted_at": "2026-08-24",
+    "id": "linkedin_4458411010",
+    "title": "Réalisation de contrôle cybersécurité des systèmes d’information [Stage]",
+    "company_name": "Commandement de la cyberdéfense (COMCYBER)",
+    "location": "Toulon, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/r%C3%A9alisation-de-contr%C3%B4le-cybers%C3%A9curit%C3%A9-des-syst%C3%A8mes-d%E2%80%99information-stage-at-french-cyber-command-4458411010",
+    "logo_url": "https://media.licdn.com/dms/image/v2/C4D0BAQGXTxKhUBzgxQ/company-logo_100_100/company-logo_100_100/0/1630546121906/commandement_de_la_cyberdfense_logo?e=2147483647&v=beta&t=aVfbworurih8AxGC_6RER0gBSNkZ4NS7VLl0pSwJ_hM",
+    "posted_at": "2026-08-28",
     "posted_relative": "il y a 1 semaine",
+    "domain": "Cybersecurity (General)",
+    "all_domains": [
+      "Cybersecurity (General)"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4462144257",
+    "title": "Final Year Internship Consultant - Cybersecurity",
+    "company_name": "Sia",
+    "location": "Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/final-year-internship-consultant-cybersecurity-at-sia-4462144257",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQFV-HsSw3lYlg/company-logo_100_100/company-logo_100_100/0/1737563199089/sia_partners_logo?e=2147483647&v=beta&t=iqcL_fq4KldnQwUZgnRu_8gDwA401jRc-XQiZS0qkTI",
+    "posted_at": "2026-09-02",
+    "posted_relative": "il y a 5 jours",
+    "domain": "Cybersecurity (General)",
+    "all_domains": [
+      "Cybersecurity (General)"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4464307038",
+    "title": "STAGE - Chargé d'Opérations Cybersécurité (F/H)",
+    "company_name": "Dassault Systèmes",
+    "location": "Vélizy-Villacoublay, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-charg%C3%A9-d-op%C3%A9rations-cybers%C3%A9curit%C3%A9-f-h-at-dassault-syst%C3%A8mes-4464307038",
+    "logo_url": "https://media.licdn.com/dms/image/v2/C560BAQHroRzeNTva6Q/company-logo_100_100/company-logo_100_100/0/1631330934922?e=2147483647&v=beta&t=Y_LaLgUh3t_AY4PloiAtAbGGfEr2fGl7C4_RBhQ7Vok",
+    "posted_at": "2026-09-07",
+    "posted_relative": "il y a 3 heures",
+    "domain": "Cybersecurity (General)",
+    "all_domains": [
+      "Cybersecurity (General)"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4126307616",
+    "title": "Stage de fin d'études - Consultant(e) Cybersécurité - Nantes - 2026 H/F",
+    "company_name": "Forvis Mazars en France",
+    "location": "Nantes, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-de-fin-d-%C3%A9tudes-consultant-e-cybers%C3%A9curit%C3%A9-nantes-2026-h-f-at-forvis-mazars-en-france-4126307616",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEjCDBiIXRhDA/company-logo_100_100/company-logo_100_100/0/1719256788450/forvis_mazars_en_france_logo?e=2147483647&v=beta&t=46wUzxIBoELIkN5x9eGwxVI9up2eZa7K-txo38exh2g",
+    "posted_at": "2026-09-03",
+    "posted_relative": "il y a 4 jours",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -1018,20 +997,20 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4458408031",
-    "title": "Ingénieur en data - Optimisation d'une base de données et suivi d'incidents cyber [Stage]",
-    "company_name": "Commandement de la cyberdéfense (COMCYBER)",
-    "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/ing%C3%A9nieur-en-data-optimisation-d-une-base-de-donn%C3%A9es-et-suivi-d-incidents-cyber-stage-at-french-cyber-command-4458408031",
-    "logo_url": "https://media.licdn.com/dms/image/v2/C4D0BAQGXTxKhUBzgxQ/company-logo_100_100/company-logo_100_100/0/1630546121906/commandement_de_la_cyberdfense_logo?e=2147483647&v=beta&t=aVfbworurih8AxGC_6RER0gBSNkZ4NS7VLl0pSwJ_hM",
-    "posted_at": "2026-08-28",
-    "posted_relative": "il y a 1 semaine",
-    "domain": "Cybersecurity (General)",
+    "id": "linkedin_4461167654",
+    "title": "Stage    -     Stage de fin d’études / Ingénieur Innovation Cybersécurité & Cryptographie Avancée - Rennes, France  (H/F)",
+    "company_name": "Astek",
+    "location": "Rennes, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-stage-de-fin-d%E2%80%99%C3%A9tudes-ing%C3%A9nieur-innovation-cybers%C3%A9curit%C3%A9-cryptographie-avanc%C3%A9e-rennes-france-h-f-at-astek-4461167654",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4D0BAQGYx0fox5gMCQ/company-logo_100_100/company-logo_100_100/0/1721227620337/astek_logo?e=2147483647&v=beta&t=YSrKNlvpShhMQUwJxQaoS4kWUr-Ho3tnTnDLjablHTQ",
+    "posted_at": "2026-09-04",
+    "posted_relative": "il y a 2 jours",
+    "domain": "Cryptology",
     "all_domains": [
-      "Cybersecurity (General)"
+      "Cryptology"
     ],
-    "is_crypto": false,
-    "is_cyber": true,
+    "is_crypto": true,
+    "is_cyber": false,
     "eligible_algerian": true,
     "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
     "source": "LinkedIn (Offres Publiques)",
