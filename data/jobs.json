@@ -746,8 +746,8 @@
     "location": "Paris, France",
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-consultant-cybers%C3%A9curit%C3%A9-secop-pki-h-f-at-synetis-4460294369",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQGOWhtaZF2Qbg/company-logo_100_100/company-logo_100_100/0/1704186084079/synetis_logo?e=2147483647&v=beta&t=9oVbxFjvhl6Zvd0ORHMRZVHyZz1qEqaW6-wyOmJ_qyo",
-    "posted_at": "2026-09-02",
-    "posted_relative": "il y a 6 jours",
+    "posted_at": "2026-09-01",
+    "posted_relative": "il y a 1 semaine",
     "domain": "Cryptology",
     "all_domains": [
       "Cryptology"
@@ -769,27 +769,6 @@
     "logo_url": "https://media.licdn.com/dms/image/v2/C560BAQHroRzeNTva6Q/company-logo_100_100/company-logo_100_100/0/1631330934922?e=2147483647&v=beta&t=Y_LaLgUh3t_AY4PloiAtAbGGfEr2fGl7C4_RBhQ7Vok",
     "posted_at": "2026-09-07",
     "posted_relative": "il y a 1 jour",
-    "domain": "Cybersecurity (General)",
-    "all_domains": [
-      "Cybersecurity (General)"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4460603119",
-    "title": "Stage - Consultant cybersécurité Microsoft - H/F",
-    "company_name": "SYNETIS",
-    "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-consultant-cybers%C3%A9curit%C3%A9-microsoft-h-f-at-synetis-4460603119",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQGOWhtaZF2Qbg/company-logo_100_100/company-logo_100_100/0/1704186084079/synetis_logo?e=2147483647&v=beta&t=9oVbxFjvhl6Zvd0ORHMRZVHyZz1qEqaW6-wyOmJ_qyo",
-    "posted_at": "2026-09-02",
-    "posted_relative": "il y a 6 jours",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -830,8 +809,8 @@
     "location": "Rennes, France",
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-stage-de-fin-d%E2%80%99%C3%A9tudes-ing%C3%A9nieur-innovation-cybers%C3%A9curit%C3%A9-cryptographie-avanc%C3%A9e-rennes-france-h-f-at-astek-4462233622",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4D0BAQGYx0fox5gMCQ/company-logo_100_100/company-logo_100_100/0/1721227620337/astek_logo?e=2147483647&v=beta&t=YSrKNlvpShhMQUwJxQaoS4kWUr-Ho3tnTnDLjablHTQ",
-    "posted_at": "2026-09-07T21:45:17Z",
-    "posted_relative": "il y a 15 heures",
+    "posted_at": "2026-09-07",
+    "posted_relative": "il y a 1 jour",
     "domain": "Cryptology",
     "all_domains": [
       "Cryptology"
@@ -914,8 +893,8 @@
     "location": "Montreuil, France",
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-%E2%80%93-ing%C3%A9nieur-e-technique-cybers%C3%A9curit%C3%A9-%E2%80%93-d%C3%A9fense-s%C3%A9curit%C3%A9-%E2%80%93-%C3%AEle-de-france-at-sopra-steria-4462856345",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
-    "posted_at": "2026-09-04",
-    "posted_relative": "il y a 4 jours",
+    "posted_at": "2026-09-03",
+    "posted_relative": "il y a 5 jours",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -929,14 +908,35 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4464307038",
-    "title": "STAGE - Chargé d'Opérations Cybersécurité (F/H)",
-    "company_name": "Dassault Systèmes",
-    "location": "Vélizy-Villacoublay, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-charg%C3%A9-d-op%C3%A9rations-cybers%C3%A9curit%C3%A9-f-h-at-dassault-syst%C3%A8mes-4464307038",
-    "logo_url": "https://media.licdn.com/dms/image/v2/C560BAQHroRzeNTva6Q/company-logo_100_100/company-logo_100_100/0/1631330934922?e=2147483647&v=beta&t=Y_LaLgUh3t_AY4PloiAtAbGGfEr2fGl7C4_RBhQ7Vok",
-    "posted_at": "2026-09-07",
-    "posted_relative": "il y a 1 jour",
+    "id": "linkedin_4462834988",
+    "title": "Stage - Analyste MDR - Detection Cybersécurité - Rennes",
+    "company_name": "Sopra Steria",
+    "location": "Cesson-Sévigné, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-analyste-mdr-detection-cybers%C3%A9curit%C3%A9-rennes-at-sopra-steria-4462834988",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
+    "posted_at": "2026-09-03",
+    "posted_relative": "il y a 5 jours",
+    "domain": "Cyber Defensive / SOC / DFIR",
+    "all_domains": [
+      "Cyber Defensive / SOC / DFIR"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4462835914",
+    "title": "Stage - Analyste MDR - Detection Cybersécurité - Île-de-France",
+    "company_name": "Sopra Steria",
+    "location": "Courbevoie, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-analyste-mdr-detection-cybers%C3%A9curit%C3%A9-%C3%AEle-de-france-at-sopra-steria-4462835914",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
+    "posted_at": "2026-09-03",
+    "posted_relative": "il y a 5 jours",
     "domain": "Cyber Defensive / SOC / DFIR",
     "all_domains": [
       "Cyber Defensive / SOC / DFIR"
@@ -992,27 +992,6 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4459812438",
-    "title": "2027 Intern, Forensic & Litigation Consulting, Cyber",
-    "company_name": "FTI Consulting",
-    "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/2027-intern-forensic-litigation-consulting-cyber-at-fti-consulting-4459812438",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEP6MdwujALoQ/company-logo_100_100/company-logo_100_100/0/1719924229766/fti_consulting_logo?e=2147483647&v=beta&t=uAwBl30gpwVGgVq4eJbmTimtqRE8pgCP1_IjD_Z5aIg",
-    "posted_at": "2026-09-01",
-    "posted_relative": "il y a 1 semaine",
-    "domain": "Cyber Defensive / SOC / DFIR",
-    "all_domains": [
-      "Cyber Defensive / SOC / DFIR"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
     "id": "linkedin_4442211939",
     "title": "Stage -  Ingénieur·e DevSecOps",
     "company_name": "Numberly",
@@ -1034,14 +1013,56 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4462835914",
-    "title": "Stage - Analyste MDR - Detection Cybersécurité - Île-de-France",
-    "company_name": "Sopra Steria",
-    "location": "Courbevoie, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-analyste-mdr-detection-cybers%C3%A9curit%C3%A9-%C3%AEle-de-france-at-sopra-steria-4462835914",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
-    "posted_at": "2026-09-04",
-    "posted_relative": "il y a 4 jours",
+    "id": "linkedin_4464307038",
+    "title": "STAGE - Chargé d'Opérations Cybersécurité (F/H)",
+    "company_name": "Dassault Systèmes",
+    "location": "Vélizy-Villacoublay, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-charg%C3%A9-d-op%C3%A9rations-cybers%C3%A9curit%C3%A9-f-h-at-dassault-syst%C3%A8mes-4464307038",
+    "logo_url": "https://media.licdn.com/dms/image/v2/C560BAQHroRzeNTva6Q/company-logo_100_100/company-logo_100_100/0/1631330934922?e=2147483647&v=beta&t=Y_LaLgUh3t_AY4PloiAtAbGGfEr2fGl7C4_RBhQ7Vok",
+    "posted_at": "2026-09-07",
+    "posted_relative": "il y a 1 jour",
+    "domain": "Cyber Defensive / SOC / DFIR",
+    "all_domains": [
+      "Cyber Defensive / SOC / DFIR"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4460603119",
+    "title": "Stage - Consultant cybersécurité Microsoft - H/F",
+    "company_name": "SYNETIS",
+    "location": "Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-consultant-cybers%C3%A9curit%C3%A9-microsoft-h-f-at-synetis-4460603119",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQGOWhtaZF2Qbg/company-logo_100_100/company-logo_100_100/0/1704186084079/synetis_logo?e=2147483647&v=beta&t=9oVbxFjvhl6Zvd0ORHMRZVHyZz1qEqaW6-wyOmJ_qyo",
+    "posted_at": "2026-09-01",
+    "posted_relative": "il y a 1 semaine",
+    "domain": "Cybersecurity (General)",
+    "all_domains": [
+      "Cybersecurity (General)"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4459812438",
+    "title": "2027 Intern, Forensic & Litigation Consulting, Cyber",
+    "company_name": "FTI Consulting",
+    "location": "Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/2027-intern-forensic-litigation-consulting-cyber-at-fti-consulting-4459812438",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEP6MdwujALoQ/company-logo_100_100/company-logo_100_100/0/1719924229766/fti_consulting_logo?e=2147483647&v=beta&t=uAwBl30gpwVGgVq4eJbmTimtqRE8pgCP1_IjD_Z5aIg",
+    "posted_at": "2026-09-01",
+    "posted_relative": "il y a 1 semaine",
     "domain": "Cyber Defensive / SOC / DFIR",
     "all_domains": [
       "Cyber Defensive / SOC / DFIR"
@@ -1072,27 +1093,6 @@
     "source": "SmartRecruiters (Official Portal)",
     "posted_at": "2026-08-04T13:14:57.751Z",
     "status": "active"
-  },
-  {
-    "id": "linkedin_4462834988",
-    "title": "Stage - Analyste MDR - Detection Cybersécurité - Rennes",
-    "company_name": "Sopra Steria",
-    "location": "Cesson-Sévigné, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-analyste-mdr-detection-cybers%C3%A9curit%C3%A9-rennes-at-sopra-steria-4462834988",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
-    "posted_at": "2026-09-03",
-    "posted_relative": "il y a 4 jours",
-    "domain": "Cyber Defensive / SOC / DFIR",
-    "all_domains": [
-      "Cyber Defensive / SOC / DFIR"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
   },
   {
     "id": "linkedin_4462946302",
