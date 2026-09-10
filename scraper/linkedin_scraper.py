@@ -145,28 +145,34 @@ def scrape_linkedin(max_pages_per_kw: int = 5) -> List[Dict[str, Any]]:
                     posted_at = ""
                     posted_relative = ""
                     if time_elem:
-                        posted_at = time_elem.get("datetime") or ""
+                        dt_attr = time_elem.get("datetime") or ""
                         posted_relative = time_elem.get_text(strip=True) or ""
+                        posted_at = dt_attr
 
-                        # Calculate accurate timestamp from relative time if available
                         now_utc = datetime.now(timezone.utc)
+                        today_str = now_utc.strftime("%Y-%m-%d")
+
+                        # If posted today, calculate exact UTC timestamp from minutes/hours
                         m_min = re.search(r"(\d+)\s*(?:minute|min)", posted_relative, re.I)
                         m_hour = re.search(r"(\d+)\s*(?:heure|h|hour)", posted_relative, re.I)
-                        m_day = re.search(r"(\d+)\s*(?:jour|j|day)", posted_relative, re.I)
-                        m_week = re.search(r"(\d+)\s*(?:semaine|sem|week)", posted_relative, re.I)
 
-                        if m_min:
+                        if (not dt_attr or dt_attr == today_str) and m_min:
                             exact_dt = now_utc - timedelta(minutes=int(m_min.group(1)))
                             posted_at = exact_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
-                        elif m_hour:
+                        elif (not dt_attr or dt_attr == today_str) and m_hour:
                             exact_dt = now_utc - timedelta(hours=int(m_hour.group(1)))
                             posted_at = exact_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
-                        elif m_day:
-                            exact_dt = now_utc - timedelta(days=int(m_day.group(1)))
-                            posted_at = exact_dt.strftime("%Y-%m-%d")
-                        elif m_week:
-                            exact_dt = now_utc - timedelta(weeks=int(m_week.group(1)))
-                            posted_at = exact_dt.strftime("%Y-%m-%d")
+                        elif dt_attr and re.match(r"^\d{4}-\d{2}-\d{2}", dt_attr):
+                            posted_at = dt_attr
+                        else:
+                            m_day = re.search(r"(\d+)\s*(?:jour|j|day)", posted_relative, re.I)
+                            m_week = re.search(r"(\d+)\s*(?:semaine|sem|week)", posted_relative, re.I)
+                            if m_day:
+                                exact_dt = now_utc - timedelta(days=int(m_day.group(1)))
+                                posted_at = exact_dt.strftime("%Y-%m-%d")
+                            elif m_week:
+                                exact_dt = now_utc - timedelta(weeks=int(m_week.group(1)))
+                                posted_at = exact_dt.strftime("%Y-%m-%d")
 
                     logo_url = ""
                     if img_elem:

@@ -701,9 +701,20 @@ function setupEventListeners() {
 }
 
 function getJobTimeMs(job) {
+  // 1. Primary source of truth: absolute timestamp or date in posted_at
+  if (job.posted_at) {
+    if (job.posted_at.includes('T')) {
+      const t = new Date(job.posted_at).getTime();
+      if (!isNaN(t) && t > 0) return t;
+    }
+    const dateStr = job.posted_at.slice(0, 10);
+    const t = new Date(`${dateStr}T12:00:00Z`).getTime();
+    if (!isNaN(t) && t > 0) return t;
+  }
+
+  // 2. Fallback only if posted_at is missing: check relative string
   const rel = (job.posted_relative || '').toLowerCase();
 
-  // 1. Check relative string with minutes, hours, days, weeks, months
   const mMin = rel.match(/(\d+)\s*(?:minute|min)/);
   if (mMin) {
     return Date.now() - parseInt(mMin[1], 10) * 60 * 1000;
@@ -728,17 +739,6 @@ function getJobTimeMs(job) {
     return Date.now() - 4 * 3600 * 1000;
   }
 
-  // 2. Parse posted_at timestamp
-  if (job.posted_at) {
-    if (job.posted_at.includes('T')) {
-      const t = new Date(job.posted_at).getTime();
-      if (!isNaN(t)) return t;
-    }
-    const dateStr = job.posted_at.slice(0, 10);
-    const t = new Date(`${dateStr}T12:00:00Z`).getTime();
-    if (!isNaN(t)) return t;
-  }
-
   return 0;
 }
 
@@ -751,7 +751,7 @@ function getJobAgeDays(job) {
 function formatJobAge(job) {
   const timeMs = getJobTimeMs(job);
   if (!timeMs) {
-    return job.posted_relative || job.posted_at || '';
+    return job.posted_at ? job.posted_at.slice(0, 10) : (job.posted_relative || '');
   }
 
   const diffMs = Math.max(0, Date.now() - timeMs);

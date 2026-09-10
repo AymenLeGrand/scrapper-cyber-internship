@@ -134,6 +134,18 @@ class TestValidatorPhrases(unittest.TestCase):
             compiled = re.compile(pattern, re.IGNORECASE)
             self.assertIsNotNone(compiled)
 
+    def test_posted_at_format(self):
+        import re
+        jobs_file = os.path.join(BASE_DIR, "data", "jobs.json")
+        with open(jobs_file, "r", encoding="utf-8") as f:
+            jobs = json.load(f)
+
+        iso_or_date = re.compile(r"^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}:\d{2}(\.\d+)?Z)?$")
+        for j in jobs:
+            posted = j.get("posted_at")
+            self.assertIsNotNone(posted, f"Job {j['id']} is missing posted_at")
+            self.assertTrue(bool(iso_or_date.match(posted)), f"Job {j['id']} has invalid posted_at format: {posted}")
+
 
 if __name__ == "__main__":
     unittest.main()

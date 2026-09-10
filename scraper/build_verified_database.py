@@ -647,23 +647,29 @@ seen_urls = set()
 all_jobs = [j for j in all_jobs if is_valid_cyber_crypto_job(j.get("title", ""), j.get("description", ""))]
 existing_jobs = [ej for ej in existing_jobs if is_valid_cyber_crypto_job(ej.get("title", ""), ej.get("description", ""))]
 
+# Map existing jobs by id and direct_url to preserve original publication dates
+existing_posted_dates = {}
+for ej in existing_jobs:
+    p = ej.get("posted_at")
+    if p:
+        if ej.get("id"):
+            existing_posted_dates[ej["id"]] = p
+        if ej.get("direct_url"):
+            existing_posted_dates[ej["direct_url"]] = p
+
 # 1. Add newly scraped jobs first (freshest data)
 for j in all_jobs:
     if not j.get("status"):
         j["status"] = "active"
-    # Normalize timestamp if relative contains hours/minutes
-    rel = j.get("posted_relative") or ""
-    p_at = j.get("posted_at") or ""
-    if rel and (not p_at or "T" not in p_at):
-        m_hour = re.search(r"(\d+)\s*(?:heure|h|hour)", rel, re.I)
-        m_min = re.search(r"(\d+)\s*(?:minute|min)", rel, re.I)
-        now_utc = datetime.datetime.now(datetime.timezone.utc)
-        if m_hour:
-            j["posted_at"] = (now_utc - datetime.timedelta(hours=int(m_hour.group(1)))).strftime("%Y-%m-%dT%H:%M:%SZ")
-        elif m_min:
-            j["posted_at"] = (now_utc - datetime.timedelta(minutes=int(m_min.group(1)))).strftime("%Y-%m-%dT%H:%M:%SZ")
     jid = j["id"]
     jurl = j["direct_url"]
+
+    # Preserve earlier known publication date if this job was already seen previously
+    prev_date = existing_posted_dates.get(jid) or existing_posted_dates.get(jurl)
+    if prev_date and j.get("posted_at"):
+        if prev_date[:10] < j["posted_at"][:10]:
+            j["posted_at"] = prev_date
+
     if jid not in seen_ids and jurl not in seen_urls:
         seen_ids.add(jid)
         seen_urls.add(jurl)
