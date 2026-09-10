@@ -110,7 +110,7 @@ def run_pipeline(
             logger.error(f"  -> Error scanning {comp['name']}: {e}")
 
     # Merge newly discovered jobs with existing jobs
-    now_iso = datetime.datetime.utcnow().isoformat() + "Z"
+    now_iso = datetime.datetime.now(datetime.timezone.utc).isoformat().replace("+00:00", "Z")
     newly_found_unseen = []
 
     for job in discovered_jobs:

@@ -9,10 +9,14 @@ import time
 if sys.platform == "win32":
     sys.stdout.reconfigure(encoding="utf-8")
 
-with open("data/jobs.json", "r", encoding="utf-8") as f:
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+jobs_path = os.path.join(BASE_DIR, "data", "jobs.json")
+meta_path = os.path.join(BASE_DIR, "data", "meta.json")
+
+with open(jobs_path, "r", encoding="utf-8") as f:
     jobs = json.load(f)
 
-print(f"Testing liveness for all {len(jobs)} jobs in data/jobs.json...\n")
+print(f"Testing liveness for all {len(jobs)} jobs in {jobs_path}...\n")
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
 }
@@ -67,11 +71,10 @@ for i, j in enumerate(jobs, 1):
 
 if dead_count > 0:
     print(f"\n[Pruning] Removed {dead_count} dead/closed offer(s). Keeping {len(valid_jobs)} verified offers.")
-    with open("data/jobs.json", "w", encoding="utf-8") as f:
+    with open(jobs_path, "w", encoding="utf-8") as f:
         json.dump(valid_jobs, f, indent=2, ensure_ascii=False)
 
 # Keep data/meta.json in perfect sync with the verified jobs count
-meta_path = "data/meta.json"
 meta = {}
 if os.path.exists(meta_path):
     try:

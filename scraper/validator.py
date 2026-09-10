@@ -84,7 +84,7 @@ def validate_all_jobs(jobs: List[Dict[str, Any]]) -> Tuple[List[Dict[str, Any]],
     Validates an entire list of jobs.
     Returns: (active_jobs, expired_jobs)
     """
-    now_iso = datetime.datetime.utcnow().isoformat() + "Z"
+    now_iso = datetime.datetime.now(datetime.timezone.utc).isoformat().replace("+00:00", "Z")
     active_jobs = []
     expired_jobs = []
 

@@ -451,7 +451,7 @@ def scrape_teamtailor(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
                 "eligibility_note": reason,
                 "source": f"{company_meta['name']} (Site Officiel)",
                 "description": desc_text[:350],
-                "posted_at": date_published[:10] if date_published else datetime.datetime.utcnow().strftime("%Y-%m-%d"),
+                "posted_at": date_published[:10] if date_published else datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d"),
                 "status": "active",
                 "verification_status": "VERIFIED_ACTIVE"
             })
@@ -609,7 +609,7 @@ def scrape_zama(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
                     "eligible_algerian": eligible,
                     "eligibility_note": reason,
                     "source": "Zama (Site Officiel)",
-                    "posted_at": datetime.datetime.utcnow().strftime("%Y-%m-%d"),
+                    "posted_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d"),
                     "status": "active",
                     "verification_status": "VERIFIED_ACTIVE"
                 })
@@ -662,7 +662,7 @@ def scrape_serma(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
                     "eligible_algerian": eligible,
                     "eligibility_note": reason,
                     "source": "SERMA (Site Officiel Carrières)",
-                    "posted_at": datetime.datetime.utcnow().strftime("%Y-%m-%d"),
+                    "posted_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d"),
                     "status": "active",
                     "verification_status": "VERIFIED_ACTIVE"
                 })
@@ -787,7 +787,7 @@ def scrape_synacktiv(company_meta: Dict[str, Any]) -> List[Dict[str, Any]]:
                     "is_cyber": domain_info["is_cyber"],
                     "source": "Synacktiv (Site Officiel)",
                     "description": description,
-                    "posted_at": datetime.datetime.utcnow().strftime("%Y-%m-%d"),
+                    "posted_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d"),
                     "status": "active",
                     "verification_status": "Actif (Vérifié HTTP 200 en direct)"
                 })

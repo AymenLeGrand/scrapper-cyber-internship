@@ -2,6 +2,8 @@
 
 Application web légère hébergée sur **GitHub Pages**, dotée d'un **scénario de scraping et de validation automatisé via GitHub Actions**, conçue spécialement pour les étudiants en **Master 2 / PFE** en **Cybersécurité** et **Cryptologie** partout en France.
 
+🌐 **Démo en ligne** : [https://aymenlegrand.github.io/scrapper-cyber-internship/](https://aymenlegrand.github.io/scrapper-cyber-internship/) *(Code d'accès par défaut : `cyber2026`)*
+
 ---
 
 ## 🌟 Points Forts du Projet

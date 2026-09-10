@@ -657,7 +657,7 @@ function setupEventListeners() {
       const isLocalServer = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
 
       if (!isLocalServer) {
-        window.open('https://github.com/clementgre/stage-cyber-france/actions', '_blank', 'noopener,noreferrer');
+        window.open('https://github.com/AymenLeGrand/scrapper-cyber-internship/actions', '_blank', 'noopener,noreferrer');
         showToast("Ouverture de GitHub Actions pour déclencher le scan cloud.");
         return;
       }

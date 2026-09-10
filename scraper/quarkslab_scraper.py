@@ -107,4 +107,5 @@ if __name__ == "__main__":
     offers_all = parse_quarkslab_offers(include_filled=True)
     print("\nAll topics found in latest blog post:")
     for o in offers_all:
-        print(f"[{o['status'].upper()}] {o['title']} -> {o['url']}")
+        target_url = o.get("direct_url", o.get("url", ""))
+        print(f"[{o['status'].upper()}] {o['title']} -> {target_url}")

@@ -671,7 +671,7 @@ print(f"\nSUCCESS: Written {len(all_jobs)} verified offers to {output_path}!")
 meta_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "meta.json")
 with open(meta_path, "w", encoding="utf-8") as f:
     json.dump({
-        "last_scraped_at": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "last_scraped_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "total": len(all_jobs),
         "scraper_errors": scraper_errors
     }, f, ensure_ascii=False, indent=2)
