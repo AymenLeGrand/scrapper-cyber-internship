@@ -48,6 +48,12 @@ KEYWORDS = [
     "stage cti incident",
     "stage cryptologie",
     "stage malware dfir",
+    "stage iam pki",
+    "stage appsec",
+    "stage red team",
+    "stage blue team",
+    "stage pfe securite",
+    "stage securite applicative",
 ]
 
 
@@ -67,12 +73,16 @@ def extract_linkedin_id(clean_url: str) -> str:
     return str(abs(hash(clean_url)))
 
 
-def scrape_linkedin(max_pages_per_kw: int = 2) -> List[Dict[str, Any]]:
+def scrape_linkedin(max_pages_per_kw: int = 5) -> List[Dict[str, Any]]:
     """
     Scrapes LinkedIn guest jobs API for France-based cyber & crypto internships.
+    Uses sortBy=DD to capture newly published positions immediately.
+    Uses persistent session and dynamic termination to maximize depth without rate-limiting.
     Returns list of verified, deduplicated internship job dicts.
     """
     found_jobs: Dict[str, Dict[str, Any]] = {}
+    session = requests.Session()
+    session.headers.update(HEADERS)
 
     for kw in KEYWORDS:
         for page in range(max_pages_per_kw):
@@ -81,19 +91,30 @@ def scrape_linkedin(max_pages_per_kw: int = 2) -> List[Dict[str, Any]]:
                 "keywords": kw,
                 "location": "France",
                 "f_TPR": "r2592000",  # Past 30 days
+                "sortBy": "DD",       # Most recent first so no new jobs are buried
                 "start": start,
             }
 
             url = f"{BASE_SEARCH_URL}?{urllib.parse.urlencode(params)}"
-            try:
-                resp = requests.get(url, headers=HEADERS, timeout=12)
-                if resp.status_code != 200:
-                    logger.debug(f"[LinkedIn] HTTP {resp.status_code} for query '{kw}' start={start}")
-                    continue
+            resp = None
+            for attempt in range(2):
+                try:
+                    resp = session.get(url, timeout=12)
+                    if resp.status_code == 200:
+                        break
+                    elif resp.status_code in (429, 999):
+                        time.sleep(2.0 * (attempt + 1))
+                except Exception as e:
+                    time.sleep(1.0)
 
+            if not resp or resp.status_code != 200:
+                continue
+
+            try:
                 soup = BeautifulSoup(resp.text, "html.parser")
                 cards = soup.find_all("li")
                 if not cards:
+                    # No more results for this keyword, stop paginating
                     break
 
                 for c in cards:

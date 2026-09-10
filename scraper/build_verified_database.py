@@ -578,14 +578,45 @@ except Exception as e:
     print(f"[XMCO] Ingestion warning: {e}")
     scraper_errors.append(f"XMCO: {e}")
 
-# 13. LINKEDIN (Public Guest Jobs API)
+# 13. ADDITIONAL DIRECT ATS (GitGuardian, Idemia, Dassault Systèmes, NXP)
+try:
+    from scraper.ats_scrapers import scrape_greenhouse
+except ImportError:
+    from ats_scrapers import scrape_greenhouse
+
+extra_ats_companies = [
+    {"id": "gitguardian", "name": "GitGuardian", "direct_ats_type": "greenhouse", "ats_company_id": "gitguardian"},
+    {"id": "idemia", "name": "Idemia", "direct_ats_type": "smartrecruiters", "ats_company_id": "Idemia"},
+    {"id": "dassault-systemes", "name": "Dassault Systèmes (3DS Security)", "direct_ats_type": "smartrecruiters", "ats_company_id": "DassaultSystemes"},
+    {"id": "nxp-fr", "name": "NXP Semiconductors (France)", "direct_ats_type": "workday", "workday_tenant": "nxp"}
+]
+for comp in extra_ats_companies:
+    try:
+        if comp["direct_ats_type"] == "greenhouse":
+            c_jobs = scrape_greenhouse(comp)
+        elif comp["direct_ats_type"] == "smartrecruiters":
+            c_jobs = scrape_smartrecruiters(comp)
+        elif comp["direct_ats_type"] == "workday":
+            c_jobs = scrape_workday(comp)
+        else:
+            c_jobs = []
+        if c_jobs:
+            print(f"[{comp['name']}] {len(c_jobs)} new stages ingested!")
+            all_jobs.extend(c_jobs)
+        else:
+            print(f"[{comp['name']}] ATS monitored (awaiting new campaign publication).")
+    except Exception as e:
+        print(f"[{comp['name']}] Ingestion warning: {e}")
+        scraper_errors.append(f"{comp['name']}: {e}")
+
+# 14. LINKEDIN (Public Guest Jobs API - Recency-Sorted & Retried)
 try:
     try:
         from scraper.linkedin_scraper import scrape_linkedin
     except ImportError:
         from linkedin_scraper import scrape_linkedin
 
-    linkedin_jobs = scrape_linkedin(max_pages_per_kw=2)
+    linkedin_jobs = scrape_linkedin(max_pages_per_kw=5)
     if linkedin_jobs:
         print(f"[LinkedIn] {len(linkedin_jobs)} new stages ingested!")
         all_jobs.extend(linkedin_jobs)
