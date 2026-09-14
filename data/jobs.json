@@ -721,6 +721,25 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
+    "id": "sr_Wavestone1_744000149357288",
+    "title": "AI & Cybersecurity Consultant - Stage de fin d'études (H/F)",
+    "company_id": "wavestone",
+    "company_name": "Wavestone (Cybersecurity & Digital Trust)",
+    "location": "Puteaux, France",
+    "direct_url": "https://jobs.smartrecruiters.com/Wavestone1/744000149357288",
+    "domain": "AI & Cybersecurity",
+    "all_domains": [
+      "AI & Cybersecurity"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "SmartRecruiters (Official Portal)",
+    "posted_at": "2026-09-14T14:47:45.607Z",
+    "status": "active"
+  },
+  {
     "id": "sr_Wavestone1_744000148988599",
     "title": "Consultant.e.s en Cybersécurité – Nantes - Stage de fin d'études",
     "company_id": "wavestone",
@@ -787,7 +806,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/internship-soc-analyst-cyber-defense-center-at-cma-cgm-4463871188",
     "logo_url": "https://media.licdn.com/dms/image/v2/C4E0BAQErbDTaXxx_JA/company-logo_100_100/company-logo_100_100/0/1631365360656/cma_cgm_logo?e=2147483647&v=beta&t=7jfH0WKNdXjfGFSQ5NI6np4BR2eykyFIIUFgGfpqDJQ",
     "posted_at": "2026-09-09",
-    "posted_relative": "il y a 4 jours",
+    "posted_relative": "il y a 5 jours",
     "domain": "Cyber Defensive / SOC / DFIR",
     "all_domains": [
       "Cyber Defensive / SOC / DFIR"
@@ -822,17 +841,17 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4462144257",
-    "title": "Final Year Internship Consultant - Cybersecurity",
-    "company_name": "Sia",
+    "id": "linkedin_4442211939",
+    "title": "Stage -  Ingénieur·e DevSecOps",
+    "company_name": "Numberly",
     "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/final-year-internship-consultant-cybersecurity-at-sia-4462144257",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQFV-HsSw3lYlg/company-logo_100_100/company-logo_100_100/0/1737563199089/sia_partners_logo?e=2147483647&v=beta&t=iqcL_fq4KldnQwUZgnRu_8gDwA401jRc-XQiZS0qkTI",
-    "posted_at": "2026-09-02",
-    "posted_relative": "il y a 1 semaine",
-    "domain": "Cybersecurity (General)",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-ing%C3%A9nieur%C2%B7e-devsecops-at-numberly-4442211939",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEZtoQcDlMOnA/company-logo_100_100/B4EZv.rR4yGwAQ-/0/1769504317567/numberly_logo?e=2147483647&v=beta&t=3MmAO2mD8Z9FCDw9aLbLBWz6R2pCti4k6BuTyoAhYS4",
+    "posted_at": "2026-08-31",
+    "posted_relative": "il y a 2 semaines",
+    "domain": "Cloud / DevSecOps",
     "all_domains": [
-      "Cybersecurity (General)"
+      "Cloud / DevSecOps"
     ],
     "is_crypto": false,
     "is_cyber": true,
@@ -850,7 +869,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/internship-cyber-operational-dashboard-at-cma-cgm-4464881536",
     "logo_url": "https://media.licdn.com/dms/image/v2/C4E0BAQErbDTaXxx_JA/company-logo_100_100/company-logo_100_100/0/1631365360656/cma_cgm_logo?e=2147483647&v=beta&t=7jfH0WKNdXjfGFSQ5NI6np4BR2eykyFIIUFgGfpqDJQ",
     "posted_at": "2026-09-11",
-    "posted_relative": "il y a 2 jours",
+    "posted_relative": "il y a 3 jours",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -913,7 +932,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/consultant-stagiaire-tech-data-cyber-h-f-at-bearingpoint-4464346275",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEh1Eh-6uugnA/company-logo_100_100/B4EZcWBwsvHAAU-/0/1748421250249/bearingpoint_logo?e=2147483647&v=beta&t=H42MZqGNY1Idd6qRMzeTOB1uf7Q6twsHVNIwAyBO-Hs",
     "posted_at": "2026-09-07",
-    "posted_relative": "il y a 6 jours",
+    "posted_relative": "il y a 1 semaine",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -976,7 +995,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/consultant-cybers%C3%A9curit%C3%A9-stage-f-h-at-niji-4441558412",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4D0BAQEwbREEl1eYiQ/company-logo_100_100/company-logo_100_100/0/1728492371634/niji_logo?e=2147483647&v=beta&t=IriGKiDWoDJ8XKp_eb_cGnSlOGJfLO8cfLH5Rl9ScX8",
     "posted_at": "2026-09-12",
-    "posted_relative": "il y a 1 jour",
+    "posted_relative": "il y a 2 jours",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -997,7 +1016,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/security-engineer-final-year-intern-at-makipeople-4466313142",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEio7oaGvoyDg/company-logo_100_100/B4EZv.gFj_IIAQ-/0/1769501383413/makipeople_logo?e=2147483647&v=beta&t=wRkUnWEcEnYCzBPwxZON4rwCMu4uVlCA5UbSlK_ODoA",
     "posted_at": "2026-09-11",
-    "posted_relative": "il y a 2 jours",
+    "posted_relative": "il y a 3 jours",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -1018,7 +1037,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-%E2%80%93-consultant-s%C3%A9curit%C3%A9-iam-run-h-f-at-synetis-4462946302",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQGOWhtaZF2Qbg/company-logo_100_100/company-logo_100_100/0/1704186084079/synetis_logo?e=2147483647&v=beta&t=9oVbxFjvhl6Zvd0ORHMRZVHyZz1qEqaW6-wyOmJ_qyo",
     "posted_at": "2026-09-07",
-    "posted_relative": "il y a 6 jours",
+    "posted_relative": "il y a 1 semaine",
     "domain": "Cloud / DevSecOps",
     "all_domains": [
       "Cloud / DevSecOps"
@@ -1039,7 +1058,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-analyste-mdr-detection-cybers%C3%A9curit%C3%A9-rennes-at-sopra-steria-4462834988",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
     "posted_at": "2026-09-03",
-    "posted_relative": "il y a 2 jours",
+    "posted_relative": "il y a 3 jours",
     "domain": "Cyber Defensive / SOC / DFIR",
     "all_domains": [
       "Cyber Defensive / SOC / DFIR"
@@ -1060,10 +1079,31 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-analyste-mdr-detection-cybers%C3%A9curit%C3%A9-%C3%AEle-de-france-at-sopra-steria-4462835914",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
     "posted_at": "2026-09-03",
-    "posted_relative": "il y a 2 jours",
+    "posted_relative": "il y a 3 jours",
     "domain": "Cyber Defensive / SOC / DFIR",
     "all_domains": [
       "Cyber Defensive / SOC / DFIR"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4462144257",
+    "title": "Final Year Internship Consultant - Cybersecurity",
+    "company_name": "Sia",
+    "location": "Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/final-year-internship-consultant-cybersecurity-at-sia-4462144257",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQFV-HsSw3lYlg/company-logo_100_100/company-logo_100_100/0/1737563199089/sia_partners_logo?e=2147483647&v=beta&t=iqcL_fq4KldnQwUZgnRu_8gDwA401jRc-XQiZS0qkTI",
+    "posted_at": "2026-09-02",
+    "posted_relative": "il y a 1 semaine",
+    "domain": "Cybersecurity (General)",
+    "all_domains": [
+      "Cybersecurity (General)"
     ],
     "is_crypto": false,
     "is_cyber": true,
@@ -1081,7 +1121,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-%E2%80%93-ing%C3%A9nieur-e-technique-cybers%C3%A9curit%C3%A9-%E2%80%93-d%C3%A9fense-s%C3%A9curit%C3%A9-%E2%80%93-%C3%AEle-de-france-at-sopra-steria-4462856345",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
     "posted_at": "2026-09-03",
-    "posted_relative": "il y a 2 jours",
+    "posted_relative": "il y a 3 jours",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -1116,27 +1156,6 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4442211939",
-    "title": "Stage -  Ingénieur·e DevSecOps",
-    "company_name": "Numberly",
-    "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-ing%C3%A9nieur%C2%B7e-devsecops-at-numberly-4442211939",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEZtoQcDlMOnA/company-logo_100_100/B4EZv.rR4yGwAQ-/0/1769504317567/numberly_logo?e=2147483647&v=beta&t=3MmAO2mD8Z9FCDw9aLbLBWz6R2pCti4k6BuTyoAhYS4",
-    "posted_at": "2026-08-31",
-    "posted_relative": "il y a 1 semaine",
-    "domain": "Cloud / DevSecOps",
-    "all_domains": [
-      "Cloud / DevSecOps"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
     "id": "linkedin_4464307038",
     "title": "STAGE - Chargé d'Opérations Cybersécurité (F/H)",
     "company_name": "Dassault Systèmes",
@@ -1144,7 +1163,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-charg%C3%A9-d-op%C3%A9rations-cybers%C3%A9curit%C3%A9-f-h-at-dassault-syst%C3%A8mes-4464307038",
     "logo_url": "https://media.licdn.com/dms/image/v2/C560BAQHroRzeNTva6Q/company-logo_100_100/company-logo_100_100/0/1631330934922?e=2147483647&v=beta&t=Y_LaLgUh3t_AY4PloiAtAbGGfEr2fGl7C4_RBhQ7Vok",
     "posted_at": "2026-09-07",
-    "posted_relative": "il y a 6 jours",
+    "posted_relative": "il y a 1 semaine",
     "domain": "Cyber Defensive / SOC / DFIR",
     "all_domains": [
       "Cyber Defensive / SOC / DFIR"
@@ -1207,7 +1226,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-analyste-voc-cybers%C3%A9curit%C3%A9-%C3%AEle-de-france-at-sopra-steria-4463376483",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
     "posted_at": "2026-09-04",
-    "posted_relative": "il y a 2 jours",
+    "posted_relative": "il y a 3 jours",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
