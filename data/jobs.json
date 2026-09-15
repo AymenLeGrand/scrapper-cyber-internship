@@ -759,25 +759,6 @@
     "status": "active"
   },
   {
-    "id": "sr_Wavestone1_744000147239559",
-    "title": "Stage - Consultant·e Cybersécurité & Confiance Numérique",
-    "company_id": "wavestone",
-    "company_name": "Wavestone (Cybersecurity & Digital Trust)",
-    "location": "Puteaux, France",
-    "direct_url": "https://jobs.smartrecruiters.com/Wavestone1/744000147239559",
-    "domain": "Cybersecurity (General)",
-    "all_domains": [
-      "Cybersecurity (General)"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "SmartRecruiters (Official Portal)",
-    "posted_at": "2026-09-03T12:29:12.684Z",
-    "status": "active"
-  },
-  {
     "id": "linkedin_4458411010",
     "title": "Réalisation de contrôle cybersécurité des systèmes d’information [Stage]",
     "company_name": "Commandement de la cyberdéfense (COMCYBER)",
@@ -827,7 +808,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/internship-soc-analyst-cyber-defense-center-at-cma-cgm-4463871188",
     "logo_url": "https://media.licdn.com/dms/image/v2/C4E0BAQErbDTaXxx_JA/company-logo_100_100/company-logo_100_100/0/1631365360656/cma_cgm_logo?e=2147483647&v=beta&t=7jfH0WKNdXjfGFSQ5NI6np4BR2eykyFIIUFgGfpqDJQ",
     "posted_at": "2026-09-09",
-    "posted_relative": "il y a 5 jours",
+    "posted_relative": "il y a 6 jours",
     "domain": "Cyber Defensive / SOC / DFIR",
     "all_domains": [
       "Cyber Defensive / SOC / DFIR"
@@ -911,7 +892,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/assistant-rssi-stage-f-h-at-niji-4441545922",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4D0BAQEwbREEl1eYiQ/company-logo_100_100/company-logo_100_100/0/1728492371634/niji_logo?e=2147483647&v=beta&t=IriGKiDWoDJ8XKp_eb_cGnSlOGJfLO8cfLH5Rl9ScX8",
     "posted_at": "2026-09-12",
-    "posted_relative": "il y a 2 jours",
+    "posted_relative": "il y a 3 jours",
     "domain": "Cloud / DevSecOps",
     "all_domains": [
       "Cloud / DevSecOps"
@@ -946,6 +927,27 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
+    "id": "linkedin_4467726679",
+    "title": "Cybersecurity Analyst Intern",
+    "company_name": "CybelAngel",
+    "location": "Ville de Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/cybersecurity-analyst-intern-at-cybelangel-4467726679",
+    "logo_url": "https://media.licdn.com/dms/image/v2/C560BAQFgjTrbLccYjw/company-logo_100_100/company-logo_100_100/0/1657200423421/cybelangel_logo?e=2147483647&v=beta&t=XGe7Y7X820iuFwk8UIW0b6vV7D1TcnhuMFG1Pnj7q0Y",
+    "posted_at": "2026-09-15T12:56:19Z",
+    "posted_relative": "il y a 24 minutes",
+    "domain": "Cybersecurity (General)",
+    "all_domains": [
+      "Cybersecurity (General)"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
     "id": "linkedin_4464881536",
     "title": "Internship - Cyber Operational Dashboard",
     "company_name": "CMA CGM",
@@ -967,35 +969,14 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4459812438",
-    "title": "2027 Intern, Forensic & Litigation Consulting, Cyber",
-    "company_name": "FTI Consulting",
-    "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/2027-intern-forensic-litigation-consulting-cyber-at-fti-consulting-4459812438",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEP6MdwujALoQ/company-logo_100_100/company-logo_100_100/0/1719924229766/fti_consulting_logo?e=2147483647&v=beta&t=uAwBl30gpwVGgVq4eJbmTimtqRE8pgCP1_IjD_Z5aIg",
-    "posted_at": "2026-08-27",
-    "posted_relative": "il y a 2 semaines",
-    "domain": "Cyber Defensive / SOC / DFIR",
-    "all_domains": [
-      "Cyber Defensive / SOC / DFIR"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4464346275",
+    "id": "linkedin_4467729057",
     "title": "Consultant Stagiaire Tech & Data & Cyber (H/F)",
     "company_name": "BearingPoint",
     "location": "Ville de Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/consultant-stagiaire-tech-data-cyber-h-f-at-bearingpoint-4464346275",
+    "direct_url": "https://fr.linkedin.com/jobs/view/consultant-stagiaire-tech-data-cyber-h-f-at-bearingpoint-4467729057",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEh1Eh-6uugnA/company-logo_100_100/B4EZcWBwsvHAAU-/0/1748421250249/bearingpoint_logo?e=2147483647&v=beta&t=H42MZqGNY1Idd6qRMzeTOB1uf7Q6twsHVNIwAyBO-Hs",
-    "posted_at": "2026-09-07",
-    "posted_relative": "il y a 1 semaine",
+    "posted_at": "2026-09-15T11:20:19Z",
+    "posted_relative": "il y a 2 heures",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -1037,7 +1018,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/consultant-cybers%C3%A9curit%C3%A9-stage-f-h-at-niji-4441558412",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4D0BAQEwbREEl1eYiQ/company-logo_100_100/company-logo_100_100/0/1728492371634/niji_logo?e=2147483647&v=beta&t=IriGKiDWoDJ8XKp_eb_cGnSlOGJfLO8cfLH5Rl9ScX8",
     "posted_at": "2026-09-12",
-    "posted_relative": "il y a 2 jours",
+    "posted_relative": "il y a 3 jours",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -1072,6 +1053,27 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
+    "id": "linkedin_4459812438",
+    "title": "2027 Intern, Forensic & Litigation Consulting, Cyber",
+    "company_name": "FTI Consulting",
+    "location": "Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/2027-intern-forensic-litigation-consulting-cyber-at-fti-consulting-4459812438",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEP6MdwujALoQ/company-logo_100_100/company-logo_100_100/0/1719924229766/fti_consulting_logo?e=2147483647&v=beta&t=uAwBl30gpwVGgVq4eJbmTimtqRE8pgCP1_IjD_Z5aIg",
+    "posted_at": "2026-08-27",
+    "posted_relative": "il y a 2 semaines",
+    "domain": "Cyber Defensive / SOC / DFIR",
+    "all_domains": [
+      "Cyber Defensive / SOC / DFIR"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
     "id": "linkedin_4462834988",
     "title": "Stage - Analyste MDR - Detection Cybersécurité - Rennes",
     "company_name": "Sopra Steria",
@@ -1079,7 +1081,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-analyste-mdr-detection-cybers%C3%A9curit%C3%A9-rennes-at-sopra-steria-4462834988",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
     "posted_at": "2026-09-03",
-    "posted_relative": "il y a 3 jours",
+    "posted_relative": "il y a 4 jours",
     "domain": "Cyber Defensive / SOC / DFIR",
     "all_domains": [
       "Cyber Defensive / SOC / DFIR"
@@ -1100,7 +1102,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-analyste-mdr-detection-cybers%C3%A9curit%C3%A9-%C3%AEle-de-france-at-sopra-steria-4462835914",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
     "posted_at": "2026-09-03",
-    "posted_relative": "il y a 3 jours",
+    "posted_relative": "il y a 4 jours",
     "domain": "Cyber Defensive / SOC / DFIR",
     "all_domains": [
       "Cyber Defensive / SOC / DFIR"
@@ -1121,6 +1123,69 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/final-year-internship-consultant-cybersecurity-at-sia-4462144257",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQFV-HsSw3lYlg/company-logo_100_100/company-logo_100_100/0/1737563199089/sia_partners_logo?e=2147483647&v=beta&t=iqcL_fq4KldnQwUZgnRu_8gDwA401jRc-XQiZS0qkTI",
     "posted_at": "2026-09-02",
+    "posted_relative": "il y a 1 semaine",
+    "domain": "Cybersecurity (General)",
+    "all_domains": [
+      "Cybersecurity (General)"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4462856345",
+    "title": "Stage – Ingénieur(e) technique Cybersécurité – Défense & Sécurité – Île-de-France",
+    "company_name": "Sopra Steria",
+    "location": "Montreuil, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-%E2%80%93-ing%C3%A9nieur-e-technique-cybers%C3%A9curit%C3%A9-%E2%80%93-d%C3%A9fense-s%C3%A9curit%C3%A9-%E2%80%93-%C3%AEle-de-france-at-sopra-steria-4462856345",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
+    "posted_at": "2026-09-03",
+    "posted_relative": "il y a 3 jours",
+    "domain": "Cybersecurity (General)",
+    "all_domains": [
+      "Cybersecurity (General)"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4466135042",
+    "title": "Stage – Sécurité Opérationnelle & DevSecOps – Cybersécurité (H/F/X) - Mode - Février 2027",
+    "company_name": "CHANEL",
+    "location": "Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-%E2%80%93-s%C3%A9curit%C3%A9-op%C3%A9rationnelle-devsecops-%E2%80%93-cybers%C3%A9curit%C3%A9-h-f-x-mode-f%C3%A9vrier-2027-at-chanel-4466135042",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQG8McncY68a0g/company-logo_100_100/company-logo_100_100/0/1729097379577?e=2147483647&v=beta&t=Y0RdERS2w4KwoixwmgBabzXW8TrZZMSQRkSt84_VRqk",
+    "posted_at": "2026-09-14",
+    "posted_relative": "il y a 14 heures",
+    "domain": "Cloud / DevSecOps",
+    "all_domains": [
+      "Cloud / DevSecOps"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4126307616",
+    "title": "Stage de fin d'études - Consultant(e) Cybersécurité - Nantes - 2026 H/F",
+    "company_name": "Forvis Mazars en France",
+    "location": "Nantes, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-de-fin-d-%C3%A9tudes-consultant-e-cybers%C3%A9curit%C3%A9-nantes-2026-h-f-at-forvis-mazars-en-france-4126307616",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEjCDBiIXRhDA/company-logo_100_100/company-logo_100_100/0/1719256788450/forvis_mazars_en_france_logo?e=2147483647&v=beta&t=46wUzxIBoELIkN5x9eGwxVI9up2eZa7K-txo38exh2g",
+    "posted_at": "2026-09-03",
     "posted_relative": "il y a 1 semaine",
     "domain": "Cybersecurity (General)",
     "all_domains": [
@@ -1156,27 +1221,6 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4466135042",
-    "title": "Stage – Sécurité Opérationnelle & DevSecOps – Cybersécurité (H/F/X) - Mode - Février 2027",
-    "company_name": "CHANEL",
-    "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-%E2%80%93-s%C3%A9curit%C3%A9-op%C3%A9rationnelle-devsecops-%E2%80%93-cybers%C3%A9curit%C3%A9-h-f-x-mode-f%C3%A9vrier-2027-at-chanel-4466135042",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQG8McncY68a0g/company-logo_100_100/company-logo_100_100/0/1729097379577?e=2147483647&v=beta&t=Y0RdERS2w4KwoixwmgBabzXW8TrZZMSQRkSt84_VRqk",
-    "posted_at": "2026-09-14T20:03:15Z",
-    "posted_relative": "il y a 3 heures",
-    "domain": "Cloud / DevSecOps",
-    "all_domains": [
-      "Cloud / DevSecOps"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
     "id": "linkedin_4462996033",
     "title": "STAGE - Consultant IAM BUILD H/F",
     "company_name": "SYNETIS",
@@ -1188,27 +1232,6 @@
     "domain": "Cloud / DevSecOps",
     "all_domains": [
       "Cloud / DevSecOps"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4462856345",
-    "title": "Stage – Ingénieur(e) technique Cybersécurité – Défense & Sécurité – Île-de-France",
-    "company_name": "Sopra Steria",
-    "location": "Montreuil, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-%E2%80%93-ing%C3%A9nieur-e-technique-cybers%C3%A9curit%C3%A9-%E2%80%93-d%C3%A9fense-s%C3%A9curit%C3%A9-%E2%80%93-%C3%AEle-de-france-at-sopra-steria-4462856345",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
-    "posted_at": "2026-09-03",
-    "posted_relative": "il y a 3 jours",
-    "domain": "Cybersecurity (General)",
-    "all_domains": [
-      "Cybersecurity (General)"
     ],
     "is_crypto": false,
     "is_cyber": true,
@@ -1240,14 +1263,35 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
+    "id": "linkedin_4466500996",
+    "title": "Stagiaire Analyste/Consultant en Cybersécurité",
+    "company_name": "CybelAngel",
+    "location": "Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stagiaire-analyste-consultant-en-cybers%C3%A9curit%C3%A9-at-cybelangel-4466500996",
+    "logo_url": "https://media.licdn.com/dms/image/v2/C560BAQFgjTrbLccYjw/company-logo_100_100/company-logo_100_100/0/1657200423421/cybelangel_logo?e=2147483647&v=beta&t=XGe7Y7X820iuFwk8UIW0b6vV7D1TcnhuMFG1Pnj7q0Y",
+    "posted_at": "2026-08-21",
+    "posted_relative": "il y a 3 semaines",
+    "domain": "Cybersecurity (General)",
+    "all_domains": [
+      "Cybersecurity (General)"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
     "id": "linkedin_4467240065",
     "title": "STAGE - IA & Cybersécurité : Réinventer le triage des vulnérabilités (F/H)",
     "company_name": "Dassault Systèmes",
     "location": "Vélizy-Villacoublay, France",
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-ia-cybers%C3%A9curit%C3%A9-r%C3%A9inventer-le-triage-des-vuln%C3%A9rabilit%C3%A9s-f-h-at-dassault-syst%C3%A8mes-4467240065",
     "logo_url": "https://media.licdn.com/dms/image/v2/C560BAQHroRzeNTva6Q/company-logo_100_100/company-logo_100_100/0/1631330934922?e=2147483647&v=beta&t=Y_LaLgUh3t_AY4PloiAtAbGGfEr2fGl7C4_RBhQ7Vok",
-    "posted_at": "2026-09-14T18:03:30Z",
-    "posted_relative": "il y a 5 heures",
+    "posted_at": "2026-09-14",
+    "posted_relative": "il y a 19 heures",
     "domain": "AI & Cybersecurity",
     "all_domains": [
       "AI & Cybersecurity"
@@ -1261,13 +1305,32 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4126307616",
-    "title": "Stage de fin d'études - Consultant(e) Cybersécurité - Nantes - 2026 H/F",
-    "company_name": "Forvis Mazars en France",
-    "location": "Nantes, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-de-fin-d-%C3%A9tudes-consultant-e-cybers%C3%A9curit%C3%A9-nantes-2026-h-f-at-forvis-mazars-en-france-4126307616",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEjCDBiIXRhDA/company-logo_100_100/company-logo_100_100/0/1719256788450/forvis_mazars_en_france_logo?e=2147483647&v=beta&t=46wUzxIBoELIkN5x9eGwxVI9up2eZa7K-txo38exh2g",
-    "posted_at": "2026-09-03",
+    "id": "sr_Wavestone1_744000147239559",
+    "title": "Stage - Consultant·e Cybersécurité & Confiance Numérique",
+    "company_id": "wavestone",
+    "company_name": "Wavestone (Cybersecurity & Digital Trust)",
+    "location": "Puteaux, France",
+    "direct_url": "https://jobs.smartrecruiters.com/Wavestone1/744000147239559",
+    "domain": "Cybersecurity (General)",
+    "all_domains": [
+      "Cybersecurity (General)"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "SmartRecruiters (Official Portal)",
+    "posted_at": "2026-09-03T12:29:12.684Z",
+    "status": "active"
+  },
+  {
+    "id": "linkedin_4464346275",
+    "title": "Consultant Stagiaire Tech & Data & Cyber (H/F)",
+    "company_name": "BearingPoint",
+    "location": "Ville de Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/consultant-stagiaire-tech-data-cyber-h-f-at-bearingpoint-4464346275",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEh1Eh-6uugnA/company-logo_100_100/B4EZcWBwsvHAAU-/0/1748421250249/bearingpoint_logo?e=2147483647&v=beta&t=H42MZqGNY1Idd6qRMzeTOB1uf7Q6twsHVNIwAyBO-Hs",
+    "posted_at": "2026-09-07",
     "posted_relative": "il y a 1 semaine",
     "domain": "Cybersecurity (General)",
     "all_domains": [
