@@ -807,7 +807,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-6-mois-cybersecurit%C3%A9-h-f-at-cea-4467873140",
     "logo_url": "https://media.licdn.com/dms/image/v2/C4E0BAQEPVql0weI3Qg/company-logo_100_100/company-logo_100_100/0/1677003044696/cea_logo?e=2147483647&v=beta&t=7jZWO7y9lY-dMYtMmhu7E4p2Rf7gPx7A4stwqoFZ_m0",
     "posted_at": "2026-09-18",
-    "posted_relative": "il y a 3 jours",
+    "posted_relative": "il y a 4 jours",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -828,7 +828,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-de-fin-d-%C3%A9tudes-ing%C3%A9nieur-e-cybers%C3%A9curit%C3%A9-at-ateme-4467642113",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQFjCQiw1A7XUQ/company-logo_100_100/B4EZrk3DF8HoAU-/0/1764776227571/ateme_logo?e=2147483647&v=beta&t=OdmoqUMdp4ZXRPINwS9_O000CfPQs7rxGejVX6-cBwA",
     "posted_at": "2026-09-21",
-    "posted_relative": "il y a 20 heures",
+    "posted_relative": "il y a 1 jour",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -849,7 +849,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/stagiaire-analyste-consultant-en-cybers%C3%A9curit%C3%A9-at-cybelangel-4466564527",
     "logo_url": "https://media.licdn.com/dms/image/v2/C560BAQFgjTrbLccYjw/company-logo_100_100/company-logo_100_100/0/1657200423421/cybelangel_logo?e=2147483647&v=beta&t=XGe7Y7X820iuFwk8UIW0b6vV7D1TcnhuMFG1Pnj7q0Y",
     "posted_at": "2026-09-15",
-    "posted_relative": "il y a 6 jours",
+    "posted_relative": "il y a 1 semaine",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -871,6 +871,48 @@
     "logo_url": "https://media.licdn.com/dms/image/v2/C560BAQHroRzeNTva6Q/company-logo_100_100/company-logo_100_100/0/1631330934922?e=2147483647&v=beta&t=Y_LaLgUh3t_AY4PloiAtAbGGfEr2fGl7C4_RBhQ7Vok",
     "posted_at": "2026-09-07",
     "posted_relative": "il y a 2 semaines",
+    "domain": "Cybersecurity (General)",
+    "all_domains": [
+      "Cybersecurity (General)"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4468646619",
+    "title": "Stage - Expertise / Recherche dans le domaine de la sécurité des réseaux IT F/H",
+    "company_name": "Enedis",
+    "location": "Lyon, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-expertise-recherche-dans-le-domaine-de-la-s%C3%A9curit%C3%A9-des-r%C3%A9seaux-it-f-h-at-enedis-4468646619",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQFUKdSfmK_VVQ/company-logo_100_100/company-logo_100_100/0/1726143540510/enedis_logo?e=2147483647&v=beta&t=ajfmfU1YfokMMVHyjhtdgkpzmDVmwLgUftGZSrVmywo",
+    "posted_at": "2026-09-17",
+    "posted_relative": "il y a 5 jours",
+    "domain": "Network Security / NetSec",
+    "all_domains": [
+      "Network Security / NetSec"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4470457378",
+    "title": "Stage de fin d'études - Ingénieur Cybersécurité (F/H)",
+    "company_name": "Ivalua",
+    "location": "Massy, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-de-fin-d-%C3%A9tudes-ing%C3%A9nieur-cybers%C3%A9curit%C3%A9-f-h-at-ivalua-4470457378",
+    "logo_url": "https://media.licdn.com/dms/image/v2/C560BAQFtTckgwiWK0g/company-logo_100_100/company-logo_100_100/0/1630645370156/ivalua_logo?e=2147483647&v=beta&t=Ml4DgBmtyElpzIQzwbhf-KJwp8zb9203pexiKDwrYLs",
+    "posted_at": "2026-09-22T15:50:05Z",
+    "posted_relative": "il y a 7 heures",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -968,111 +1010,6 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4466688075",
-    "title": "Cyber Security Intern",
-    "company_name": "Bright Network Consulting",
-    "location": "France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/cyber-security-intern-at-bright-network-consulting-4466688075",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4D0BAQHNU2cVB0v_wg/company-logo_100_100/B4DZ_HisMmGYAI-/0/1785759187986?e=2147483647&v=beta&t=iBaK8TJTfmKHBwfC8caxi4Z9in7pm98YcdZwRpJ7JN0",
-    "posted_at": "2026-09-18",
-    "posted_relative": "il y a 4 jours",
-    "domain": "Cybersecurity (General)",
-    "all_domains": [
-      "Cybersecurity (General)"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4468283222",
-    "title": "Security Engineer Intern",
-    "company_name": "Swile",
-    "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/security-engineer-intern-at-swile-4468283222",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQFeDaPmB9Eqlw/company-logo_100_100/company-logo_100_100/0/1737474849485/swile_logo?e=2147483647&v=beta&t=D3RxqirB8epXV_L0ks14kk-Q5vgA-yaoRLFuB49Yzjs",
-    "posted_at": "2026-09-16",
-    "posted_relative": "il y a 5 jours",
-    "domain": "Cybersecurity (General)",
-    "all_domains": [
-      "Cybersecurity (General)"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4468172355",
-    "title": "Stage - Cyber Risk Modelling",
-    "company_name": "AXA",
-    "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-cyber-risk-modelling-at-axa-4468172355",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4D0BAQHeXioeuXu7-w/company-logo_100_100/company-logo_100_100/0/1714640236991/axa_logo?e=2147483647&v=beta&t=hUWWXPcTR5N-4hFzExVGMgTYKNDGmccJWUSfS5VGjc4",
-    "posted_at": "2026-09-21T22:05:37Z",
-    "posted_relative": "il y a 10 heures",
-    "domain": "Cybersecurity (General)",
-    "all_domains": [
-      "Cybersecurity (General)"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4468113248",
-    "title": "Internship - Countermeasures against fault-injection attacks on post-quantum, hash-based signature verification",
-    "company_name": "STMicroelectronics France",
-    "location": "Rousset, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/internship-countermeasures-against-fault-injection-attacks-on-post-quantum-hash-based-signature-verification-at-stmicroelectronics-france-4468113248",
-    "logo_url": "https://media.licdn.com/dms/image/v2/C4E0BAQFu3zWXD_DXSg/company-logo_100_100/company-logo_100_100/0/1630597860241/stmicroelectronics_france_logo?e=2147483647&v=beta&t=kIxFZGFYFdMTbk1c8p3dUPvxDX53_kgqUmPXl-2MVyU",
-    "posted_at": "2026-09-21T19:05:39Z",
-    "posted_relative": "il y a 12 heures",
-    "domain": "Cryptology",
-    "all_domains": [
-      "Cryptology"
-    ],
-    "is_crypto": true,
-    "is_cyber": false,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4458115482",
-    "title": "Internship - FPGA Hardware Design - PQ Cryptography Hardware Accelerator",
-    "company_name": "CryptoNext Security",
-    "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/internship-fpga-hardware-design-pq-cryptography-hardware-accelerator-at-cryptonext-security-4458115482",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQH9Wpe4VaO7Zg/company-logo_100_100/B4EZfpF1kHHcAU-/0/1751962311259/cryptonext_security_logo?e=2147483647&v=beta&t=OoWKM78C9HmcgJc-Y2BhbRqh6ggdq-xr6MevWAtRcU0",
-    "posted_at": "2026-08-23",
-    "posted_relative": "il y a 4 semaines",
-    "domain": "Cryptology",
-    "all_domains": [
-      "Cryptology"
-    ],
-    "is_crypto": true,
-    "is_cyber": false,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
     "id": "linkedin_4467989710",
     "title": "Internship - Usage of ARM Helium Technology to boost cryptography on ARM Cortex-M MCUs",
     "company_name": "STMicroelectronics France",
@@ -1094,6 +1031,90 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
+    "id": "linkedin_4468172355",
+    "title": "Stage - Cyber Risk Modelling",
+    "company_name": "AXA",
+    "location": "Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-cyber-risk-modelling-at-axa-4468172355",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4D0BAQHeXioeuXu7-w/company-logo_100_100/company-logo_100_100/0/1714640236991/axa_logo?e=2147483647&v=beta&t=hUWWXPcTR5N-4hFzExVGMgTYKNDGmccJWUSfS5VGjc4",
+    "posted_at": "2026-09-21T22:05:37Z",
+    "posted_relative": "il y a 20 heures",
+    "domain": "Cybersecurity (General)",
+    "all_domains": [
+      "Cybersecurity (General)"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4468113248",
+    "title": "Internship - Countermeasures against fault-injection attacks on post-quantum, hash-based signature verification",
+    "company_name": "STMicroelectronics France",
+    "location": "Rousset, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/internship-countermeasures-against-fault-injection-attacks-on-post-quantum-hash-based-signature-verification-at-stmicroelectronics-france-4468113248",
+    "logo_url": "https://media.licdn.com/dms/image/v2/C4E0BAQFu3zWXD_DXSg/company-logo_100_100/company-logo_100_100/0/1630597860241/stmicroelectronics_france_logo?e=2147483647&v=beta&t=kIxFZGFYFdMTbk1c8p3dUPvxDX53_kgqUmPXl-2MVyU",
+    "posted_at": "2026-09-21T19:05:39Z",
+    "posted_relative": "il y a 22 heures",
+    "domain": "Cryptology",
+    "all_domains": [
+      "Cryptology"
+    ],
+    "is_crypto": true,
+    "is_cyber": false,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4470468199",
+    "title": "Internship - FPGA Hardware Design - PQ Cryptography Hardware Accelerator",
+    "company_name": "CryptoNext Security",
+    "location": "Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/internship-fpga-hardware-design-pq-cryptography-hardware-accelerator-at-cryptonext-security-4470468199",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQH9Wpe4VaO7Zg/company-logo_100_100/B4EZfpF1kHHcAU-/0/1751962311259/cryptonext_security_logo?e=2147483647&v=beta&t=OoWKM78C9HmcgJc-Y2BhbRqh6ggdq-xr6MevWAtRcU0",
+    "posted_at": "2026-08-28",
+    "posted_relative": "il y a 3 semaines",
+    "domain": "Cryptology",
+    "all_domains": [
+      "Cryptology"
+    ],
+    "is_crypto": true,
+    "is_cyber": false,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4469044138",
+    "title": "Network & Cyber Engineer Internship",
+    "company_name": "Skynopy",
+    "location": "Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/network-cyber-engineer-internship-at-skynopy-4469044138",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4D0BAQH1HBZml1KMzA/company-logo_100_100/B4DZi8O2QAGgAU-/0/1755504666068/skynopy_logo?e=2147483647&v=beta&t=J0Pnq-_hJsUTVlrWHTk8kWMTPeNV-wIfQb-vEf8e1ZM",
+    "posted_at": "2026-09-22T18:50:08Z",
+    "posted_relative": "il y a 4 heures",
+    "domain": "Cybersecurity (General)",
+    "all_domains": [
+      "Cybersecurity (General)"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
     "id": "linkedin_4459812438",
     "title": "2027 Intern, Forensic & Litigation Consulting, Cyber",
     "company_name": "FTI Consulting",
@@ -1101,7 +1122,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/2027-intern-forensic-litigation-consulting-cyber-at-fti-consulting-4459812438",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEP6MdwujALoQ/company-logo_100_100/company-logo_100_100/0/1719924229766/fti_consulting_logo?e=2147483647&v=beta&t=uAwBl30gpwVGgVq4eJbmTimtqRE8pgCP1_IjD_Z5aIg",
     "posted_at": "2026-08-27",
-    "posted_relative": "il y a 4 jours",
+    "posted_relative": "il y a 5 jours",
     "domain": "Cyber Defensive / SOC / DFIR",
     "all_domains": [
       "Cyber Defensive / SOC / DFIR"
@@ -1157,27 +1178,6 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4468646619",
-    "title": "Stage - Expertise / Recherche dans le domaine de la sécurité des réseaux IT F/H",
-    "company_name": "Enedis",
-    "location": "Lyon, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-expertise-recherche-dans-le-domaine-de-la-s%C3%A9curit%C3%A9-des-r%C3%A9seaux-it-f-h-at-enedis-4468646619",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQFUKdSfmK_VVQ/company-logo_100_100/company-logo_100_100/0/1726143540510/enedis_logo?e=2147483647&v=beta&t=ajfmfU1YfokMMVHyjhtdgkpzmDVmwLgUftGZSrVmywo",
-    "posted_at": "2026-09-17",
-    "posted_relative": "il y a 4 jours",
-    "domain": "Network Security / NetSec",
-    "all_domains": [
-      "Network Security / NetSec"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
     "id": "linkedin_4466135042",
     "title": "Stage – Sécurité Opérationnelle & DevSecOps – Cybersécurité (H/F/X) - Mode - Février 2027",
     "company_name": "CHANEL",
@@ -1199,17 +1199,17 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4470404511",
-    "title": "Ingénieure / Ingénieur Cybersécurité DevSecops - Stage",
-    "company_name": "Capgemini",
-    "location": "Issy-les-Moulineaux, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/ing%C3%A9nieure-ing%C3%A9nieur-cybers%C3%A9curit%C3%A9-devsecops-stage-at-capgemini-4470404511",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQHIL3HctxNfvg/company-logo_100_100/B4EZokv7VQIUAQ-/0/1761553135376/capgemini_logo?e=2147483647&v=beta&t=zG4Rnn4ZR9lwfNpFaLXXm6DKX3XwtS0cYTIC2dDtWfg",
-    "posted_at": "2026-09-22T11:15:45Z",
-    "posted_relative": "il y a 2 heures",
-    "domain": "Cloud / DevSecOps",
+    "id": "linkedin_4126307616",
+    "title": "Stage de fin d'études - Consultant(e) Cybersécurité - Nantes - 2026 H/F",
+    "company_name": "Forvis Mazars en France",
+    "location": "Nantes, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-de-fin-d-%C3%A9tudes-consultant-e-cybers%C3%A9curit%C3%A9-nantes-2026-h-f-at-forvis-mazars-en-france-4126307616",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEjCDBiIXRhDA/company-logo_100_100/company-logo_100_100/0/1719256788450/forvis_mazars_en_france_logo?e=2147483647&v=beta&t=46wUzxIBoELIkN5x9eGwxVI9up2eZa7K-txo38exh2g",
+    "posted_at": "2026-09-03",
+    "posted_relative": "il y a 2 semaines",
+    "domain": "Cybersecurity (General)",
     "all_domains": [
-      "Cloud / DevSecOps"
+      "Cybersecurity (General)"
     ],
     "is_crypto": false,
     "is_cyber": true,
@@ -1220,14 +1220,14 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4442211939",
-    "title": "Stage -  Ingénieur·e DevSecOps",
-    "company_name": "Numberly",
-    "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-ing%C3%A9nieur%C2%B7e-devsecops-at-numberly-4442211939",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEZtoQcDlMOnA/company-logo_100_100/B4EZv.rR4yGwAQ-/0/1769504317567/numberly_logo?e=2147483647&v=beta&t=3MmAO2mD8Z9FCDw9aLbLBWz6R2pCti4k6BuTyoAhYS4",
-    "posted_at": "2026-08-31",
-    "posted_relative": "il y a 3 heures",
+    "id": "linkedin_4470404511",
+    "title": "Ingénieure / Ingénieur Cybersécurité DevSecops - Stage",
+    "company_name": "Capgemini",
+    "location": "Issy-les-Moulineaux, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/ing%C3%A9nieure-ing%C3%A9nieur-cybers%C3%A9curit%C3%A9-devsecops-stage-at-capgemini-4470404511",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQHIL3HctxNfvg/company-logo_100_100/B4EZokv7VQIUAQ-/0/1761553135376/capgemini_logo?e=2147483647&v=beta&t=zG4Rnn4ZR9lwfNpFaLXXm6DKX3XwtS0cYTIC2dDtWfg",
+    "posted_at": "2026-09-22T10:50:17Z",
+    "posted_relative": "il y a 12 heures",
     "domain": "Cloud / DevSecOps",
     "all_domains": [
       "Cloud / DevSecOps"
@@ -1247,8 +1247,8 @@
     "location": "Paris, France",
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-2027-etude-de-la-supervision-et-ciblage-des-menaces-suite-%C3%A0-l-exploitation-de-donn%C3%A9es-multi-sources-f-h-at-airbus-defence-and-space-4468180508",
     "logo_url": "https://media.licdn.com/dms/image/v2/C4E0BAQHiVUv4_8Usqw/company-logo_100_100/company-logo_100_100/0/1631362043684/airbus_defence_and_space_logo?e=2147483647&v=beta&t=grtHyvLMSBtITdc8PsJzG5II76zPjAdFjb44rCGyzFA",
-    "posted_at": "2026-09-22T01:15:45Z",
-    "posted_relative": "il y a 12 heures",
+    "posted_at": "2026-09-22T01:50:17Z",
+    "posted_relative": "il y a 21 heures",
     "domain": "Cyber Offensive / Hardware / Pentest",
     "all_domains": [
       "Cyber Offensive / Hardware / Pentest"
@@ -1290,7 +1290,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/analyste-soc-stage-at-capgemini-4469193503",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQHIL3HctxNfvg/company-logo_100_100/B4EZokv7VQIUAQ-/0/1761553135376/capgemini_logo?e=2147483647&v=beta&t=zG4Rnn4ZR9lwfNpFaLXXm6DKX3XwtS0cYTIC2dDtWfg",
     "posted_at": "2026-09-18",
-    "posted_relative": "il y a 3 jours",
+    "posted_relative": "il y a 4 jours",
     "domain": "Cyber Defensive / SOC / DFIR",
     "all_domains": [
       "Cyber Defensive / SOC / DFIR"
@@ -1311,7 +1311,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-analyste-mdr-detection-cybers%C3%A9curit%C3%A9-rennes-at-sopra-steria-4469172459",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
     "posted_at": "2026-09-18",
-    "posted_relative": "il y a 3 jours",
+    "posted_relative": "il y a 4 jours",
     "domain": "Cyber Defensive / SOC / DFIR",
     "all_domains": [
       "Cyber Defensive / SOC / DFIR"
@@ -1346,17 +1346,17 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4462144257",
-    "title": "Final Year Internship Consultant - Cybersecurity",
-    "company_name": "Sia",
+    "id": "linkedin_4442211939",
+    "title": "Stage -  Ingénieur·e DevSecOps",
+    "company_name": "Numberly",
     "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/final-year-internship-consultant-cybersecurity-at-sia-4462144257",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQFV-HsSw3lYlg/company-logo_100_100/company-logo_100_100/0/1737563199089/sia_partners_logo?e=2147483647&v=beta&t=iqcL_fq4KldnQwUZgnRu_8gDwA401jRc-XQiZS0qkTI",
-    "posted_at": "2026-09-02",
-    "posted_relative": "il y a 2 semaines",
-    "domain": "Cybersecurity (General)",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-ing%C3%A9nieur%C2%B7e-devsecops-at-numberly-4442211939",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEZtoQcDlMOnA/company-logo_100_100/B4EZv.rR4yGwAQ-/0/1769504317567/numberly_logo?e=2147483647&v=beta&t=3MmAO2mD8Z9FCDw9aLbLBWz6R2pCti4k6BuTyoAhYS4",
+    "posted_at": "2026-08-31",
+    "posted_relative": "il y a 12 heures",
+    "domain": "Cloud / DevSecOps",
     "all_domains": [
-      "Cybersecurity (General)"
+      "Cloud / DevSecOps"
     ],
     "is_crypto": false,
     "is_cyber": true,
@@ -1388,14 +1388,14 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4466882625",
-    "title": "Internship - Designing CMA CGM's Cyber Steering Platform",
-    "company_name": "CMA CGM",
-    "location": "Marseille, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/internship-designing-cma-cgm-s-cyber-steering-platform-at-cma-cgm-4466882625",
-    "logo_url": "https://media.licdn.com/dms/image/v2/C4E0BAQErbDTaXxx_JA/company-logo_100_100/company-logo_100_100/0/1631365360656/cma_cgm_logo?e=2147483647&v=beta&t=7jfH0WKNdXjfGFSQ5NI6np4BR2eykyFIIUFgGfpqDJQ",
-    "posted_at": "2026-09-16",
-    "posted_relative": "il y a 5 jours",
+    "id": "linkedin_4462144257",
+    "title": "Final Year Internship Consultant - Cybersecurity",
+    "company_name": "Sia",
+    "location": "Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/final-year-internship-consultant-cybersecurity-at-sia-4462144257",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQFV-HsSw3lYlg/company-logo_100_100/company-logo_100_100/0/1737563199089/sia_partners_logo?e=2147483647&v=beta&t=iqcL_fq4KldnQwUZgnRu_8gDwA401jRc-XQiZS0qkTI",
+    "posted_at": "2026-09-02",
+    "posted_relative": "il y a 2 semaines",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
@@ -1409,17 +1409,38 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4126307616",
-    "title": "Stage de fin d'études - Consultant(e) Cybersécurité - Nantes - 2026 H/F",
-    "company_name": "Forvis Mazars en France",
-    "location": "Nantes, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-de-fin-d-%C3%A9tudes-consultant-e-cybers%C3%A9curit%C3%A9-nantes-2026-h-f-at-forvis-mazars-en-france-4126307616",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEjCDBiIXRhDA/company-logo_100_100/company-logo_100_100/0/1719256788450/forvis_mazars_en_france_logo?e=2147483647&v=beta&t=46wUzxIBoELIkN5x9eGwxVI9up2eZa7K-txo38exh2g",
-    "posted_at": "2026-09-03",
-    "posted_relative": "il y a 2 semaines",
+    "id": "linkedin_4466882625",
+    "title": "Internship - Designing CMA CGM's Cyber Steering Platform",
+    "company_name": "CMA CGM",
+    "location": "Marseille, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/internship-designing-cma-cgm-s-cyber-steering-platform-at-cma-cgm-4466882625",
+    "logo_url": "https://media.licdn.com/dms/image/v2/C4E0BAQErbDTaXxx_JA/company-logo_100_100/company-logo_100_100/0/1631365360656/cma_cgm_logo?e=2147483647&v=beta&t=7jfH0WKNdXjfGFSQ5NI6np4BR2eykyFIIUFgGfpqDJQ",
+    "posted_at": "2026-09-16",
+    "posted_relative": "il y a 6 jours",
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4470605892",
+    "title": "Stage: Consultant(e) Splunk F/H",
+    "company_name": "CGI",
+    "location": "Toulouse et périphérie, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-consultant-e-splunk-f-h-at-cgi-4470605892",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4D0BAQFlEEdVdlT8jw/company-logo_100_100/B4DZu7jLR3GkAU-/0/1768378119780/cgi_logo?e=2147483647&v=beta&t=HYQq760PNDiwamgO6B2gjCasn_PE6odKwp9BsNv5yuI",
+    "posted_at": "2026-09-22T20:50:29Z",
+    "posted_relative": "il y a 2 heures",
+    "domain": "Cyber Defensive / SOC / DFIR",
+    "all_domains": [
+      "Cyber Defensive / SOC / DFIR"
     ],
     "is_crypto": false,
     "is_cyber": true,
@@ -1457,32 +1478,11 @@
     "location": "Lille, France",
     "direct_url": "https://fr.linkedin.com/jobs/view/ing%C3%A9nieure-ing%C3%A9nieur-cloud-security-stage-at-capgemini-4470415213",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQHIL3HctxNfvg/company-logo_100_100/B4EZokv7VQIUAQ-/0/1761553135376/capgemini_logo?e=2147483647&v=beta&t=zG4Rnn4ZR9lwfNpFaLXXm6DKX3XwtS0cYTIC2dDtWfg",
-    "posted_at": "2026-09-22T11:16:23Z",
-    "posted_relative": "il y a 2 heures",
+    "posted_at": "2026-09-22T10:50:53Z",
+    "posted_relative": "il y a 12 heures",
     "domain": "Cloud / DevSecOps",
     "all_domains": [
       "Cloud / DevSecOps"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4468196108",
-    "title": "STAGE 2026/7 - Data Engineer en analyse et exploitation de données sources ouvertes (ALL GENDER)",
-    "company_name": "Airbus Defence and Space",
-    "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-2026-7-data-engineer-en-analyse-et-exploitation-de-donn%C3%A9es-sources-ouvertes-all-gender-at-airbus-defence-and-space-4468196108",
-    "logo_url": "https://media.licdn.com/dms/image/v2/C4E0BAQHiVUv4_8Usqw/company-logo_100_100/company-logo_100_100/0/1631362043684/airbus_defence_and_space_logo?e=2147483647&v=beta&t=grtHyvLMSBtITdc8PsJzG5II76zPjAdFjb44rCGyzFA",
-    "posted_at": "2026-09-22T01:16:25Z",
-    "posted_relative": "il y a 12 heures",
-    "domain": "Cyber Offensive / Hardware / Pentest",
-    "all_domains": [
-      "Cyber Offensive / Hardware / Pentest"
     ],
     "is_crypto": false,
     "is_cyber": true,
@@ -1514,17 +1514,17 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4468170364",
-    "title": "Internship - Cyber Risk Modelling",
-    "company_name": "AXA",
+    "id": "linkedin_4468196108",
+    "title": "STAGE 2026/7 - Data Engineer en analyse et exploitation de données sources ouvertes (ALL GENDER)",
+    "company_name": "Airbus Defence and Space",
     "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/internship-cyber-risk-modelling-at-axa-4468170364",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4D0BAQHeXioeuXu7-w/company-logo_100_100/company-logo_100_100/0/1714640236991/axa_logo?e=2147483647&v=beta&t=hUWWXPcTR5N-4hFzExVGMgTYKNDGmccJWUSfS5VGjc4",
-    "posted_at": "2026-09-22T03:16:29Z",
-    "posted_relative": "il y a 10 heures",
-    "domain": "Cybersecurity (General)",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-2026-7-data-engineer-en-analyse-et-exploitation-de-donn%C3%A9es-sources-ouvertes-all-gender-at-airbus-defence-and-space-4468196108",
+    "logo_url": "https://media.licdn.com/dms/image/v2/C4E0BAQHiVUv4_8Usqw/company-logo_100_100/company-logo_100_100/0/1631362043684/airbus_defence_and_space_logo?e=2147483647&v=beta&t=grtHyvLMSBtITdc8PsJzG5II76zPjAdFjb44rCGyzFA",
+    "posted_at": "2026-09-22T01:50:58Z",
+    "posted_relative": "il y a 21 heures",
+    "domain": "Cyber Offensive / Hardware / Pentest",
     "all_domains": [
-      "Cybersecurity (General)"
+      "Cyber Offensive / Hardware / Pentest"
     ],
     "is_crypto": false,
     "is_cyber": true,
@@ -1542,10 +1542,94 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/2027-intern-forensic-accounting-investigation-compliance-at-fti-consulting-4459817362",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQEP6MdwujALoQ/company-logo_100_100/company-logo_100_100/0/1719924229766/fti_consulting_logo?e=2147483647&v=beta&t=uAwBl30gpwVGgVq4eJbmTimtqRE8pgCP1_IjD_Z5aIg",
     "posted_at": "2026-08-27",
-    "posted_relative": "il y a 4 jours",
+    "posted_relative": "il y a 5 jours",
     "domain": "Cyber Defensive / SOC / DFIR",
     "all_domains": [
       "Cyber Defensive / SOC / DFIR"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4466688075",
+    "title": "Cyber Security Intern",
+    "company_name": "Bright Network Consulting",
+    "location": "France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/cyber-security-intern-at-bright-network-consulting-4466688075",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4D0BAQHNU2cVB0v_wg/company-logo_100_100/B4DZ_HisMmGYAI-/0/1785759187986?e=2147483647&v=beta&t=iBaK8TJTfmKHBwfC8caxi4Z9in7pm98YcdZwRpJ7JN0",
+    "posted_at": "2026-09-18",
+    "posted_relative": "il y a 4 jours",
+    "domain": "Cybersecurity (General)",
+    "all_domains": [
+      "Cybersecurity (General)"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4468283222",
+    "title": "Security Engineer Intern",
+    "company_name": "Swile",
+    "location": "Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/security-engineer-intern-at-swile-4468283222",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQFeDaPmB9Eqlw/company-logo_100_100/company-logo_100_100/0/1737474849485/swile_logo?e=2147483647&v=beta&t=D3RxqirB8epXV_L0ks14kk-Q5vgA-yaoRLFuB49Yzjs",
+    "posted_at": "2026-09-16",
+    "posted_relative": "il y a 5 jours",
+    "domain": "Cybersecurity (General)",
+    "all_domains": [
+      "Cybersecurity (General)"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4458115482",
+    "title": "Internship - FPGA Hardware Design - PQ Cryptography Hardware Accelerator",
+    "company_name": "CryptoNext Security",
+    "location": "Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/internship-fpga-hardware-design-pq-cryptography-hardware-accelerator-at-cryptonext-security-4458115482",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQH9Wpe4VaO7Zg/company-logo_100_100/B4EZfpF1kHHcAU-/0/1751962311259/cryptonext_security_logo?e=2147483647&v=beta&t=OoWKM78C9HmcgJc-Y2BhbRqh6ggdq-xr6MevWAtRcU0",
+    "posted_at": "2026-08-23",
+    "posted_relative": "il y a 4 semaines",
+    "domain": "Cryptology",
+    "all_domains": [
+      "Cryptology"
+    ],
+    "is_crypto": true,
+    "is_cyber": false,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4468170364",
+    "title": "Internship - Cyber Risk Modelling",
+    "company_name": "AXA",
+    "location": "Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/internship-cyber-risk-modelling-at-axa-4468170364",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4D0BAQHeXioeuXu7-w/company-logo_100_100/company-logo_100_100/0/1714640236991/axa_logo?e=2147483647&v=beta&t=hUWWXPcTR5N-4hFzExVGMgTYKNDGmccJWUSfS5VGjc4",
+    "posted_at": "2026-09-22T03:16:29Z",
+    "posted_relative": "il y a 10 heures",
+    "domain": "Cybersecurity (General)",
+    "all_domains": [
+      "Cybersecurity (General)"
     ],
     "is_crypto": false,
     "is_cyber": true,
