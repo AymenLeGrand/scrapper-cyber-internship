@@ -1573,27 +1573,6 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
-    "id": "linkedin_4462835914",
-    "title": "Stage - Analyste MDR - Detection Cybersécurité - Île-de-France",
-    "company_name": "Sopra Steria",
-    "location": "Courbevoie, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-analyste-mdr-detection-cybers%C3%A9curit%C3%A9-%C3%AEle-de-france-at-sopra-steria-4462835914",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
-    "posted_at": "2026-09-03",
-    "posted_relative": "il y a 2 semaines",
-    "domain": "Cyber Defensive / SOC / DFIR",
-    "all_domains": [
-      "Cyber Defensive / SOC / DFIR"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
     "id": "linkedin_4467726679",
     "title": "Cybersecurity Analyst Intern",
     "company_name": "CybelAngel",
@@ -1657,6 +1636,48 @@
     "verification_status": "VERIFIED_ACTIVE"
   },
   {
+    "id": "linkedin_4462835914",
+    "title": "Stage - Analyste MDR - Detection Cybersécurité - Île-de-France",
+    "company_name": "Sopra Steria",
+    "location": "Courbevoie, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-analyste-mdr-detection-cybers%C3%A9curit%C3%A9-%C3%AEle-de-france-at-sopra-steria-4462835914",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQF_0JqR2CRpJw/company-logo_100_100/company-logo_100_100/0/1688571543420/soprasteria_logo?e=2147483647&v=beta&t=-Z1iFS5Flfpz13u7tuuVv3PINIKOucA30K1D8j8kyX4",
+    "posted_at": "2026-09-03",
+    "posted_relative": "il y a 2 semaines",
+    "domain": "Cyber Defensive / SOC / DFIR",
+    "all_domains": [
+      "Cyber Defensive / SOC / DFIR"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
+    "id": "linkedin_4462996033",
+    "title": "STAGE - Consultant IAM BUILD H/F",
+    "company_name": "SYNETIS",
+    "location": "Paris, France",
+    "direct_url": "https://fr.linkedin.com/jobs/view/stage-consultant-iam-build-h-f-at-synetis-4462996033",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQGOWhtaZF2Qbg/company-logo_100_100/company-logo_100_100/0/1704186084079/synetis_logo?e=2147483647&v=beta&t=9oVbxFjvhl6Zvd0ORHMRZVHyZz1qEqaW6-wyOmJ_qyo",
+    "posted_at": "2026-09-07",
+    "posted_relative": "il y a 3 semaines",
+    "domain": "Cloud / DevSecOps",
+    "all_domains": [
+      "Cloud / DevSecOps"
+    ],
+    "is_crypto": false,
+    "is_cyber": true,
+    "eligible_algerian": true,
+    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
+    "source": "LinkedIn (Offres Publiques)",
+    "status": "active",
+    "verification_status": "VERIFIED_ACTIVE"
+  },
+  {
     "id": "linkedin_4472754289",
     "title": "STAGE PFE 2027 - Audit & Pentest (F/H) - Paris",
     "company_name": "Advens",
@@ -1664,7 +1685,7 @@
     "direct_url": "https://fr.linkedin.com/jobs/view/stage-pfe-2027-audit-pentest-f-h-paris-at-advens-4472754289",
     "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQHLJTJM98ZIgg/company-logo_100_100/company-logo_100_100/0/1735806925728/advens_logo?e=2147483647&v=beta&t=dcYCpeKyO5S1SFGzgz29hE9qt2_P6xoDJnaGjdjSPH4",
     "posted_at": "2026-09-28",
-    "posted_relative": "il y a 20 heures",
+    "posted_relative": "il y a 21 heures",
     "domain": "Cyber Offensive / Hardware / Pentest",
     "all_domains": [
       "Cyber Offensive / Hardware / Pentest"
@@ -1710,27 +1731,6 @@
     "domain": "Cybersecurity (General)",
     "all_domains": [
       "Cybersecurity (General)"
-    ],
-    "is_crypto": false,
-    "is_cyber": true,
-    "eligible_algerian": true,
-    "eligibility_note": "Eligible (Aucune restriction de nationalité française détectée)",
-    "source": "LinkedIn (Offres Publiques)",
-    "status": "active",
-    "verification_status": "VERIFIED_ACTIVE"
-  },
-  {
-    "id": "linkedin_4462996033",
-    "title": "STAGE - Consultant IAM BUILD H/F",
-    "company_name": "SYNETIS",
-    "location": "Paris, France",
-    "direct_url": "https://fr.linkedin.com/jobs/view/stage-consultant-iam-build-h-f-at-synetis-4462996033",
-    "logo_url": "https://media.licdn.com/dms/image/v2/D4E0BAQGOWhtaZF2Qbg/company-logo_100_100/company-logo_100_100/0/1704186084079/synetis_logo?e=2147483647&v=beta&t=9oVbxFjvhl6Zvd0ORHMRZVHyZz1qEqaW6-wyOmJ_qyo",
-    "posted_at": "2026-09-07",
-    "posted_relative": "il y a 3 semaines",
-    "domain": "Cloud / DevSecOps",
-    "all_domains": [
-      "Cloud / DevSecOps"
     ],
     "is_crypto": false,
     "is_cyber": true,
